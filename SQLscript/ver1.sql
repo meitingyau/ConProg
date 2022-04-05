@@ -1,4 +1,4 @@
-CREATE DATABASE conprog2
+CREATE DATABASE conprog2;
 
 CREATE TABLE `farms` (
   `id` varchar(200) NOT NULL PRIMARY KEY,
