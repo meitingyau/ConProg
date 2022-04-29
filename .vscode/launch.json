@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch App",
+      "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.App",
+      "projectName": "ConProg_e9b44ff"
+    }
+  ]
+}
