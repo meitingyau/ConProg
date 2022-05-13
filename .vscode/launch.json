@@ -2,12 +2,12 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch databaseConnection",
+      "name": "Launch DateGenerator",
       "request": "launch",
       "args": "",
       "console": "internalConsole",
-      "mainClass": "databaseConnection",
-      "projectName": "ConProg_e9b44ff"
+      "mainClass": "FarmerSimulation.DateGenerator",
+      "projectName": "ConProg_2ef50904"
     },
     {
       "type": "java",
