@@ -8,7 +8,7 @@ public class User {
     private String password;
     private String phoneNum;
 
-    public User(String userId, String[] farmsIDs, String name, String email, String password, String phoneNum) {
+    public User(String userId, String[] farmIds, String name, String email, String password, String phoneNum) {
         this.userId = userId;
         this.farmIds = farmIds;
         this.name = name;
