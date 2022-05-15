@@ -24,7 +24,7 @@ public class User {
     }
 
     public String toString() {
-        String str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name:" + name + ", Email:"
+        String str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name: " + name + ", Email: "
                 + email + " Phone Num: " + phoneNum;
         return str;
     }

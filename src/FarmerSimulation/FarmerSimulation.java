@@ -27,7 +27,7 @@ public class FarmerSimulation {
 
             // // Farm obj = new Farm(farmId, FarmName, address);
             // }
-            String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 5";
+            String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 20";
             ResultSet rsUser = st.executeQuery(sqlStrUser);
             List<String> farms = new ArrayList<String>();
             String tempUserId = "";
@@ -35,13 +35,25 @@ public class FarmerSimulation {
             String tempUserEmail = "";
             String tempUserPW = "";
             String tempUserPhone = "";
+            String tempFarmId = "";
             while (rsUser.next()) {
                 String userId = rsUser.getString("U._id");
-                if (userId == tempUserId) {
+                // System.out.println("Current: " + userId);
+                // System.out.println("Temp: " + tempUserId);
+                if (tempUserId == ""){
+                    farms.add(rsUser.getString("F._id"));
+                }
+                // else if (tempUserId != userId){
+                //     farms.add(rsUser.getString("F._id"));
+                // }
+                if (userId.equals(tempUserId)) {
                     farms.add(rsUser.getString("F._id"));
                     continue;
                 }
-                if (userId != tempUserId && tempUserId != "") {
+                if (tempUserId != "" && farms.contains(tempFarmId) == false){
+                    farms.add(tempFarmId);
+                }
+                if (!tempUserId.equals(userId) && tempUserId != "") {
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
                     User user = new User(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
@@ -55,16 +67,14 @@ public class FarmerSimulation {
                 String email = rsUser.getString("U.email");
                 String password = rsUser.getString("U.password");
                 String phoneNum = rsUser.getString("U.phoneNumber");
+                String farmId = rsUser.getString("F._id");
                 // User obj = new User(userId, farmIds, name, email, password, phoneNum);
             
-            
-            
-
                 tempUserName = name;
                 tempUserEmail = email;
                 tempUserPW = password;
                 tempUserPhone = phoneNum;
-                System.out.println("123");
+                tempFarmId = farmId;
                 // rsUser.next();
                 // if (tempUserId != rsUser.getString("U._id")) {
                 //     String[] farmIds = new String[farms.size()];
