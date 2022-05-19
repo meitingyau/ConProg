@@ -11,7 +11,7 @@ public class Farm {
     private String[] pesticideIds;
 
     public Farm(String farmId, String name, String address,
-            String[] Plants, String[] fertilizers, String[] pesticides) {
+            String[] plantIds, String[] fertilizerIds, String[] pesticideIds) {
         this.farmId = farmId;
         this.name = name;
         this.address = address;
@@ -33,9 +33,9 @@ public class Farm {
     }
 
     public String toString() {
-        String str = "Farm ID: " + farmId + ", Farm Name: " + name + ", Address: " + address + ", Plant IDs: "
+        String str = "Farm ID: " + farmId + ", Farm Name: " + name + ", Address: " + address + ", \nPlant IDs: "
                 + Arrays.toString(plantIds) + ", Fertilizer IDs: " + Arrays.toString(fertilizerIds) + 
-                ", Pesticide IDs: " + Arrays.toString(pesticideIds);
+                ", Pesticide IDs: " + Arrays.toString(pesticideIds) + "\n";
         return str;
     }
 }
