@@ -11,4 +11,9 @@ public class Fertilizer {
         this.unitType = unitType;
     }
 
+    public String toString() {
+        String str = "Fertilizer ID: " + fertilizerId + ", Fertilizer Name: " + name + ", Unit Type: "
+                + unitType ;
+        return str;
+    }
 }
