@@ -12,7 +12,7 @@ public class FarmerSimulation {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8111/ifarm", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
             // String sqlStrFarm = "select F.* from farms F";
@@ -27,6 +27,7 @@ public class FarmerSimulation {
 
             // // Farm obj = new Farm(farmId, FarmName, address);
             // }
+            System.out.println("=============================================\nUsers");
             String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 20";
             ResultSet rsUser = st.executeQuery(sqlStrUser);
             List<String> farms = new ArrayList<String>();
@@ -85,7 +86,7 @@ public class FarmerSimulation {
                 // }
                 // rsUser.previous();
             }
-
+            System.out.println("=============================================\nPesticides");
 
             String sqlStrPesticide = "select * from pesticide limit 20";
             ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
@@ -96,7 +97,7 @@ public class FarmerSimulation {
             Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
             System.out.println(pest.toString());
             }
-
+            System.out.println("=============================================\nFertilizers");
             String sqlStrFertilizer = "select * from fertilizers limit 20";
             ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
             while (rsFertilizer.next()) {
@@ -106,16 +107,17 @@ public class FarmerSimulation {
                 Fertilizer fertilizer = new Fertilizer(fertilizerId, Fname, unitType );
                 System.out.println(fertilizer.toString());
             }
+            System.out.println("=============================================\nPlants");
 
-
-            // String sqlStrPlant = "select * from plants";
-            // ResultSet rsPlant = st.executeQuery(sqlStrPlant);
-            // while (rsPlant.next()) {
-            // String plantId = rsPlant.getString("_id");
-            // String plantName = rsPlant.getString("name");
-            // String plunitType = rsPlant.getString("unitType");
-            // Plant plant = new Plant(plantId, plantName, plunitType );
-            // }
+             String sqlStrPlant = "select * from plants limit 20";
+             ResultSet rsPlant = st.executeQuery(sqlStrPlant);
+             while (rsPlant.next()) {
+             String plantId = rsPlant.getString("_id");
+             String plantName = rsPlant.getString("name");
+             String plunitType = rsPlant.getString("unitType");
+             Plant plant = new Plant(plantId, plantName, plunitType );
+             System.out.println(plant.toString());
+             }
 
             conn.close();
         } catch (Exception e) {
