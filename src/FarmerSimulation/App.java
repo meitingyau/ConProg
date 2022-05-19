@@ -2,6 +2,8 @@ package FarmerSimulation;
 
 public class App {
     public static void main(String[] args) {
+        Timer timer = new Timer();
+        timer.startTimer();
         System.out.println("Hello, 2 World!");
         System.out.println("Hello, 3 World!");
         System.out.println("Hello, 4 World!");
@@ -11,5 +13,8 @@ public class App {
         System.out.println("Hello, 8 World!");
         System.out.println("peepoPogClimbingTreeHard4House");
         System.out.println("Woohoo weihao bring fly");
+        timer.stopTimer();
+        System.out.println(timer.getTimeTakeninMiliSec());
+        
     }
 }
