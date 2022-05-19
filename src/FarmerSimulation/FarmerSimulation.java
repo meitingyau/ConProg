@@ -85,24 +85,8 @@ public class FarmerSimulation {
                 // }
                 // rsUser.previous();
             }
-            // String sqlStrFertilizer = "select * from fertilizers";
-            // ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
-            // while (rsFertilizer.next()) {
-            //     String fertilizerId = rsFertilizer.getString("_id");
-            //     String Fname = rsFertilizer.getString("name");
-            //     String unitType = rsFertilizer.getString("unitType");
-            //     Fertilizer obj = new Fertilizer(fertilizerId, Fname, unitType );
-            // }
 
-            // String sqlStrFertilizer = "select * from fertilizers";
-            // ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
-            // while (rsFertilizer.next()) {
-            // String fertilizerId = rsFertilizer.getString("_id");
-            // String Fname = rsFertilizer.getString("name");
-            // String unitType = rsFertilizer.getString("unitType");
-            // Fertilizer ferti = new Fertilizer(fertilizerId, Fname, unitType );
-            // }
-            
+
             String sqlStrPesticide = "select * from pesticide limit 20";
             ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
             while (rsPesticide.next()) {
@@ -112,6 +96,17 @@ public class FarmerSimulation {
             Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
             System.out.println(pest.toString());
             }
+
+            String sqlStrFertilizer = "select * from fertilizers limit 20";
+            ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
+            while (rsFertilizer.next()) {
+                String fertilizerId = rsFertilizer.getString("_id");
+                String Fname = rsFertilizer.getString("name");
+                String unitType = rsFertilizer.getString("unitType");
+                Fertilizer fertilizer = new Fertilizer(fertilizerId, Fname, unitType );
+                System.out.println(fertilizer.toString());
+            }
+
 
             // String sqlStrPlant = "select * from plants";
             // ResultSet rsPlant = st.executeQuery(sqlStrPlant);
