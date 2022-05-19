@@ -10,5 +10,8 @@ public class Plant {
         this.name=name;
         this.unitType=unitType;
     }
-
+    public String toString() {
+        String str = "Plant: " + plantId + ", Name: " + name + ", Unit Type: " + unitType;
+        return str;
+    }
 }
