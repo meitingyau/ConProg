@@ -12,7 +12,7 @@ public class FarmerSimulation {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8111/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
             // String sqlStrFarm = "select F.* from farms F";
@@ -85,6 +85,18 @@ public class FarmerSimulation {
                 // }
                 // rsUser.previous();
             }
+
+
+            String sqlStrPesticide = "select * from pesticide limit 20";
+            ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
+            while (rsPesticide.next()) {
+            String pesticideId = rsPesticide.getString("_id");
+            String Pname = rsPesticide.getString("name");
+            String PunitType = rsPesticide.getString("unitType");
+            Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
+            System.out.println(pest.toString());
+            }
+
             String sqlStrFertilizer = "select * from fertilizers limit 20";
             ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
             while (rsFertilizer.next()) {
@@ -95,14 +107,6 @@ public class FarmerSimulation {
                 System.out.println(fertilizer.toString());
             }
 
-            // String sqlStrPesticide = "select * from pesticides";
-            // ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
-            // while (rsPesticide.next()) {
-            // String pesticideId = rsPesticide.getString("_id");
-            // String Pname = rsPesticide.getString("name");
-            // String PunitType = rsPesticide.getString("unitType");
-            // Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
-            // }
 
             // String sqlStrPlant = "select * from plants";
             // ResultSet rsPlant = st.executeQuery(sqlStrPlant);
