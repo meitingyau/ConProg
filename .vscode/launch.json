@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch FarmerSimulation",
+      "request": "launch",
+      "mainClass": "FarmerSimulation.FarmerSimulation",
+      "projectName": "ConProg_2ef50904"
+    },
+    {
+      "type": "java",
       "name": "Launch DateGenerator",
       "request": "launch",
       "mainClass": "FarmerSimulation.DateGenerator",

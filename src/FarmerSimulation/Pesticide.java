@@ -10,4 +10,9 @@ public class Pesticide {
         this.name = name;
         this.unitType = unitType;
     }
+
+    public String toString() {
+        String str = "Pesticide: " + pesticideId + ", Name: " + name + ", Unit Type: " + unitType;
+        return str;
+    }
 }
