@@ -1,5 +1,7 @@
 package FarmerSimulation;
 
+import java.util.Arrays;
+
 public class Farm {
     private String farmId;
     private String name;
@@ -28,5 +30,12 @@ public class Farm {
 
     public String[] getPesticideIds() {
         return pesticideIds;
+    }
+
+    public String toString() {
+        String str = "Farm ID: " + farmId + ", Farm Name: " + name + ", Address: " + address + ", Plant IDs: "
+                + Arrays.toString(plantIds) + ", Fertilizer IDs: " + Arrays.toString(fertilizerIds) + 
+                ", Pesticide IDs: " + Arrays.toString(pesticideIds);
+        return str;
     }
 }

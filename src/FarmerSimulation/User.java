@@ -1,5 +1,7 @@
 package FarmerSimulation;
 
+import java.util.Arrays;
+
 public class User {
     private String userId;
     private String[] farmIds;
@@ -21,4 +23,9 @@ public class User {
         return farmIds;
     }
 
+    public String toString() {
+        String str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name: " + name + ", Email: "
+                + email + " Phone Num: " + phoneNum;
+        return str;
+    }
 }
