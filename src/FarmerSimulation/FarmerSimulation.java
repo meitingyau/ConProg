@@ -85,23 +85,15 @@ public class FarmerSimulation {
                 // }
                 // rsUser.previous();
             }
-            // String sqlStrFertilizer = "select * from fertilizers";
-            // ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
-            // while (rsFertilizer.next()) {
-            //     String fertilizerId = rsFertilizer.getString("_id");
-            //     String Fname = rsFertilizer.getString("name");
-            //     String unitType = rsFertilizer.getString("unitType");
-            //     Fertilizer obj = new Fertilizer(fertilizerId, Fname, unitType );
-            // }
-
-            // String sqlStrFertilizer = "select * from fertilizers";
-            // ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
-            // while (rsFertilizer.next()) {
-            // String fertilizerId = rsFertilizer.getString("_id");
-            // String Fname = rsFertilizer.getString("name");
-            // String unitType = rsFertilizer.getString("unitType");
-            // Fertilizer ferti = new Fertilizer(fertilizerId, Fname, unitType );
-            // }
+            String sqlStrFertilizer = "select * from fertilizers limit 20";
+            ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
+            while (rsFertilizer.next()) {
+                String fertilizerId = rsFertilizer.getString("_id");
+                String Fname = rsFertilizer.getString("name");
+                String unitType = rsFertilizer.getString("unitType");
+                Fertilizer fertilizer = new Fertilizer(fertilizerId, Fname, unitType );
+                System.out.println(fertilizer.toString());
+            }
 
             // String sqlStrPesticide = "select * from pesticides";
             // ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
