@@ -12,10 +12,11 @@ public class DateGenerator {
     private Date date2;
     private Date randomDate;
     // Initializing the date converter to convert string into date data type
-    private SimpleDateFormat converter = new SimpleDateFormat("dd/MM/yyyy");
+    private SimpleDateFormat converter = new SimpleDateFormat("yyyy-MM-dd");
     // Initializing the date formatter to do formatting & convert back the date into
     // string for database
-    private DateFormat formattter = DateFormat.getDateInstance();
+    // private DateFormat formattter = DateFormat.getDateInstance();
+    
 
     DateGenerator(String date1, String date2) throws ParseException {
         this.date1 = converter.parse(date1);
@@ -24,14 +25,14 @@ public class DateGenerator {
 
     public String getRandomDate() {
         randomDate = new Date(ThreadLocalRandom.current().nextLong(date1.getTime(), date2.getTime()));
-        return formattter.format(randomDate);
+        return converter.format(randomDate);
     }
 
     public static void main(String[] args) throws ParseException {
         // Example using the getRandomDate method
         // Need to have two string date in format "dd/MM/yyyy"
-        String sDate1 = "31/12/2000";
-        String sDate2 = "13/05/2022";
+        String sDate1 = "2000-12-31";
+        String sDate2 = "2022-05-13";
 
         // Create DateGenerator class instance here with Parameter 2 > Parameter 1
         // since sDate2 larger than sDate1 so put it as below
