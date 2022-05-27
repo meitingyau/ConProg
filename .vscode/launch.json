@@ -2,6 +2,15 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch Activity",
+      "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.Activity",
+      "projectName": "ConProg_e9b44ff"
+    },
+    {
+      "type": "java",
       "name": "Launch FarmerSimulation",
       "request": "launch",
       "args": "",
