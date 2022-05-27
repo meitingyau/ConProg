@@ -1,0 +1,11 @@
+bin/FarmerSimulation/
+bin/FarmerSimulation/Activity.class
+bin/FarmerSimulation/App.class
+bin/FarmerSimulation/DateGenerator.class
+bin/FarmerSimulation/Farm.class
+bin/FarmerSimulation/FarmerSimulation.class
+bin/FarmerSimulation/Fertilizer.class
+bin/FarmerSimulation/Pesticide.class
+bin/FarmerSimulation/Plant.class
+bin/FarmerSimulation/Timer.class
+bin/FarmerSimulation/User.class
