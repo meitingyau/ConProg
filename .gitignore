@@ -1,4 +1,4 @@
-bin/FarmerSimulation/
+./bin/FarmerSimulation/
 bin/FarmerSimulation/Activity.class
 bin/FarmerSimulation/App.class
 bin/FarmerSimulation/DateGenerator.class
