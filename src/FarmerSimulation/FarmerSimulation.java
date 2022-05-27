@@ -40,17 +40,17 @@ public class FarmerSimulation {
                 String userId = rsUser.getString("U._id");
                 // System.out.println("Current: " + userId);
                 // System.out.println("Temp: " + tempUserId);
-                if (tempUserId == ""){
+                if (tempUserId == "") {
                     farms.add(rsUser.getString("F._id"));
                 }
                 // else if (tempUserId != userId){
-                //     farms.add(rsUser.getString("F._id"));
+                // farms.add(rsUser.getString("F._id"));
                 // }
                 if (userId.equals(tempUserId)) {
                     farms.add(rsUser.getString("F._id"));
                     continue;
                 }
-                if (tempUserId != "" && farms.contains(tempFarmId) == false){
+                if (tempUserId != "" && farms.contains(tempFarmId) == false) {
                     farms.add(tempFarmId);
                 }
                 if (!tempUserId.equals(userId) && tempUserId != "") {
@@ -60,16 +60,23 @@ public class FarmerSimulation {
                     farms.clear();
                     System.out.println(user.toString());
                 }
+                if (rsUser.next() == false && userId.equals(tempUserId)) {
+                    farms.add(rsUser.getString("F._id"));
+                    System.out.println(123);
+                }
+                if (rsUser.next() == false && tempUserId != "" && farms.contains(tempFarmId) == false) {
+                    farms.add(tempFarmId);
+                }
                 tempUserId = userId;
 
-                //  farms.add(rsUser.getString("F._id"));
+                // farms.add(rsUser.getString("F._id"));
                 String name = rsUser.getString("U.name");
                 String email = rsUser.getString("U.email");
                 String password = rsUser.getString("U.password");
                 String phoneNum = rsUser.getString("U.phoneNumber");
                 String farmId = rsUser.getString("F._id");
                 // User obj = new User(userId, farmIds, name, email, password, phoneNum);
-            
+
                 tempUserName = name;
                 tempUserEmail = email;
                 tempUserPW = password;
@@ -77,21 +84,21 @@ public class FarmerSimulation {
                 tempFarmId = farmId;
                 // rsUser.next();
                 // if (tempUserId != rsUser.getString("U._id")) {
-                //     String[] farmIds = new String[farms.size()];
-                //     farms.toArray(farmIds);
-                //     User user = new User(userId, farmIds, name, email, password, phoneNum);
-                //     farms.clear();
-                //     System.out.println(user.toString());
+                // String[] farmIds = new String[farms.size()];
+                // farms.toArray(farmIds);
+                // User user = new User(userId, farmIds, name, email, password, phoneNum);
+                // farms.clear();
+                // System.out.println(user.toString());
                 // }
                 // rsUser.previous();
             }
             // String sqlStrFertilizer = "select * from fertilizers";
             // ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
             // while (rsFertilizer.next()) {
-            //     String fertilizerId = rsFertilizer.getString("_id");
-            //     String Fname = rsFertilizer.getString("name");
-            //     String unitType = rsFertilizer.getString("unitType");
-            //     Fertilizer obj = new Fertilizer(fertilizerId, Fname, unitType );
+            // String fertilizerId = rsFertilizer.getString("_id");
+            // String Fname = rsFertilizer.getString("name");
+            // String unitType = rsFertilizer.getString("unitType");
+            // Fertilizer obj = new Fertilizer(fertilizerId, Fname, unitType );
             // }
 
             // String sqlStrFertilizer = "select * from fertilizers";
@@ -102,16 +109,16 @@ public class FarmerSimulation {
             // String unitType = rsFertilizer.getString("unitType");
             // Fertilizer ferti = new Fertilizer(fertilizerId, Fname, unitType );
             // }
-            
-            String sqlStrPesticide = "select * from pesticide limit 20";
-            ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
-            while (rsPesticide.next()) {
-            String pesticideId = rsPesticide.getString("_id");
-            String Pname = rsPesticide.getString("name");
-            String PunitType = rsPesticide.getString("unitType");
-            Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
-            System.out.println(pest.toString());
-            }
+
+            // String sqlStrPesticide = "select * from pesticide limit 20";
+            // ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
+            // while (rsPesticide.next()) {
+            // String pesticideId = rsPesticide.getString("_id");
+            // String Pname = rsPesticide.getString("name");
+            // String PunitType = rsPesticide.getString("unitType");
+            // Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
+            // System.out.println(pest.toString());
+            // }
 
             // String sqlStrPlant = "select * from plants";
             // ResultSet rsPlant = st.executeQuery(sqlStrPlant);
