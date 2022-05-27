@@ -13,7 +13,7 @@ public class FarmerSimulation {
             //connect with our local database
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8111/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
 
@@ -122,7 +122,7 @@ public class FarmerSimulation {
             //connect user class with database
             System.out.println("=============================================\nUsers");
             //sql query for selecting all related columns and order according to user id
-            String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 20";
+            String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 11";
             ResultSet rsUser = st.executeQuery(sqlStrUser);
 
             //create lists to store the farms for respective user id
@@ -139,6 +139,13 @@ public class FarmerSimulation {
             while (rsUser.next()) {
                 //get the user id for each row
                 String userId = rsUser.getString("U._id");
+                //get all column data for current row
+
+                String name = rsUser.getString("U.name");
+                String email = rsUser.getString("U.email");
+                String password = rsUser.getString("U.password");
+                String phoneNum = rsUser.getString("U.phoneNumber");
+                String farmId = rsUser.getString("F._id");
                 if (tempUserId == "") {     //if it is the first row
                     //add current row data to farm list
                     farms.add(rsUser.getString("F._id"));
@@ -168,15 +175,25 @@ public class FarmerSimulation {
                     //print the user object
                     System.out.println(user.toString());
                 }
-
-                if (rsUser.next() == false && userId.equals(tempUserId)) {
+                if (rsUser.isLast() == true && userId.equals(tempUserId)) {
                     farms.add(rsUser.getString("F._id"));
-                    System.out.println(123);
+                    System.out.println(45678);
                 }
-                if (rsUser.next() == false && tempUserId != "" && farms.contains(tempFarmId) == false) {
+                if (rsUser.isLast() == true && tempUserId != "" && farms.contains(tempFarmId) == false) {
                     farms.add(tempFarmId);
                 }
-                
+                if (rsUser.isLast() == true && !tempUserId.equals(userId) && tempUserId != "") {
+                    //convert the lists to array
+                    String[] farmIds = new String[farms.size()];
+                    farms.toArray(farmIds);
+                    //create new user object for previous row id
+                    User user = new User(userId, farmIds, name, email, password, phoneNum);
+                    //clear the farm list
+                    farms.clear();
+                    //print the user object
+                    System.out.println(user.toString());
+                }
+
 
                 // farms.add(rsUser.getString("F._id"));
 
@@ -184,13 +201,7 @@ public class FarmerSimulation {
                 //before going to next row, set current row id as temp id
                 tempUserId = userId;
                 
-                //get all column data for current row
-
-                String name = rsUser.getString("U.name");
-                String email = rsUser.getString("U.email");
-                String password = rsUser.getString("U.password");
-                String phoneNum = rsUser.getString("U.phoneNumber");
-                String farmId = rsUser.getString("F._id");
+                
                 // User obj = new User(userId, farmIds, name, email, password, phoneNum);
 
                 
