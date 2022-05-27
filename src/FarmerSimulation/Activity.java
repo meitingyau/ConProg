@@ -1,6 +1,5 @@
 package FarmerSimulation;
 
-import java.io.*;
 import java.sql.*;
 
 public class Activity {
