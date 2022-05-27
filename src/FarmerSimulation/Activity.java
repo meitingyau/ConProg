@@ -31,18 +31,24 @@ public class Activity {
 
     public void store() {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521:xe", "root", "");
+                    "jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
 
             PreparedStatement ps = con.prepareStatement(
-                    "insert into filetable values(?,?)");
+                    "insert into activities (_id, farmId, userId, date, action, type, unit, quantity, field, row) " +
+                            "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps.setString(1, this.activityId);
+            ps.setString(2, this.farmId);
+            ps.setString(3, this.userId);
+            ps.setString(4, this.date);
+            ps.setString(5, this.action);
+            ps.setString(6, this.type);
+            ps.setString(7, this.unit);
+            ps.setDouble(8, this.quantity);
+            ps.setInt(9, this.field);
+            ps.setInt(10, this.row);
 
-            File f = new File("d:\\myfile.txt");
-            FileReader fr = new FileReader(f);
-
-            ps.setInt(1, 101);
-            ps.setCharacterStream(2, fr, (int) f.length());
             int i = ps.executeUpdate();
             System.out.println(i + " records affected");
 
@@ -51,6 +57,11 @@ public class Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        Activity testingActivity = new Activity("1", "2", "3", "2022-05-13", "sowing", "fennel", "kg", 3, 1, 1);
+        testingActivity.store();
     }
 
 }
