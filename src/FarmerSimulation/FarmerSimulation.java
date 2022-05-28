@@ -5,15 +5,24 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.*;
+import java.io.IOException;
 
 public class FarmerSimulation {
 
     public static void main(String args[]) {
+        // try {
+        //     WriteToLogFile.setup();
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        //     throw new RuntimeException("Problems with creating the log files");
+        // }
+
         try {
+            
             // connect with our local database
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8111/ifarm", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
 

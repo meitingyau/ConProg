@@ -9,6 +9,7 @@ public class User {
     private String email;
     private String password;
     private String phoneNum;
+    private String str;
 
     public User(String userId, String[] farmIds, String name, String email, String password, String phoneNum) {
         this.userId = userId;
@@ -24,8 +25,10 @@ public class User {
     }
 
     public String toString() {
-        String str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name: " + name + ", Email: "
+        str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name: " + name + ", Email: "
                 + email + " Phone Num: " + phoneNum;
+        
+        // UseFileLogger.logInfoMessage(str);
         return str;
     }
 }
