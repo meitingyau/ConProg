@@ -34,7 +34,7 @@ public class Activity {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+                    "jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
 
             PreparedStatement ps = con.prepareStatement(
                     "insert into activities (_id, farmId, userId, date, action, type, unit, quantity, field, row) " +
@@ -70,7 +70,7 @@ public class Activity {
 
     public static void main(String[] args) {
         Activity testingActivity = new Activity("1", "2", "3", "2022-05-13", "sowing", "fennel", "kg", 3, 1, 1);
-        // testingActivity.store();
+        testingActivity.store();
         try {
             FileLogger.setup();
         } catch (IOException e) {
