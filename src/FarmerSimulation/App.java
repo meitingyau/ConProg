@@ -2,6 +2,7 @@ package FarmerSimulation;
 
 // public class App {
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,13 +49,23 @@ public class App {
         // timer.stopTimer();
         // System.out.println(timer.getTimeTakeninMiliSec());
 
-        App tester = new App();
-        try {
-            FileLogger.setup();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Problems with creating the log files");
-        }
-        tester.doSomeThingAndLog();
+        // App tester = new App();
+        
+        // try {
+        //     FileLogger.setup();
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        //     throw new RuntimeException("Problems with creating the log files");
+        // }
+
+        // tester.doSomeThingAndLog();
+        FarmerSimulator.simulateActivity();
+        // System.out.println(FarmerSimulator.getRowColumn());
+        // System.out.println(getAction());
+    }
+    static private int getAction(){
+        Random r = new Random();
+        int rand = r.nextInt(6-1) + 1;
+        return rand;
     }
 }
