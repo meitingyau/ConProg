@@ -4,14 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.ThreadLocalRandom;
-import java.text.*;
+// import java.util.concurrent.ThreadLocalRandom;
+// import java.text.*;
 
 public class DateGenerator {
 
     private Date date1;
     private int days;
-    private Date randomDate;
+    // private Date randomDate;
     // Initializing the date converter to convert string into date data type
     private SimpleDateFormat converter = new SimpleDateFormat("yyyy-MM-dd");
     private Calendar c = Calendar.getInstance();
@@ -39,23 +39,11 @@ public class DateGenerator {
         return converter.format(c.getTime());
     }
 
-    public String addOneDay() {
-        c.setTime(date1);
-        c.add(Calendar.DATE, 1);
-        return converter.format(c.getTime());
-    }
-
-    public String addFiveDays() {
-        c.setTime(date1);
-        c.add(Calendar.DATE, 5);
-        return converter.format(c.getTime());
-    }
-
     public static void main(String[] args) throws ParseException {
         // Example using the getRandomDate method
         // Need to have two string date in format "dd/MM/yyyy"
         String sDate1 = "2001-12-31";
-        String sDate2 = "2022-05-13";
+        // String sDate2 = "2022-05-13";
         int days = 3;
 
         // Create DateGenerator class instance here with Parameter 2 > Parameter 1
