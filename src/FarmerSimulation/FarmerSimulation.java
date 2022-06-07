@@ -11,18 +11,18 @@ public class FarmerSimulation {
 
     public static void main(String args[]) {
         // try {
-        //     WriteToLogFile.setup();
+        // WriteToLogFile.setup();
         // } catch (IOException e) {
-        //     e.printStackTrace();
-        //     throw new RuntimeException("Problems with creating the log files");
+        // e.printStackTrace();
+        // throw new RuntimeException("Problems with creating the log files");
         // }
 
         try {
-            
+
             // connect with our local database
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8111/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
 
@@ -56,6 +56,12 @@ public class FarmerSimulation {
             while (rsFarm.next()) {
                 // get the farm id for each row
                 String farmId = rsFarm.getString("F._id");
+                // get all column data for current row
+                String farmName = rsFarm.getString("F.name");
+                String farmAdd = rsFarm.getString("F.address");
+                String pId = rsFarm.getString("plants");
+                String ferId = rsFarm.getString("fertilizers");
+                String pesId = rsFarm.getString("pesticides");
 
                 if (tempFId == "") { // if it is the first row
                     // add current row data to respective lists
@@ -64,8 +70,9 @@ public class FarmerSimulation {
                     pesticides.add(rsFarm.getString("pesticides"));
                 }
 
-                if (farmId.equals(tempFId)) { // if current row has the same id with previous row,
-                                              // means current row data are under the same id as previous
+                if (farmId.equals(tempFId) && rsFarm.isLast() == false) { // if current row has the same id with
+                                                                          // previous row,
+                    // means current row data are under the same id as previous
                     // if the list does not contain current row data, add the current data to list
                     if (plants.contains(rsFarm.getString("plants")) == false) {
                         plants.add(rsFarm.getString("plants"));
@@ -111,21 +118,31 @@ public class FarmerSimulation {
                     // print the object
                     System.out.println(farm.toString());
                 }
+                if (rsFarm.isLast() == true && farmId.equals(tempFId) && fertilizers.contains(tempFerId) == true && pesticides.contains(tempPesId) == true) {
+                    plants.add(rsFarm.getString("plants"));
+                }
+
+                if (rsFarm.isLast() == true) {
+                    String[] plantIds = new String[plants.size()];
+                    plants.toArray(plantIds);
+                    plants.clear();
+                    String[] ferIds = new String[fertilizers.size()];
+                    fertilizers.toArray(ferIds);
+                    fertilizers.clear();
+                    String[] pesIds = new String[pesticides.size()];
+                    pesticides.toArray(pesIds);
+                    pesticides.clear();
+                    Farm farm = new Farm(farmId, farmName, farmAdd, plantIds, ferIds, pesIds);
+                    System.out.println(farm.toString());
+                }
                 // before going to next row, set current row id as temp id
                 tempFId = farmId;
-
-                // get all column data for current row
-                String farmName = rsFarm.getString("F.name");
-                String farmAdd = rsFarm.getString("F.address");
-                String plantId = rsFarm.getString("plants");
-                String ferId = rsFarm.getString("fertilizers");
-                String pesId = rsFarm.getString("pesticides");
 
                 // set current row data as temp data which will be used when checking the farm
                 // id at next row
                 tempFarmName = farmName;
                 tempFarmAdd = farmAdd;
-                tempPlantId = plantId;
+                tempPlantId = pId;
                 tempFerId = ferId;
                 tempPesId = pesId;
 
