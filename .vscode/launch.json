@@ -16,6 +16,15 @@
       "args": "",
       "console": "internalConsole",
       "mainClass": "FarmerSimulation.Activity",
+      "projectName": "ConProg_f6861867"
+    },
+    {
+      "type": "java",
+      "name": "Launch Activity",
+      "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.Activity",
       "projectName": "ConProg_e9b44ff"
     },
     {
