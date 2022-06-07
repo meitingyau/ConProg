@@ -33,6 +33,7 @@ public class FarmerSimulator {
             int n = 1;
 
             if (rsRandFarm.next()) {
+                String randFarmId = rsRandFarm.getString("F._id");
                 while (n <= 10) { //if wan to generate 1000 activities change to 1000
                     String sqlLastAcId = "select max(cast(`_id` as unsigned)) as `actId` from activities";
                     ResultSet rsLastAcId = st.executeQuery(sqlLastAcId);
@@ -43,8 +44,8 @@ public class FarmerSimulator {
                     }
                     System.out.println("Activity id: " + nextAcId);
 
-                    // String randFarmId = rsRandFarm.getString("F._id");
-                    String randFarmId = "3";
+                    
+                    //String randFarmId = "3";
                     System.out.println("Random farm id: " + randFarmId);
 
                     // System.out.println("Date: " + randDate);
