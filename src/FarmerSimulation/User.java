@@ -3,7 +3,7 @@ package FarmerSimulation;
 import java.util.Arrays;
 
 public class User {
-    private String userId;
+    String userId;
     private String[] farmIds;
     private String name;
     private String email;
