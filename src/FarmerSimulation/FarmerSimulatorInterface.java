@@ -1,5 +1,5 @@
 package FarmerSimulation;
 
 public interface FarmerSimulatorInterface{
-    User[] generateFarmers(int numberOfFarmers);
+    Farmer[] generateFarmers(int numberOfFarmers);
 }

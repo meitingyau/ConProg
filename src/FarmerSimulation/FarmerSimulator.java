@@ -19,10 +19,10 @@ public class FarmerSimulator {
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
-            User[] users = generateFarmers(4);
+            Farmer[] farmers = generateFarmers(4);
 
-            for (int i = 0; i < users.length; i++) {
-                String userId = users[i].userId.toString();
+            for (int i = 0; i < farmers.length; i++) {
+                String userId = farmers[i].userId.toString();
 
                 
                 String sqlStrRandFarm = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId where U._id="
@@ -163,9 +163,9 @@ public class FarmerSimulator {
 
     }
 
-    public static User[] generateFarmers(int numberOfFarmers) {
-        User[] users;
-        users = new User[numberOfFarmers];
+    public static Farmer[] generateFarmers(int numberOfFarmers) {
+        Farmer[] users;
+        users = new Farmer[numberOfFarmers];
         try {
 
             // connect with our local database
@@ -181,7 +181,7 @@ public class FarmerSimulator {
 
             // create lists to store the farms for respective user id
             List<String> farms = new ArrayList<String>();
-            List<User> farmer = new ArrayList<User>();
+            List<Farmer> farmer = new ArrayList<Farmer>();
             // create temporary variables to store previous row data
             String tempUserId = "";
             String tempUserName = "";
@@ -226,7 +226,7 @@ public class FarmerSimulator {
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
                     // create new user object for previous row id
-                    User user = new User(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
+                    Farmer user = new Farmer(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
                     // clear the farm list
                     farms.clear();
                     // print the user object
@@ -246,7 +246,7 @@ public class FarmerSimulator {
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
                     // create new user object for previous row id
-                    User user = new User(userId, farmIds, name, email, password, phoneNum);
+                    Farmer user = new Farmer(userId, farmIds, name, email, password, phoneNum);
                     // clear the farm list
                     farms.clear();
                     farmer.add(user);
@@ -263,7 +263,7 @@ public class FarmerSimulator {
                 tempUserPhone = phoneNum;
                 tempFarmId = farmId;
             }
-            User[] farmerArr = new User[farmer.size()];
+            Farmer[] farmerArr = new Farmer[farmer.size()];
             farmer.toArray(farmerArr);
             conn.close();
             users = farmerArr;
