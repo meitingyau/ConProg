@@ -24,7 +24,7 @@ public class FarmerSimulator {
             for (int i = 0; i < users.length; i++) {
                 String userId = users[i].userId.toString();
 
-                System.out.println("User id: " + userId);
+                
                 String sqlStrRandFarm = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId where U._id="
                         + userId + " order by rand() limit 1";
                 ResultSet rsRandFarm = st.executeQuery(sqlStrRandFarm);
@@ -37,6 +37,9 @@ public class FarmerSimulator {
                 int n = 1;
 
                 if (rsRandFarm.next()) {
+                    String randFarmId = rsRandFarm.getString("F._id");
+                    // String randFarmId = "3";
+
                     while (n <= 10) { // if wan to generate 1000 activities change to 1000
                         String sqlLastAcId = "select max(cast(`_id` as unsigned)) as `actId` from activities";
                         ResultSet rsLastAcId = st.executeQuery(sqlLastAcId);
@@ -45,10 +48,9 @@ public class FarmerSimulator {
                             int lastAcId = rsLastAcId.getInt("actId");
                             nextAcId = String.valueOf(lastAcId + 1);
                         }
+                        System.out.println("User id: " + userId);
                         System.out.println("Activity id: " + nextAcId);
 
-                        // String randFarmId = rsRandFarm.getString("F._id");
-                        String randFarmId = "3";
                         System.out.println("Random farm id: " + randFarmId);
 
                         // System.out.println("Date: " + randDate);
