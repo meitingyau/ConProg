@@ -32,7 +32,7 @@ public class Concurrent{
 }
 
 class FarmerThread implements Runnable{
-    User farmer;
+    Farmer farmer;
     public FarmerThread(String s){
         
     }

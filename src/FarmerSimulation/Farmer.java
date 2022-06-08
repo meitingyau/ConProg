@@ -2,7 +2,7 @@ package FarmerSimulation;
 
 import java.util.Arrays;
 
-public class User {
+public class Farmer {
     String userId;
     private String[] farmIds;
     private String name;
@@ -11,7 +11,7 @@ public class User {
     private String phoneNum;
     private String str;
 
-    public User(String userId, String[] farmIds, String name, String email, String password, String phoneNum) {
+    public Farmer(String userId, String[] farmIds, String name, String email, String password, String phoneNum) {
         this.userId = userId;
         this.farmIds = farmIds;
         this.name = name;
