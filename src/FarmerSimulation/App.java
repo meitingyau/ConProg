@@ -59,7 +59,14 @@ public class App {
         // }
 
         // tester.doSomeThingAndLog();
-        FarmerSimulator.simulateActivity();
+        Farmer[] farmers = FarmerSimulator.generateFarmers(4);
+        Timer timer = new Timer();
+        timer.startTimer();
+        for (int i = 0; i < farmers.length; i++) {
+            FarmerSimulator.simulateActivity(farmers[i].userId.toString());
+        }
+        timer.stopTimer();
+        System.out.println("Time taken to generate activities is "+timer.getTimeTakeninMiliSec()+" ms.");
         // System.out.println(FarmerSimulator.getRowColumn());
         // System.out.println(getAction());
     }
