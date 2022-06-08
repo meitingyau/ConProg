@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 
 // public class FarmerSimulator implements FarmerSimulatorInterface{
 public class FarmerSimulator {
-    static public void simulateActivity() {
+    static public synchronized void simulateActivity(String farmer) {
         try {
 
             // connect with our local database
@@ -19,12 +19,12 @@ public class FarmerSimulator {
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
-            Farmer[] farmers = generateFarmers(4);
+            //Farmer[] farmers = generateFarmers(4);
 
-            for (int i = 0; i < farmers.length; i++) {
-                String userId = farmers[i].userId.toString();
+            //for (int i = 0; i < farmers.length; i++) {
+                //String userId = farmers[i].userId.toString();
 
-                
+                String userId = farmer;
                 String sqlStrRandFarm = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId where U._id="
                         + userId + " order by rand() limit 1";
                 ResultSet rsRandFarm = st.executeQuery(sqlStrRandFarm);
@@ -154,7 +154,7 @@ public class FarmerSimulator {
                     }
                 }
 
-            }
+            
 
             conn.close();
         } catch (Exception e) {
