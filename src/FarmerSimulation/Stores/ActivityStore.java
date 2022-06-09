@@ -30,7 +30,7 @@ public class ActivityStore {
             ResultSet result = st.executeQuery(query);
             // System.out.println("Here " + result);
             while (result.next()) {
-                arrayOfActivity.add(new Activity(result.getString("activityId"), result.getString("userId"),
+                arrayOfActivity.add(new Activity(result.getString("_id"), result.getString("userId"),
                         result.getString("farmId"), formattter.format(result.getDate("date")),
                         result.getString("action"),
                         result.getString("type"), result.getString("unit"), result.getDouble("quantity"),
@@ -59,7 +59,7 @@ public class ActivityStore {
             ResultSet result = st.executeQuery(query);
             // System.out.println("Here " + result);
             while (result.next()) {
-                arrayOfActivity.add(new Activity(result.getString("activityId"), result.getString("userId"),
+                arrayOfActivity.add(new Activity(result.getString("_id"), result.getString("userId"),
                         result.getString("farmId"), formattter.format(result.getDate("date")),
                         result.getString("action"),
                         result.getString("type"), result.getString("unit"), result.getDouble("quantity"),
