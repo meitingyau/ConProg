@@ -20,6 +20,14 @@ public class Farmer {
         this.phoneNum = phoneNum;
     }
 
+    public String getUserId() {
+        return this.userId;
+    }
+
+    public String getUserName() {
+        return this.name;
+    }
+
     public String[] getFarmIds() {
         return farmIds;
     }
@@ -27,7 +35,6 @@ public class Farmer {
     public String toString() {
         str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name: " + name + ", Email: "
                 + email + " Phone Num: " + phoneNum;
-        
         // UseFileLogger.logInfoMessage(str);
         return str;
     }

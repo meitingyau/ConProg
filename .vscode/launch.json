@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch DataVisualization",
+      "request": "launch",
+      "mainClass": "FarmerSimulation.DataVisualization",
+      "projectName": "ConProg_c9062176"
+    },
+    {
+      "type": "java",
       "name": "Launch Concurrent",
       "request": "launch",
       "mainClass": "FarmerSimulation.Concurrent",

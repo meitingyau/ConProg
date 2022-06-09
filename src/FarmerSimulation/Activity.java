@@ -61,8 +61,10 @@ public class Activity {
     }
 
     public String toString() {
-        str = "Activity ID: " + activityId + ", User ID: " + userId + ", Farm ID: " + farmId + ", Date: " + date + ", Action: "
-                + action + ", Type: " + type + ", Unit: " + unit + ", Quantity: " + quantity + ", Field: " + field + ", Row: " + row;
+        str = "Activity ID: " + activityId + ", User ID: " + userId + ", Farm ID: " + farmId + ", Date: " + date
+                + ", Action: "
+                + action + ", Type: " + type + ", Unit: " + unit + ", Quantity: " + quantity + ", Field: " + field
+                + ", Row: " + row;
 
         FileLoggerMessage.logInfoMessage(str);
         return str;
@@ -78,6 +80,38 @@ public class Activity {
             throw new RuntimeException("Problems with creating the log files");
         }
         testingActivity.toString();
+    }
+
+    public String getFarmId() {
+        return farmId;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public int getField() {
+        return field;
+    }
+
+    public int getRow() {
+        return row;
     }
 
 }
