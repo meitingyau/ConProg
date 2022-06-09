@@ -18,7 +18,10 @@ public class ActivityStore {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ifarm", "root", "");
-            String query = "SELECT * FROM activities WHERE userId=" + Integer.toString(id) + "";
+            String query = "SELECT * FROM activities WHERE userId= " + Integer.toString(id) + "";
+            // String sqlStrUser = "select U.*,F._id from users U join farmusers FU on
+            // U._id=FU.userId join farms F on F._id=FU.farmId order by rand() limit " +
+            // numberOfFarmers + "";
             System.out.println("" + id);
             System.out.println(query);
             Statement st = conn.createStatement();
