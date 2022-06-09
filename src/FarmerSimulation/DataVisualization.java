@@ -12,25 +12,53 @@ import FarmerSimulation.Stores.FarmerStore;
 
 public class DataVisualization {
 
-    public static void option() {
+    public static void option(String farmWithType, int commandChosen) {
+        System.out.println();
         System.out.println(
-                "To display all activity logs with date A and date B - Please enter: 5");
+                "Enter the command's number to visualize the activities data:");
         System.out.println(
-                "To display summarized logs activity logs with date A and date B- Please enter: 6");
+                "To display normal " + farmWithType + " activity logs - Please enter: " + commandChosen);
+        System.out.println(
+                "To display all " + farmWithType + " activity logs with date A and date B - Please enter: 5");
+        System.out.println(
+                "To display summarized " + farmWithType
+                        + " activity logs with date A and date B with selected field and row - Please enter: 6");
         System.out.println("To quit the farm data visualization - Please enter: -1");
         System.out.print("Enter the command number: ");
+    }
+
+    public static void invalidInput() {
+        System.out.println();
+        System.out.println("Invalid input, Please enter the command number that be displayed only.");
+        System.out.println();
+    }
+
+    public static void noData(String data) {
+        System.out.println();
+        System.out.println("Sorry, that is no " + data + " data");
+        System.out.println();
+    }
+
+    public static void continueViewing(String category) {
+        System.out.println();
+        System.out.println(
+                "Do you want to continue viewing " + category + " acitivity logs?");
+        System.out.println("Yes - Please enter: 1");
+        System.out.println("No - Please enter: -1");
+        System.out.print("Enter the option's number: ");
     }
 
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         boolean dataVisualizationProcessing = true, farmerDVP = true,
-                farmDVP = true, farmOnlyDVP = true;
+                farmDVP = true, farmOnlyDVP = true, farmPlantDVP = true;
         int commandChosen, farmerChosen, farmChosen, plantChosen, fertilizerChosen, pesticideChosen;
         while (dataVisualizationProcessing) {
             dataVisualizationProcessing = true;
             farmerDVP = true;
             farmDVP = true;
             farmOnlyDVP = true;
+            farmPlantDVP = true;
             commandChosen = -1;
             System.out.println();
             System.out.println("Enter the command's number to visualize the activities data:");
@@ -60,7 +88,7 @@ public class DataVisualization {
                                 FarmStore farmStore = new FarmStore();
                                 HashMap<String, String> farms = farmStore.getFarms();
                                 if (farms.size() > 0) {
-                                    while (farmOnlyDVP) { // this may need change
+                                    while (farmOnlyDVP) {
                                         System.out.println();
                                         System.out.println(
                                                 "Please Enter the respective farm's number to see farm's activity logs");
@@ -71,146 +99,168 @@ public class DataVisualization {
                                         try {
                                             farmChosen = Integer.parseInt(scanner.next());
                                             if (farmChosen >= 0 && farmChosen < farms.size()) {
-                                                ActivityStore activityStore = new ActivityStore();
-                                                List<Activity> activityLogs = activityStore
-                                                        .findActivitiesByFarmId(farmChosen);
-                                                System.out.println();
-                                                System.out.println("The Activity Logs of Farm "
-                                                        + farms.get(String.valueOf(farmChosen)) + " : ");
-                                                for (Activity activity : activityLogs) {
-                                                    farms.get(String.valueOf(farmChosen));
-                                                    System.out.println(activity.getAction() + " " + activity.getType()
-                                                            + " Field "
-                                                            + activity.getField() + " Row " + activity.getRow() + " "
-                                                            + activity.getQuantity() + " " + activity.getUnit() + " "
-                                                            + activity.getDate() + " in Farm ID: "
-                                                            + activity.getFarmId());
-                                                    // Sowing Broccoli Field 1 Row 1 1 kg 2022-03-03
-                                                }
-                                                System.out.println();
-                                                // call method to create a output text file here
-                                                while (true) {
+                                                if (commandChosen == 0) {
+                                                    ActivityStore activityStore = new ActivityStore();
+                                                    List<Activity> activityLogs = activityStore
+                                                            .findByFarmId(farmChosen);
                                                     System.out.println();
-                                                    System.out.println(
-                                                            "Do you want to continue viewing farm's acitivity logs?");
-                                                    System.out.println("Yes - Please enter: 1");
-                                                    System.out.println("No - Please enter: -1");
-                                                    System.out.print("Enter the option's number: ");
-                                                    try {
-                                                        commandChosen = Integer.parseInt(scanner.next());
-                                                        if (commandChosen == 1) {
-                                                            break;
-                                                        } else if (commandChosen == -1) {
-                                                            farmOnlyDVP = false;
-                                                            break;
+                                                    System.out.println("The Activity Logs of Farm "
+                                                            + farms.get(String.valueOf(farmChosen)) + " : ");
+                                                    for (Activity activity : activityLogs) {
+                                                        System.out
+                                                                .println(activity.getAction() + " " + activity.getType()
+                                                                        + " Field "
+                                                                        + activity.getField() + " Row "
+                                                                        + activity.getRow() + " "
+                                                                        + activity.getQuantity() + " "
+                                                                        + activity.getUnit() + " "
+                                                                        + activity.getDate());
+                                                    }
+                                                    System.out.println();
+                                                    // call method to create a output text file here
+                                                    while (true) {
+                                                        continueViewing("farm's");
+                                                        try {
+                                                            commandChosen = Integer.parseInt(scanner.next());
+                                                            if (commandChosen == 1) {
+                                                                break;
+                                                            } else if (commandChosen == -1) {
+                                                                farmOnlyDVP = false;
+                                                                break;
+                                                            }
+                                                        } catch (NumberFormatException ex) {
+                                                            invalidInput();
+                                                            continue;
                                                         }
-                                                    } catch (NumberFormatException ex) {
-                                                        System.out.println();
-                                                        System.out.println(
-                                                                "Invalid input, Please enter the command number that be displayed only.");
-                                                        System.out.println();
+                                                    }
+                                                } else if (commandChosen == 2) {
+                                                    option("farm with plant", commandChosen);
+                                                    try { // copy from here
+                                                        commandChosen = Integer.parseInt(scanner.next());
+                                                        FarmStore plantStore = new FarmStore();
+                                                        HashMap<String, String> plants = plantStore.getFarms();
+                                                        if (plants.size() > 0) {
+                                                            while (farmPlantDVP) {
+                                                                System.out.println();
+                                                                System.out.println(
+                                                                        "Please Enter the respective plant's number to see the activity logs");
+                                                                for (Entry<String, String> entry : plants.entrySet()) {
+                                                                    System.out.println(entry.getValue()
+                                                                            + " - Please Enter: " + entry.getKey());
+                                                                }
+                                                                System.out.print("Enter the plant's number: ");
+                                                                try {
+                                                                    plantChosen = Integer.parseInt(scanner.next());
+                                                                    if (plantChosen >= 0
+                                                                            && plantChosen < plants.size()) {
+                                                                        if (commandChosen == 2) {
+                                                                            ActivityStore activityStore = new ActivityStore();
+                                                                            List<Activity> activityLogs = activityStore
+                                                                                    .findByFarmIdAndPlantId(farmChosen,
+                                                                                            plantChosen);
+                                                                            System.out.println();
+                                                                            System.out
+                                                                                    .println(
+                                                                                            "The Activity Logs of Farm "
+                                                                                                    + farms.get(String
+                                                                                                            .valueOf(
+                                                                                                                    farmChosen))
+                                                                                                    + "  with "
+                                                                                                    + plants.get(String
+                                                                                                            .valueOf(
+                                                                                                                    plantChosen))
+                                                                                                    + " : ");
+                                                                            for (Activity activity : activityLogs) {
+                                                                                System.out.println(activity.getAction()
+                                                                                        + " " + activity.getType()
+                                                                                        + " Field "
+                                                                                        + activity.getField() + " Row "
+                                                                                        + activity.getRow() + " "
+                                                                                        + activity.getQuantity() + " "
+                                                                                        + activity.getUnit() + " "
+                                                                                        + activity.getDate());
+                                                                            }
+                                                                            System.out.println();
+                                                                            // call method to create a output text file
+                                                                            // here
+                                                                            while (true) {
+                                                                                continueViewing("farm with plant");
+                                                                                try {
+                                                                                    commandChosen = Integer
+                                                                                            .parseInt(scanner.next());
+                                                                                    if (commandChosen == 1) {
+                                                                                        break;
+                                                                                    } else if (commandChosen == -1) {
+                                                                                        farmPlantDVP = false;
+                                                                                        break;
+                                                                                    }
+                                                                                } catch (NumberFormatException ex) {
+                                                                                    invalidInput();
+                                                                                    continue;
+                                                                                }
+                                                                            }
+                                                                        } else if (commandChosen == 5) {
+
+                                                                        } else if (commandChosen == 6) {
+
+                                                                        }
+                                                                    } else {
+                                                                        invalidInput();
+                                                                        continue;
+                                                                    }
+                                                                } catch (NumberFormatException ex) {
+                                                                    invalidInput();
+                                                                    continue;
+                                                                }
+                                                            }
+                                                        } else {
+                                                            noData("plants");
+                                                        }
+                                                        // code here let user choose plant exist in the farm chosen
+                                                    } catch (NumberFormatException ex) { // copy to here
+                                                        invalidInput();
                                                         continue;
                                                     }
+                                                } else if (commandChosen == 3) {
+                                                    option("farm with fertilizer", commandChosen);
+                                                    try {
+                                                        commandChosen = Integer.parseInt(scanner.next());
+                                                        // code here let user choose fertilizer exist in the farm chosen
+                                                    } catch (NumberFormatException ex) {
+                                                        invalidInput();
+                                                        continue;
+                                                    }
+                                                } else if (commandChosen == 4) {
+                                                    option("farm with pesticide", commandChosen);
+                                                    try {
+                                                        commandChosen = Integer.parseInt(scanner.next());
+                                                        // code here let user choose pesticide exist in the farm chosen
+                                                    } catch (NumberFormatException ex) {
+                                                        invalidInput();
+                                                        continue;
+                                                    }
+                                                } else {
+                                                    invalidInput();
+                                                    continue;
                                                 }
                                             } else {
-                                                System.out.println();
-                                                System.out.println(
-                                                        "Invalid input, Please enter the command number that be displayed only.");
-                                                System.out.println();
+                                                invalidInput();
                                                 continue;
                                             }
                                         } catch (NumberFormatException ex) {
-                                            System.out.println();
-                                            System.out
-                                                    .println(
-                                                            "Invalid input, Please enter the command number that be displayed only.");
-                                            System.out.println();
-                                            continue;
-                                        }
-                                    }
-                                    if (commandChosen == 0) {
-                                        System.out.println();
-                                        System.out.println(
-                                                "Enter the command's number to visualize the activities data:");
-                                        System.out.println("To display normal activity logs - Please enter: 2");
-                                        option();
-                                        try {
-                                            commandChosen = Integer.parseInt(scanner.next());
-                                            // code here display activity logs
-                                        } catch (NumberFormatException ex) {
-                                            System.out.println();
-                                            System.out
-                                                    .println(
-                                                            "Invalid input, Please enter the command number that be displayed only.");
-                                            System.out.println();
-                                            continue;
-                                        }
-                                    } else if (commandChosen == 2) {
-                                        System.out.println();
-                                        System.out.println(
-                                                "Enter the command's number to visualize the activities data:");
-                                        System.out.println("To display normal activity logs - Please enter: 2");
-                                        option();
-                                        try {
-                                            commandChosen = Integer.parseInt(scanner.next());
-                                            // code here let user choose plant exist in the farm chosen
-                                        } catch (NumberFormatException ex) {
-                                            System.out.println();
-                                            System.out
-                                                    .println(
-                                                            "Invalid input, Please enter the command number that be displayed only.");
-                                            System.out.println();
-                                            continue;
-                                        }
-                                    } else if (commandChosen == 3) {
-                                        System.out.println();
-                                        System.out.println(
-                                                "Enter the command's number to visualize the activities data:");
-                                        System.out.println("To display normal activity logs - Please enter: 3");
-                                        option();
-                                        try {
-                                            commandChosen = Integer.parseInt(scanner.next());
-                                            // code here let user choose fertilizer exist in the farm chosen
-                                        } catch (NumberFormatException ex) {
-                                            System.out.println();
-                                            System.out
-                                                    .println(
-                                                            "Invalid input, Please enter the command number that be displayed only.");
-                                            System.out.println();
-                                            continue;
-                                        }
-                                    } else if (commandChosen == 4) {
-                                        System.out.println();
-                                        System.out.println(
-                                                "Enter the command's number to visualize the activities data:");
-                                        System.out.println("To display normal activity logs - Please enter: 4");
-                                        option();
-                                        try {
-                                            commandChosen = Integer.parseInt(scanner.next());
-                                            // code here let user choose pesticide exist in the farm chosen
-                                        } catch (NumberFormatException ex) {
-                                            System.out.println();
-                                            System.out
-                                                    .println(
-                                                            "Invalid input, Please enter the command number that be displayed only.");
-                                            System.out.println();
+                                            invalidInput();
                                             continue;
                                         }
                                     }
                                 } else {
-                                    System.out.println();
-                                    System.out.println("Sorry, that is no farms data");
-                                    System.out.println();
+                                    noData("farms");
                                 }
                             } else if (commandChosen == -1) {
                                 farmDVP = false;
                                 break;
                             }
                         } catch (NumberFormatException ex) {
-                            System.out.println();
-                            System.out
-                                    .println("Invalid input, Please enter the command number that be displayed only.");
-                            System.out.println();
+                            invalidInput();
                             continue;
                         }
                     }
@@ -231,12 +281,11 @@ public class DataVisualization {
                                 farmerChosen = Integer.parseInt(scanner.next());
                                 if (farmerChosen >= 0 && farmerChosen < farmers.size()) {
                                     ActivityStore activityStore = new ActivityStore();
-                                    List<Activity> activityLogs = activityStore.findActivitiesByUserId(farmerChosen);
+                                    List<Activity> activityLogs = activityStore.findByUserId(farmerChosen);
                                     System.out.println();
                                     System.out.println("The Activity Logs of Farmer "
                                             + farmers.get(String.valueOf(farmerChosen)) + " : ");
                                     for (Activity activity : activityLogs) {
-                                        farmers.get(String.valueOf(farmerChosen));
                                         System.out.println(activity.getAction() + " " + activity.getType() + " Field "
                                                 + activity.getField() + " Row " + activity.getRow() + " "
                                                 + activity.getQuantity() + " " + activity.getUnit() + " "
@@ -246,11 +295,7 @@ public class DataVisualization {
                                     System.out.println();
                                     // call method to create a output text file here
                                     while (true) {
-                                        System.out.println();
-                                        System.out.println("Do you want to continue viewing farmer's acitivity logs?");
-                                        System.out.println("Yes - Please enter: 1");
-                                        System.out.println("No - Please enter: -1");
-                                        System.out.print("Enter the option's number: ");
+                                        continueViewing("farmer's");
                                         try {
                                             commandChosen = Integer.parseInt(scanner.next());
                                             if (commandChosen == 1) {
@@ -260,46 +305,30 @@ public class DataVisualization {
                                                 break;
                                             }
                                         } catch (NumberFormatException ex) {
-                                            System.out.println();
-                                            System.out.println(
-                                                    "Invalid input, Please enter the command number that be displayed only.");
-                                            System.out.println();
+                                            invalidInput();
                                             continue;
                                         }
                                     }
                                 } else {
-                                    System.out.println();
-                                    System.out.println(
-                                            "Invalid input, Please enter the command number that be displayed only.");
-                                    System.out.println();
+                                    invalidInput();
                                     continue;
                                 }
                             } catch (NumberFormatException ex) {
-                                System.out.println();
-                                System.out
-                                        .println(
-                                                "Invalid input, Please enter the command number that be displayed only.");
-                                System.out.println();
+                                invalidInput();
                                 continue;
                             }
                         }
                     } else {
-                        System.out.println();
-                        System.out.println("Sorry, that is no farms data");
-                        System.out.println();
+                        noData("farms");
                     }
                 } else if (commandChosen == -1) {
                     dataVisualizationProcessing = false;
                     break;
                 } else {
-                    System.out.println();
-                    System.out.println("Invalid input, Please enter the command number that be displayed only.");
-                    System.out.println();
+                    invalidInput();
                 }
             } catch (NumberFormatException ex) {
-                System.out.println();
-                System.out.println("Invalid input, Please enter the command number that be displayed only.");
-                System.out.println();
+                invalidInput();
                 continue;
             }
         }
