@@ -200,7 +200,7 @@ public class FarmerSimulation {
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
                     // create new user object for previous row id
-                    User user = new User(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
+                    Farmer user = new Farmer(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
                     // clear the farm list
                     farms.clear();
                     // print the user object
@@ -219,7 +219,7 @@ public class FarmerSimulation {
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
                     // create new user object for previous row id
-                    User user = new User(userId, farmIds, name, email, password, phoneNum);
+                    Farmer user = new Farmer(userId, farmIds, name, email, password, phoneNum);
                     // clear the farm list
                     farms.clear();
                     // print the user object
