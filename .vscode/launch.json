@@ -4,6 +4,15 @@
       "type": "java",
       "name": "Launch DataVisualization",
       "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.DataVisualization",
+      "projectName": "ConProg_f6861867"
+    },
+    {
+      "type": "java",
+      "name": "Launch DataVisualization",
+      "request": "launch",
       "mainClass": "FarmerSimulation.DataVisualization",
       "projectName": "ConProg_c9062176"
     },
