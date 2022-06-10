@@ -233,7 +233,8 @@ public class ActivityStore {
         return rows;
     }
 
-    public void printSummarizedLogs(int farmId, String type, int field, int row, String startDate, String endDate) {
+    public String printSummarizedLogs(int farmId, String type, int field, int row, String startDate, String endDate) {
+        String contents = "";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
@@ -242,7 +243,6 @@ public class ActivityStore {
                     + " AND `activities`.`TYPE` = '" + type + "' AND `activities`.`FIELD` = " + field
                     + " AND `activities`.`ROW` = " + row
                     + " GROUP BY `activities`.`farmId`, `activities`.`action`, `activities`.`type`, `activities`.`unit`, `activities`.`field`, `activities`.`row`";
-
             Statement st = conn.createStatement();
             ResultSet result = st.executeQuery(query);
             if (result.next()) {
@@ -250,13 +250,19 @@ public class ActivityStore {
                         + " Field "
                         + result.getInt("field") + " Row " + result.getInt("row") + " "
                         + result.getDouble("summary") + " " + result.getString("unit"));
+                contents = result.getString("action") + " " + result.getString("type")
+                        + " Field "
+                        + result.getInt("field") + " Row " + result.getInt("row") + " "
+                        + result.getDouble("summary") + " " + result.getString("unit");
             } else {
                 System.out.println("There is not data in this row");
+                contents = "There is not data in this row";
             }
             conn.close();
         } catch (Exception e) {
             System.out.print("Database Connection Error: " + e);
         }
+        return contents;
     }
 
 }
