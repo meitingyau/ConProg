@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PesticideStore {
-    public HashMap<String, String> getPesticideByFarm(int farmId) throws SQLException {
+    public HashMap<String, String> findByFarmId(int farmId) throws SQLException {
         // String sql = "SELECT _id, name FROM `farms`";
         String sql = "select PE.* from farms F " +
                 "left join farmpesticide FPE on F._id=FPE.farmId " +

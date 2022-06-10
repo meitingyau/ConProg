@@ -1,6 +1,10 @@
 package FarmerSimulation;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -9,8 +13,20 @@ import java.util.Scanner;
 import FarmerSimulation.Stores.ActivityStore;
 import FarmerSimulation.Stores.FarmStore;
 import FarmerSimulation.Stores.FarmerStore;
+import FarmerSimulation.Stores.FertilizerStore;
+import FarmerSimulation.Stores.PesticideStore;
+import FarmerSimulation.Stores.PlantStore;
 
 public class DataVisualization {
+
+    private static ActivityStore activityStore = new ActivityStore();
+    private static FarmerStore farmerStore = new FarmerStore();;
+    private static FarmStore farmStore = new FarmStore();;
+    private static FertilizerStore fertilizerStore = new FertilizerStore();
+    private static PesticideStore pesticideStore = new PesticideStore();
+    private static PlantStore plantStore = new PlantStore();
+    private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void option(String farmWithType, int commandChosen) {
         System.out.println();
@@ -19,10 +35,10 @@ public class DataVisualization {
         System.out.println(
                 "To display normal " + farmWithType + " activity logs - Please enter: " + commandChosen);
         System.out.println(
-                "To display all " + farmWithType + " activity logs with date A and date B - Please enter: 5");
+                "To display all " + farmWithType + " activity logs between two dates - Please enter: 5");
         System.out.println(
                 "To display summarized " + farmWithType
-                        + " activity logs with date A and date B with selected field and row - Please enter: 6");
+                        + " activity logs between two dates with selected field and row - Please enter: 6");
         System.out.println("To quit the farm data visualization - Please enter: -1");
         System.out.print("Enter the command number: ");
     }
@@ -48,17 +64,270 @@ public class DataVisualization {
         System.out.print("Enter the option's number: ");
     }
 
+    public static void printByFarmIdAndTypeAndDateRange(int commandChosen, int farmChosen, String farmName,
+            String typeName) {
+        List<Date> listOfDate = new ArrayList<Date>();
+        Date startDate, endDate = new Date();
+        String inputDate;
+        Boolean farmWithTypeAndDateRangeDVP = true, firstTime = true;
+
+        while (farmWithTypeAndDateRangeDVP) {
+            startDate = null;
+            endDate = null;
+            System.out.println();
+            System.out.println(
+                    "Please Enter the date in format yyyy-MM-dd");
+            System.out.println(
+                    "For example 2000-12-21");
+            System.out.println(
+                    "And make sure the end date must later than the start date entered");
+            System.out.println(
+                    "And make sure the both of the date entered aren't out of range below: ");
+            listOfDate = activityStore.findEarliestAndLatestDateByFarmIdAndType(farmChosen, typeName);
+            System.out.print("Enter the first date: ");
+            try {
+                if (firstTime) {
+                    firstTime = false;
+                    scanner.nextLine();
+                }
+                inputDate = scanner.nextLine();
+                startDate = dateFormatter.parse(inputDate);
+                if (listOfDate.get(0).compareTo(startDate) > 0 || startDate.compareTo(listOfDate.get(1)) > 0) {
+                    System.out.println();
+                    System.out.println("Start date is out of date range");
+                    continue;
+                }
+                System.out.print("Enter the second date: ");
+                inputDate = scanner.nextLine();
+                endDate = dateFormatter.parse(inputDate);
+                if (endDate.compareTo(listOfDate.get(1)) > 0 || listOfDate.get(0).compareTo(endDate) > 0) {
+                    System.out.println();
+                    System.out.println("End date is out of date range");
+                    continue;
+                } else if (startDate.compareTo(endDate) > 0) {
+                    System.out.println();
+                    System.out.println("End date must later than the start date entered");
+                    continue;
+                } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
+                    List<Activity> activityLogs = activityStore.findByFarmIdAndTypeAndDateRange(farmChosen, typeName,
+                            dateFormatter.format(startDate), dateFormatter.format(endDate));
+                    if (activityLogs.size() > 0) {
+                        System.out.println();
+                        System.out.println("The Activity Logs of Farm "
+                                + farmName + " with " + typeName + " : ");
+                        for (Activity activity : activityLogs) {
+                            System.out
+                                    .println(activity.getAction() + " "
+                                            + activity.getType()
+                                            + " Field "
+                                            + activity.getField() + " Row "
+                                            + activity.getRow() + " "
+                                            + activity.getQuantity() + " "
+                                            + activity.getUnit() + " "
+                                            + activity.getDate() + " by Farmer ID: "
+                                            + activity.getUserId());
+                        }
+                        System.out.println();
+                        // call method to create a output text file here
+                    } else {
+                        noData("Activity Logs of Farm " + farmName + " with " + typeName);
+                    }
+                    while (true) {
+                        continueViewing("Farm " + farmName + " with " + typeName);
+                        try {
+                            commandChosen = Integer.parseInt(scanner.next());
+                            if (commandChosen == 1) {
+                                firstTime = true;
+                                break;
+                            } else if (commandChosen == -1) {
+                                farmWithTypeAndDateRangeDVP = false;
+                                break;
+                            }
+                        } catch (NumberFormatException ex) {
+                            invalidInput();
+                            continue;
+                        }
+                    }
+                }
+            } catch (ParseException ex) {
+                System.out.println("Please enter the date according to the format");
+                continue;
+            }
+        }
+    }
+
+    public static void printSummarizedLogs(int commandChosen, int farmChosen, String farmName,
+            String typeName) {
+        List<Date> listOfDate = new ArrayList<Date>();
+        List<Integer> listOfField, listOfRow = new ArrayList<Integer>();
+        Date startDate, endDate = new Date();
+        String inputDate;
+        Boolean summarizedLogsDVP = true, fieldDVP = true, rowDVP = true, firstTime = true;
+        int fieldChosen, rowChosen;
+
+        while (summarizedLogsDVP) {
+            fieldDVP = true;
+            rowDVP = true;
+            startDate = null;
+            endDate = null;
+            System.out.println();
+            System.out.println(
+                    "Please Enter the date in format yyyy-MM-dd");
+            System.out.println(
+                    "For example 2000-12-21");
+            System.out.println(
+                    "And make sure the end date must later than the start date entered");
+            System.out.println(
+                    "And make sure the both of the date entered aren't out of range below: ");
+            listOfDate = activityStore.findEarliestAndLatestDateByFarmIdAndType(farmChosen, typeName);
+            System.out.print("Enter the first date: ");
+            try {
+                if (firstTime) {
+                    firstTime = false;
+                    scanner.nextLine();
+                }
+                inputDate = scanner.nextLine();
+                startDate = dateFormatter.parse(inputDate);
+                if (listOfDate.get(0).compareTo(startDate) > 0 || startDate.compareTo(listOfDate.get(1)) > 0) {
+                    System.out.println("Start date is out of date range");
+                    continue;
+                }
+                System.out.print("Enter the second date: ");
+                inputDate = scanner.nextLine();
+                endDate = dateFormatter.parse(inputDate);
+                if (endDate.compareTo(listOfDate.get(1)) > 0 || listOfDate.get(0).compareTo(endDate) > 0) {
+                    System.out.println("End date is out of date range");
+                    continue;
+                } else if (startDate.compareTo(endDate) > 0) {
+                    System.out.println("End date must later than the start date entered");
+                    continue;
+                } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
+                    listOfField = activityStore.findFieldsByFarmIdAndTypeAndDateRange(farmChosen, typeName,
+                            dateFormatter.format(startDate), dateFormatter.format(endDate));
+                    if (listOfField.size() > 0) {
+                        while (fieldDVP) {
+                            rowDVP = true;
+                            System.out.println();
+                            System.out.println("The field of Farm "
+                                    + farmName + " with " + typeName + " : ");
+                            for (int field : listOfField) {
+                                System.out.println("Field " + field + " - Please enter: " + field);
+                            }
+                            System.out.print("Enter the field's number: ");
+                            try {
+                                fieldChosen = Integer.parseInt(scanner.next());
+                                if (listOfField.contains(fieldChosen)) {
+                                    listOfRow = activityStore.findRowsByFarmIdAndTypeAndDateRangeAndField(farmChosen,
+                                            typeName,
+                                            dateFormatter.format(startDate), dateFormatter.format(endDate),
+                                            fieldChosen);
+                                    if (listOfRow.size() > 0) {
+                                        while (rowDVP) {
+                                            System.out.println();
+                                            System.out.println("The row of in field " + fieldChosen + " of the Farm "
+                                                    + farmName + " with " + typeName + " : ");
+                                            for (int row : listOfRow) {
+                                                System.out.println("Row " + row + " - Please enter: " + row);
+                                            }
+                                            System.out.print("Enter the row's number: ");
+                                            try {
+                                                rowChosen = Integer.parseInt(scanner.next());
+                                                if (listOfRow.contains(rowChosen)) {
+                                                    activityStore.printSummarizedLogs(farmChosen, typeName, fieldChosen,
+                                                            rowChosen, dateFormatter.format(startDate),
+                                                            dateFormatter.format(endDate));
+                                                } else {
+                                                    invalidInput();
+                                                    continue;
+                                                }
+                                                while (true) {
+                                                    continueViewing("row of in field " + fieldChosen + " of the Farm "
+                                                            + farmName + " with " + typeName);
+                                                    try {
+                                                        commandChosen = Integer.parseInt(scanner.next());
+                                                        if (commandChosen == 1) {
+                                                            commandChosen = 6;
+                                                            break;
+                                                        } else if (commandChosen == -1) {
+                                                            rowDVP = false;
+                                                            break;
+                                                        }
+                                                    } catch (NumberFormatException ex) {
+                                                        invalidInput();
+                                                        continue;
+                                                    }
+                                                }
+                                            } catch (NumberFormatException ex) {
+                                                invalidInput();
+                                                continue;
+                                            }
+                                        }
+                                    } else {
+                                        noData("row in that field " + fieldChosen + "of Farm " + farmName + " with "
+                                                + typeName);
+                                    }
+                                } else {
+                                    invalidInput();
+                                    continue;
+                                }
+                                while (true) {
+                                    continueViewing("field " + fieldChosen + " of the Farm "
+                                            + farmName + " with " + typeName);
+                                    try {
+                                        commandChosen = Integer.parseInt(scanner.next());
+                                        if (commandChosen == 1) {
+                                            commandChosen = 6;
+                                            break;
+                                        } else if (commandChosen == -1) {
+                                            fieldDVP = false;
+                                            break;
+                                        }
+                                    } catch (NumberFormatException ex) {
+                                        invalidInput();
+                                        continue;
+                                    }
+                                }
+                            } catch (NumberFormatException ex) {
+                                invalidInput();
+                                continue;
+                            }
+                        }
+                    } else {
+                        noData("field in Farm " + farmName + " with " + typeName);
+                    }
+                    while (true) {
+                        continueViewing("Farm " + farmName + " with " + typeName);
+                        try {
+                            commandChosen = Integer.parseInt(scanner.next());
+                            if (commandChosen == 1) {
+                                firstTime = true;
+                                break;
+                            } else if (commandChosen == -1) {
+                                summarizedLogsDVP = false;
+                                break;
+                            }
+                        } catch (NumberFormatException ex) {
+                            invalidInput();
+                            continue;
+                        }
+                    }
+                }
+            } catch (ParseException ex) {
+                System.out.println("Please enter the date according to the format");
+                continue;
+            }
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
-        Scanner scanner = new Scanner(System.in);
         boolean dataVisualizationProcessing = true, farmerDVP = true,
                 farmDVP = true, farmOnlyDVP = true, farmPlantDVP = true;
         int commandChosen, farmerChosen, farmChosen, plantChosen, fertilizerChosen, pesticideChosen;
         while (dataVisualizationProcessing) {
-            dataVisualizationProcessing = true;
-            farmerDVP = true;
             farmDVP = true;
             farmOnlyDVP = true;
             farmPlantDVP = true;
+            farmerDVP = true;
             commandChosen = -1;
             System.out.println();
             System.out.println("Enter the command's number to visualize the activities data:");
@@ -70,6 +339,8 @@ public class DataVisualization {
                 commandChosen = Integer.parseInt(scanner.next());
                 if (commandChosen == 0) {
                     while (farmDVP) {
+                        farmOnlyDVP = true;
+                        farmPlantDVP = true;
                         System.out.println();
                         System.out.println("Enter the command's number to visualize the activities data:");
                         System.out.println("To display all activity logs for a target farm only - Please enter: 0");
@@ -85,10 +356,10 @@ public class DataVisualization {
                             commandChosen = Integer.parseInt(scanner.next());
                             if (commandChosen == 0 || commandChosen == 2 || commandChosen == 3 || commandChosen == 4) {
                                 farmChosen = -1;
-                                FarmStore farmStore = new FarmStore();
                                 HashMap<String, String> farms = farmStore.getFarms();
                                 if (farms.size() > 0) {
                                     while (farmOnlyDVP) {
+                                        farmPlantDVP = true;
                                         System.out.println();
                                         System.out.println(
                                                 "Please Enter the respective farm's number to see farm's activity logs");
@@ -98,33 +369,41 @@ public class DataVisualization {
                                         System.out.print("Enter the farm's number: ");
                                         try {
                                             farmChosen = Integer.parseInt(scanner.next());
-                                            if (farmChosen >= 0 && farmChosen < farms.size()) {
+                                            if (farms.containsKey(String.valueOf(farmChosen))) {
                                                 if (commandChosen == 0) {
-                                                    ActivityStore activityStore = new ActivityStore();
                                                     List<Activity> activityLogs = activityStore
                                                             .findByFarmId(farmChosen);
-                                                    System.out.println();
-                                                    System.out.println("The Activity Logs of Farm "
-                                                            + farms.get(String.valueOf(farmChosen)) + " : ");
-                                                    for (Activity activity : activityLogs) {
-                                                        System.out
-                                                                .println(activity.getAction() + " " + activity.getType()
-                                                                        + " Field "
-                                                                        + activity.getField() + " Row "
-                                                                        + activity.getRow() + " "
-                                                                        + activity.getQuantity() + " "
-                                                                        + activity.getUnit() + " "
-                                                                        + activity.getDate());
+                                                    if (activityLogs.size() > 0) {
+                                                        System.out.println();
+                                                        System.out.println("The Activity Logs of Farm "
+                                                                + farms.get(String.valueOf(farmChosen)) + " : ");
+                                                        for (Activity activity : activityLogs) {
+                                                            System.out
+                                                                    .println(activity.getAction() + " "
+                                                                            + activity.getType()
+                                                                            + " Field "
+                                                                            + activity.getField() + " Row "
+                                                                            + activity.getRow() + " "
+                                                                            + activity.getQuantity() + " "
+                                                                            + activity.getUnit() + " "
+                                                                            + activity.getDate() + " by Farmer ID: "
+                                                                            + activity.getUserId());
+                                                        }
+                                                        System.out.println();
+                                                        // call method to create a output text file here
+                                                    } else {
+                                                        noData("Activity Logs of Farm "
+                                                                + farms.get(String.valueOf(farmChosen)));
                                                     }
-                                                    System.out.println();
-                                                    // call method to create a output text file here
                                                     while (true) {
                                                         continueViewing("farm's");
                                                         try {
                                                             commandChosen = Integer.parseInt(scanner.next());
                                                             if (commandChosen == 1) {
+                                                                commandChosen = 0;
                                                                 break;
                                                             } else if (commandChosen == -1) {
+                                                                commandChosen = 0;
                                                                 farmOnlyDVP = false;
                                                                 break;
                                                             }
@@ -137,86 +416,134 @@ public class DataVisualization {
                                                     option("farm with plant", commandChosen);
                                                     try { // copy from here
                                                         commandChosen = Integer.parseInt(scanner.next());
-                                                        FarmStore plantStore = new FarmStore();
-                                                        HashMap<String, String> plants = plantStore.getFarms();
-                                                        if (plants.size() > 0) {
-                                                            while (farmPlantDVP) {
-                                                                System.out.println();
-                                                                System.out.println(
-                                                                        "Please Enter the respective plant's number to see the activity logs");
-                                                                for (Entry<String, String> entry : plants.entrySet()) {
-                                                                    System.out.println(entry.getValue()
-                                                                            + " - Please Enter: " + entry.getKey());
-                                                                }
-                                                                System.out.print("Enter the plant's number: ");
-                                                                try {
-                                                                    plantChosen = Integer.parseInt(scanner.next());
-                                                                    if (plantChosen >= 0
-                                                                            && plantChosen < plants.size()) {
-                                                                        if (commandChosen == 2) {
-                                                                            ActivityStore activityStore = new ActivityStore();
-                                                                            List<Activity> activityLogs = activityStore
-                                                                                    .findByFarmIdAndPlantId(farmChosen,
-                                                                                            plantChosen);
-                                                                            System.out.println();
-                                                                            System.out
-                                                                                    .println(
-                                                                                            "The Activity Logs of Farm "
-                                                                                                    + farms.get(String
-                                                                                                            .valueOf(
-                                                                                                                    farmChosen))
-                                                                                                    + "  with "
-                                                                                                    + plants.get(String
-                                                                                                            .valueOf(
-                                                                                                                    plantChosen))
-                                                                                                    + " : ");
-                                                                            for (Activity activity : activityLogs) {
-                                                                                System.out.println(activity.getAction()
-                                                                                        + " " + activity.getType()
-                                                                                        + " Field "
-                                                                                        + activity.getField() + " Row "
-                                                                                        + activity.getRow() + " "
-                                                                                        + activity.getQuantity() + " "
-                                                                                        + activity.getUnit() + " "
-                                                                                        + activity.getDate());
-                                                                            }
-                                                                            System.out.println();
-                                                                            // call method to create a output text file
-                                                                            // here
-                                                                            while (true) {
-                                                                                continueViewing("farm with plant");
-                                                                                try {
-                                                                                    commandChosen = Integer
-                                                                                            .parseInt(scanner.next());
-                                                                                    if (commandChosen == 1) {
-                                                                                        break;
-                                                                                    } else if (commandChosen == -1) {
-                                                                                        farmPlantDVP = false;
-                                                                                        break;
+                                                        if (commandChosen == 2 || commandChosen == 5
+                                                                || commandChosen == 6) {
+                                                            HashMap<String, String> plants = plantStore
+                                                                    .findByFarmId(farmChosen);
+                                                            if (plants.size() > 0) {
+                                                                while (farmPlantDVP) {
+                                                                    System.out.println();
+                                                                    System.out.println(
+                                                                            "Please Enter the respective plant's number to see the activity logs");
+                                                                    for (Entry<String, String> entry : plants
+                                                                            .entrySet()) {
+                                                                        System.out.println(entry.getValue()
+                                                                                + " - Please Enter: " + entry.getKey());
+                                                                    }
+                                                                    System.out.print("Enter the plant's number: ");
+                                                                    try {
+                                                                        plantChosen = Integer.parseInt(scanner.next());
+                                                                        if (plants.containsKey(
+                                                                                String.valueOf(plantChosen))) {
+                                                                            if (commandChosen == 2) {
+                                                                                List<Activity> activityLogs = activityStore
+                                                                                        .findByFarmIdAndPlantId(
+                                                                                                farmChosen,
+                                                                                                plantChosen);
+                                                                                if (activityLogs.size() > 0) {
+                                                                                    System.out.println();
+                                                                                    System.out
+                                                                                            .println(
+                                                                                                    "The Activity Logs of Farm "
+                                                                                                            + farms.get(
+                                                                                                                    String
+                                                                                                                            .valueOf(
+                                                                                                                                    farmChosen))
+                                                                                                            + " with "
+                                                                                                            + plants.get(
+                                                                                                                    String
+                                                                                                                            .valueOf(
+                                                                                                                                    plantChosen))
+                                                                                                            + " : ");
+                                                                                    for (Activity activity : activityLogs) {
+                                                                                        System.out.println(activity
+                                                                                                .getAction()
+                                                                                                + " "
+                                                                                                + activity.getType()
+                                                                                                + " Field "
+                                                                                                + activity.getField()
+                                                                                                + " Row "
+                                                                                                + activity.getRow()
+                                                                                                + " "
+                                                                                                + activity.getQuantity()
+                                                                                                + " "
+                                                                                                + activity.getUnit()
+                                                                                                + " "
+                                                                                                + activity.getDate());
                                                                                     }
-                                                                                } catch (NumberFormatException ex) {
-                                                                                    invalidInput();
-                                                                                    continue;
+                                                                                    System.out.println();
+                                                                                    // call method to create a output
+                                                                                    // text
+                                                                                    // file here
+                                                                                } else {
+                                                                                    noData("Activity Logs of Farm "
+                                                                                            + farms.get(String
+                                                                                                    .valueOf(
+                                                                                                            farmChosen))
+                                                                                            + " with "
+                                                                                            + plants.get(
+                                                                                                    String
+                                                                                                            .valueOf(
+                                                                                                                    plantChosen)));
                                                                                 }
+                                                                                while (true) {
+                                                                                    continueViewing("farm with plant");
+                                                                                    try {
+                                                                                        commandChosen = Integer
+                                                                                                .parseInt(
+                                                                                                        scanner.next());
+                                                                                        if (commandChosen == 1) {
+                                                                                            commandChosen = 2;
+                                                                                            break;
+                                                                                        } else if (commandChosen == -1) {
+                                                                                            commandChosen = 2;
+                                                                                            farmPlantDVP = false;
+                                                                                            break;
+                                                                                        }
+                                                                                    } catch (NumberFormatException ex) {
+                                                                                        invalidInput();
+                                                                                        continue;
+                                                                                    }
+                                                                                }
+                                                                            } else if (commandChosen == 5) {
+                                                                                printByFarmIdAndTypeAndDateRange(
+                                                                                        commandChosen, farmChosen,
+                                                                                        farms.get(
+                                                                                                String.valueOf(
+                                                                                                        farmChosen)),
+                                                                                        plants.get(String
+                                                                                                .valueOf(plantChosen)));
+                                                                                commandChosen = 2;
+                                                                                farmPlantDVP = false;
+                                                                            } else if (commandChosen == 6) {
+                                                                                printSummarizedLogs(commandChosen,
+                                                                                        farmChosen, farms.get(
+                                                                                                String.valueOf(
+                                                                                                        farmChosen)),
+                                                                                        plants.get(String
+                                                                                                .valueOf(plantChosen)));
+                                                                                commandChosen = 2;
+                                                                                farmPlantDVP = false;
                                                                             }
-                                                                        } else if (commandChosen == 5) {
-
-                                                                        } else if (commandChosen == 6) {
-
+                                                                        } else {
+                                                                            invalidInput();
+                                                                            continue;
                                                                         }
-                                                                    } else {
+                                                                    } catch (NumberFormatException ex) {
                                                                         invalidInput();
                                                                         continue;
                                                                     }
-                                                                } catch (NumberFormatException ex) {
-                                                                    invalidInput();
-                                                                    continue;
                                                                 }
+                                                            } else {
+                                                                noData("plants");
                                                             }
+                                                        } else if (commandChosen == -1) {
+                                                            commandChosen = 2;
+                                                            continue;
                                                         } else {
-                                                            noData("plants");
+                                                            invalidInput();
+                                                            continue;
                                                         }
-                                                        // code here let user choose plant exist in the farm chosen
                                                     } catch (NumberFormatException ex) { // copy to here
                                                         invalidInput();
                                                         continue;
@@ -225,7 +552,139 @@ public class DataVisualization {
                                                     option("farm with fertilizer", commandChosen);
                                                     try {
                                                         commandChosen = Integer.parseInt(scanner.next());
-                                                        // code here let user choose fertilizer exist in the farm chosen
+                                                        if (commandChosen == 3 || commandChosen == 5
+                                                                || commandChosen == 6) {
+                                                            HashMap<String, String> fertilizers = fertilizerStore
+                                                                    .findByFarmId(farmChosen);
+                                                            if (fertilizers.size() > 0) {
+                                                                while (farmPlantDVP) {
+                                                                    System.out.println();
+                                                                    System.out.println(
+                                                                            "Please Enter the respective fertilizer's number to see the activity logs");
+                                                                    for (Entry<String, String> entry : fertilizers
+                                                                            .entrySet()) {
+                                                                        System.out.println(entry.getValue()
+                                                                                + " - Please Enter: " + entry.getKey());
+                                                                    }
+                                                                    System.out.print("Enter the fertilizer's number: ");
+                                                                    try {
+                                                                        fertilizerChosen = Integer
+                                                                                .parseInt(scanner.next());
+                                                                        if (fertilizers.containsKey(
+                                                                                String.valueOf(fertilizerChosen))) {
+                                                                            if (commandChosen == 3) {
+                                                                                List<Activity> activityLogs = activityStore
+                                                                                        .findByFarmIdAndPlantId(
+                                                                                                farmChosen,
+                                                                                                fertilizerChosen);
+                                                                                if (activityLogs.size() > 0) {
+                                                                                    System.out.println();
+                                                                                    System.out
+                                                                                            .println(
+                                                                                                    "The Activity Logs of Farm "
+                                                                                                            + farms.get(
+                                                                                                                    String
+                                                                                                                            .valueOf(
+                                                                                                                                    farmChosen))
+                                                                                                            + " with "
+                                                                                                            + fertilizers
+                                                                                                                    .get(
+                                                                                                                            String
+                                                                                                                                    .valueOf(
+                                                                                                                                            fertilizerChosen))
+                                                                                                            + " : ");
+                                                                                    for (Activity activity : activityLogs) {
+                                                                                        System.out.println(activity
+                                                                                                .getAction()
+                                                                                                + " "
+                                                                                                + activity.getType()
+                                                                                                + " Field "
+                                                                                                + activity.getField()
+                                                                                                + " Row "
+                                                                                                + activity.getRow()
+                                                                                                + " "
+                                                                                                + activity.getQuantity()
+                                                                                                + " "
+                                                                                                + activity.getUnit()
+                                                                                                + " "
+                                                                                                + activity.getDate());
+                                                                                    }
+                                                                                    System.out.println();
+                                                                                    // call method to create a output
+                                                                                    // text
+                                                                                    // file here
+                                                                                } else {
+                                                                                    noData("Activity Logs of Farm "
+                                                                                            + farms.get(String
+                                                                                                    .valueOf(
+                                                                                                            farmChosen))
+                                                                                            + " with "
+                                                                                            + fertilizers.get(
+                                                                                                    String
+                                                                                                            .valueOf(
+                                                                                                                    fertilizerChosen)));
+                                                                                }
+                                                                                while (true) {
+                                                                                    continueViewing(
+                                                                                            "farm with fertilizer");
+                                                                                    try {
+                                                                                        commandChosen = Integer
+                                                                                                .parseInt(
+                                                                                                        scanner.next());
+                                                                                        if (commandChosen == 1) {
+                                                                                            commandChosen = 3;
+                                                                                            break;
+                                                                                        } else if (commandChosen == -1) {
+                                                                                            commandChosen = 3;
+                                                                                            farmPlantDVP = false;
+                                                                                            break;
+                                                                                        }
+                                                                                    } catch (NumberFormatException ex) {
+                                                                                        invalidInput();
+                                                                                        continue;
+                                                                                    }
+                                                                                }
+                                                                            } else if (commandChosen == 5) {
+                                                                                printByFarmIdAndTypeAndDateRange(
+                                                                                        commandChosen, farmChosen,
+                                                                                        farms.get(
+                                                                                                String.valueOf(
+                                                                                                        farmChosen)),
+                                                                                        fertilizers.get(String
+                                                                                                .valueOf(
+                                                                                                        fertilizerChosen)));
+                                                                                commandChosen = 3;
+                                                                                farmPlantDVP = false;
+                                                                            } else if (commandChosen == 6) {
+                                                                                printSummarizedLogs(commandChosen,
+                                                                                        farmChosen, farms.get(
+                                                                                                String.valueOf(
+                                                                                                        farmChosen)),
+                                                                                        fertilizers.get(String
+                                                                                                .valueOf(
+                                                                                                        fertilizerChosen)));
+                                                                                commandChosen = 3;
+                                                                                farmPlantDVP = false;
+                                                                            }
+                                                                        } else {
+                                                                            invalidInput();
+                                                                            continue;
+                                                                        }
+                                                                    } catch (NumberFormatException ex) {
+                                                                        invalidInput();
+                                                                        continue;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                noData("fertilizers");
+                                                            }
+                                                        } else if (commandChosen == -1) {
+                                                            commandChosen = 3;
+                                                            continue;
+                                                        } else {
+                                                            invalidInput();
+                                                            continue;
+                                                        }
                                                     } catch (NumberFormatException ex) {
                                                         invalidInput();
                                                         continue;
@@ -234,7 +693,139 @@ public class DataVisualization {
                                                     option("farm with pesticide", commandChosen);
                                                     try {
                                                         commandChosen = Integer.parseInt(scanner.next());
-                                                        // code here let user choose pesticide exist in the farm chosen
+                                                        if (commandChosen == 4 || commandChosen == 5
+                                                                || commandChosen == 6) {
+                                                            HashMap<String, String> pesticides = pesticideStore
+                                                                    .findByFarmId(farmChosen);
+                                                            if (pesticides.size() > 0) {
+                                                                while (farmPlantDVP) {
+                                                                    System.out.println();
+                                                                    System.out.println(
+                                                                            "Please Enter the respective pesticide's number to see the activity logs");
+                                                                    for (Entry<String, String> entry : pesticides
+                                                                            .entrySet()) {
+                                                                        System.out.println(entry.getValue()
+                                                                                + " - Please Enter: " + entry.getKey());
+                                                                    }
+                                                                    System.out.print("Enter the plant's number: ");
+                                                                    try {
+                                                                        pesticideChosen = Integer
+                                                                                .parseInt(scanner.next());
+                                                                        if (pesticides.containsKey(
+                                                                                String.valueOf(pesticideChosen))) {
+                                                                            if (commandChosen == 4) {
+                                                                                List<Activity> activityLogs = activityStore
+                                                                                        .findByFarmIdAndPlantId(
+                                                                                                farmChosen,
+                                                                                                pesticideChosen);
+                                                                                if (activityLogs.size() > 0) {
+                                                                                    System.out.println();
+                                                                                    System.out
+                                                                                            .println(
+                                                                                                    "The Activity Logs of Farm "
+                                                                                                            + farms.get(
+                                                                                                                    String
+                                                                                                                            .valueOf(
+                                                                                                                                    farmChosen))
+                                                                                                            + " with "
+                                                                                                            + pesticides
+                                                                                                                    .get(
+                                                                                                                            String
+                                                                                                                                    .valueOf(
+                                                                                                                                            pesticideChosen))
+                                                                                                            + " : ");
+                                                                                    for (Activity activity : activityLogs) {
+                                                                                        System.out.println(activity
+                                                                                                .getAction()
+                                                                                                + " "
+                                                                                                + activity.getType()
+                                                                                                + " Field "
+                                                                                                + activity.getField()
+                                                                                                + " Row "
+                                                                                                + activity.getRow()
+                                                                                                + " "
+                                                                                                + activity.getQuantity()
+                                                                                                + " "
+                                                                                                + activity.getUnit()
+                                                                                                + " "
+                                                                                                + activity.getDate());
+                                                                                    }
+                                                                                    System.out.println();
+                                                                                    // call method to create a output
+                                                                                    // text
+                                                                                    // file here
+                                                                                } else {
+                                                                                    noData("Activity Logs of Farm "
+                                                                                            + farms.get(String
+                                                                                                    .valueOf(
+                                                                                                            farmChosen))
+                                                                                            + " with "
+                                                                                            + pesticides.get(
+                                                                                                    String
+                                                                                                            .valueOf(
+                                                                                                                    pesticideChosen)));
+                                                                                }
+                                                                                while (true) {
+                                                                                    continueViewing(
+                                                                                            "farm with pesticide");
+                                                                                    try {
+                                                                                        commandChosen = Integer
+                                                                                                .parseInt(
+                                                                                                        scanner.next());
+                                                                                        if (commandChosen == 1) {
+                                                                                            commandChosen = 4;
+                                                                                            break;
+                                                                                        } else if (commandChosen == -1) {
+                                                                                            commandChosen = 4;
+                                                                                            farmPlantDVP = false;
+                                                                                            break;
+                                                                                        }
+                                                                                    } catch (NumberFormatException ex) {
+                                                                                        invalidInput();
+                                                                                        continue;
+                                                                                    }
+                                                                                }
+                                                                            } else if (commandChosen == 5) {
+                                                                                printByFarmIdAndTypeAndDateRange(
+                                                                                        commandChosen, farmChosen,
+                                                                                        farms.get(
+                                                                                                String.valueOf(
+                                                                                                        farmChosen)),
+                                                                                        pesticides.get(String
+                                                                                                .valueOf(
+                                                                                                        pesticideChosen)));
+                                                                                commandChosen = 4;
+                                                                                farmPlantDVP = false;
+                                                                            } else if (commandChosen == 6) {
+                                                                                printSummarizedLogs(commandChosen,
+                                                                                        farmChosen, farms.get(
+                                                                                                String.valueOf(
+                                                                                                        farmChosen)),
+                                                                                        pesticides.get(String
+                                                                                                .valueOf(
+                                                                                                        pesticideChosen)));
+                                                                                commandChosen = 4;
+                                                                                farmPlantDVP = false;
+                                                                            }
+                                                                        } else {
+                                                                            invalidInput();
+                                                                            continue;
+                                                                        }
+                                                                    } catch (NumberFormatException ex) {
+                                                                        invalidInput();
+                                                                        continue;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                noData("pesticides");
+                                                            }
+                                                        } else if (commandChosen == -1) {
+                                                            commandChosen = 4;
+                                                            continue;
+                                                        } else {
+                                                            invalidInput();
+                                                            continue;
+                                                        }
                                                     } catch (NumberFormatException ex) {
                                                         invalidInput();
                                                         continue;
@@ -266,7 +857,6 @@ public class DataVisualization {
                     }
                 } else if (commandChosen == 1) {
                     farmerChosen = -1;
-                    FarmerStore farmerStore = new FarmerStore();
                     HashMap<String, String> farmers = farmerStore.getFarmers();
                     if (farmers.size() > 0) {
                         while (farmerDVP) {
@@ -279,21 +869,26 @@ public class DataVisualization {
                             System.out.print("Enter the farmer's number: ");
                             try {
                                 farmerChosen = Integer.parseInt(scanner.next());
-                                if (farmerChosen >= 0 && farmerChosen < farmers.size()) {
-                                    ActivityStore activityStore = new ActivityStore();
+                                if (farmers.containsKey(String.valueOf(farmerChosen))) {
                                     List<Activity> activityLogs = activityStore.findByUserId(farmerChosen);
-                                    System.out.println();
-                                    System.out.println("The Activity Logs of Farmer "
-                                            + farmers.get(String.valueOf(farmerChosen)) + " : ");
-                                    for (Activity activity : activityLogs) {
-                                        System.out.println(activity.getAction() + " " + activity.getType() + " Field "
-                                                + activity.getField() + " Row " + activity.getRow() + " "
-                                                + activity.getQuantity() + " " + activity.getUnit() + " "
-                                                + activity.getDate() + " in Farm ID: " + activity.getFarmId());
-                                        // Sowing Broccoli Field 1 Row 1 1 kg 2022-03-03
+                                    if (activityLogs.size() > 0) {
+                                        System.out.println();
+                                        System.out.println("The Activity Logs of Farmer "
+                                                + farmers.get(String.valueOf(farmerChosen)) + " : ");
+                                        for (Activity activity : activityLogs) {
+                                            System.out.println(activity.getAction() + " " + activity.getType()
+                                                    + " Field "
+                                                    + activity.getField() + " Row " + activity.getRow() + " "
+                                                    + activity.getQuantity() + " " + activity.getUnit() + " "
+                                                    + activity.getDate() + " in Farm ID: " + activity.getFarmId());
+                                            // Sowing Broccoli Field 1 Row 1 1 kg 2022-03-03
+                                        }
+                                        System.out.println();
+                                        // call method to create a output text file here
+                                    } else {
+                                        noData("Activity Logs of Farmer "
+                                                + farmers.get(String.valueOf(farmerChosen)));
                                     }
-                                    System.out.println();
-                                    // call method to create a output text file here
                                     while (true) {
                                         continueViewing("farmer's");
                                         try {

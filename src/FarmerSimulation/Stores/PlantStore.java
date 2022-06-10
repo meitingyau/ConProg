@@ -1,5 +1,9 @@
+package FarmerSimulation.Stores;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,11 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class PlantStore {
-    public HashMap<String, String> getPlantByFarm(int farmId) throws SQLException {
+    public HashMap<String, String> findByFarmId(int farmId) throws SQLException {
         // String sql = "SELECT _id, name FROM `farms`";
         String sql = "select P.* from farms F " +
                 "left join farmplants FP on F._id=FP.farmId " +
