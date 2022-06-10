@@ -82,6 +82,10 @@ public class Activity {
         testingActivity.toString();
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     public String getFarmId() {
         return farmId;
     }

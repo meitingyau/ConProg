@@ -1,5 +1,9 @@
+package FarmerSimulation.Stores;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,28 +13,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class PlantStore {
-    public HashMap<String, String> getPlantByFarm(int farmId) throws SQLException {
+public class FertilizerStore {
+    public HashMap<String, String> findByFarmId(int farmId) throws SQLException {
         // String sql = "SELECT _id, name FROM `farms`";
-        String sql = "select P.* from farms F " +
-                "left join farmplants FP on F._id=FP.farmId " +
-                "inner join plants P on FP.plantId=P._id " +
+        String sql = "select Fer.* from farms F " +
+                "left join farmfertilizers FF on F._id=FF.farmId " +
+                "inner join fertilizers Fer on FF.fertilizerId=Fer._id " +
                 "where F._id=" + Integer.toString(farmId);
         ResultSet result = null;
-        HashMap<String, String> plantsWithNameAndId = new HashMap<String, String>();
+        HashMap<String, String> fertilizersWithNameAndId = new HashMap<String, String>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ifarm", "root", "");
             Statement st = conn.createStatement();
             result = st.executeQuery(sql);
             while (result.next()) {
-                plantsWithNameAndId.put(result.getString("_id"), result.getString("name"));
+                fertilizersWithNameAndId.put(result.getString("_id"), result.getString("name"));
             }
             List<Map.Entry<String, String>> list = new LinkedList<Map.Entry<String, String>>(
-                    plantsWithNameAndId.entrySet());
+                    fertilizersWithNameAndId.entrySet());
             // Sort the list
             Collections.sort(list, (o1, o2) -> (o1.getValue()).compareTo(o2.getValue()));
             // put data from sorted list to hashmap
@@ -38,11 +39,11 @@ public class PlantStore {
             for (Entry<String, String> aa : list) {
                 temp.put(aa.getKey(), aa.getValue());
             }
-            plantsWithNameAndId = temp;
+            fertilizersWithNameAndId = temp;
             conn.close();
         } catch (Exception e) {
             System.out.print("Database Connection Error: " + e);
         }
-        return plantsWithNameAndId;
+        return fertilizersWithNameAndId;
     }
 }
