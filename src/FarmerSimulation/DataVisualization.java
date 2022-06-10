@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import FarmerSimulation.Stores.ActivityStore;
 import FarmerSimulation.Stores.FarmStore;
@@ -27,6 +30,32 @@ public class DataVisualization {
     private static PlantStore plantStore = new PlantStore();
     private static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
     private static Scanner scanner = new Scanner(System.in);
+    private static int write = 0;
+    private static File fileObj = new File("ActivityLogs.txt");
+    private static List<String> contents = new ArrayList<String>();
+
+    public static void writting(List<String> arrayOfLine) {
+        java.util.Date dateTimeNow = new java.util.Date();
+        try {
+            if (fileObj.createNewFile()) {
+                System.out.println("File created: " + fileObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+            System.out.println("writting . . . . . .");
+            FileWriter fileWriter = new FileWriter("ActivityLogs.txt");
+            fileWriter.write("Written at: " + dateTimeNow + " \n");
+            for (String line : arrayOfLine) {
+                fileWriter.write(line);
+            }
+            fileWriter.write("- - - - - - - - End Writting - - - - - - - -\n");
+            fileWriter.close();
+            System.out.println("Successfully wrote Activity Logs into the file.");
+        } catch (IOException e) {
+            System.out.println("IO Error");
+            e.printStackTrace();
+        }
+    }
 
     public static void option(String farmWithType, int commandChosen) {
         System.out.println();
@@ -64,6 +93,14 @@ public class DataVisualization {
         System.out.print("Enter the option's number: ");
     }
 
+    public static void writeTextFile() {
+        System.out.println();
+        System.out.println("Do you want to write the Activity Logs into text file?");
+        System.out.println("Yes - Please enter: 1");
+        System.out.println("No - Please enter: -1");
+        System.out.print("Enter the option's number: ");
+    }
+
     public static void printByFarmIdAndTypeAndDateRange(int commandChosen, int farmChosen, String farmName,
             String typeName) {
         List<Date> listOfDate = new ArrayList<Date>();
@@ -84,74 +121,110 @@ public class DataVisualization {
             System.out.println(
                     "And make sure the both of the date entered aren't out of range below: ");
             listOfDate = activityStore.findEarliestAndLatestDateByFarmIdAndType(farmChosen, typeName);
-            System.out.print("Enter the first date: ");
-            try {
-                if (firstTime) {
-                    firstTime = false;
-                    scanner.nextLine();
-                }
-                inputDate = scanner.nextLine();
-                startDate = dateFormatter.parse(inputDate);
-                if (listOfDate.get(0).compareTo(startDate) > 0 || startDate.compareTo(listOfDate.get(1)) > 0) {
-                    System.out.println();
-                    System.out.println("Start date is out of date range");
-                    continue;
-                }
-                System.out.print("Enter the second date: ");
-                inputDate = scanner.nextLine();
-                endDate = dateFormatter.parse(inputDate);
-                if (endDate.compareTo(listOfDate.get(1)) > 0 || listOfDate.get(0).compareTo(endDate) > 0) {
-                    System.out.println();
-                    System.out.println("End date is out of date range");
-                    continue;
-                } else if (startDate.compareTo(endDate) > 0) {
-                    System.out.println();
-                    System.out.println("End date must later than the start date entered");
-                    continue;
-                } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
-                    List<Activity> activityLogs = activityStore.findByFarmIdAndTypeAndDateRange(farmChosen, typeName,
-                            dateFormatter.format(startDate), dateFormatter.format(endDate));
-                    if (activityLogs.size() > 0) {
-                        System.out.println();
-                        System.out.println("The Activity Logs of Farm "
-                                + farmName + " with " + typeName + " : ");
-                        for (Activity activity : activityLogs) {
-                            System.out
-                                    .println(activity.getAction() + " "
-                                            + activity.getType()
-                                            + " Field "
-                                            + activity.getField() + " Row "
-                                            + activity.getRow() + " "
-                                            + activity.getQuantity() + " "
-                                            + activity.getUnit() + " "
-                                            + activity.getDate() + " by Farmer ID: "
-                                            + activity.getUserId());
-                        }
-                        System.out.println();
-                        // call method to create a output text file here
-                    } else {
-                        noData("Activity Logs of Farm " + farmName + " with " + typeName);
+            if (listOfDate.size() > 0) {
+                System.out.print("Enter the first date: ");
+                try {
+                    if (firstTime) {
+                        firstTime = false;
+                        scanner.nextLine();
                     }
-                    while (true) {
-                        continueViewing("Farm " + farmName + " with " + typeName);
-                        try {
-                            commandChosen = Integer.parseInt(scanner.next());
-                            if (commandChosen == 1) {
-                                firstTime = true;
-                                break;
-                            } else if (commandChosen == -1) {
-                                farmWithTypeAndDateRangeDVP = false;
-                                break;
+                    inputDate = scanner.nextLine();
+                    startDate = dateFormatter.parse(inputDate);
+                    if (listOfDate.get(0).compareTo(startDate) > 0 || startDate.compareTo(listOfDate.get(1)) > 0) {
+                        System.out.println();
+                        System.out.println("Start date is out of date range");
+                        continue;
+                    }
+                    System.out.print("Enter the second date: ");
+                    inputDate = scanner.nextLine();
+                    endDate = dateFormatter.parse(inputDate);
+                    if (endDate.compareTo(listOfDate.get(1)) > 0 || listOfDate.get(0).compareTo(endDate) > 0) {
+                        System.out.println();
+                        System.out.println("End date is out of date range");
+                        continue;
+                    } else if (startDate.compareTo(endDate) > 0) {
+                        System.out.println();
+                        System.out.println("End date must later than the start date entered");
+                        continue;
+                    } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
+                        List<Activity> activityLogs = activityStore.findByFarmIdAndTypeAndDateRange(farmChosen,
+                                typeName,
+                                dateFormatter.format(startDate), dateFormatter.format(endDate));
+                        if (activityLogs.size() > 0) {
+                            System.out.println();
+                            System.out.println("The Activity Logs of Farm "
+                                    + farmName + " with " + typeName + " : ");
+                            for (Activity activity : activityLogs) {
+                                System.out
+                                        .println(activity.getAction() + " "
+                                                + activity.getType()
+                                                + " Field "
+                                                + activity.getField() + " Row "
+                                                + activity.getRow() + " "
+                                                + activity.getQuantity() + " "
+                                                + activity.getUnit() + " "
+                                                + activity.getDate() + " by Farmer ID: "
+                                                + activity.getUserId());
+                                contents.add(activity.getAction() + " "
+                                        + activity.getType()
+                                        + " Field "
+                                        + activity.getField() + " Row "
+                                        + activity.getRow() + " "
+                                        + activity.getQuantity() + " "
+                                        + activity.getUnit() + " "
+                                        + activity.getDate() + " by Farmer ID: "
+                                        + activity.getUserId()
+                                        + "\n");
                             }
-                        } catch (NumberFormatException ex) {
-                            invalidInput();
-                            continue;
+                            while (true) {
+                                writeTextFile();
+                                try {
+                                    write = Integer.parseInt(scanner.next());
+                                    if (write == 1) {
+                                        writting(contents);
+                                        contents.clear();
+                                        write = 0;
+                                        break;
+                                    } else if (write == -1) {
+                                        write = 0;
+                                        break;
+                                    } else {
+                                        invalidInput();
+                                        continue;
+                                    }
+                                } catch (NumberFormatException ex) {
+                                    invalidInput();
+                                    continue;
+                                }
+                            }
+                            System.out.println();
+                        } else {
+                            noData("Activity Logs of Farm " + farmName + " with " + typeName);
+                        }
+                        while (true) {
+                            continueViewing("Farm " + farmName + " with " + typeName);
+                            try {
+                                commandChosen = Integer.parseInt(scanner.next());
+                                if (commandChosen == 1) {
+                                    firstTime = true;
+                                    break;
+                                } else if (commandChosen == -1) {
+                                    farmWithTypeAndDateRangeDVP = false;
+                                    break;
+                                }
+                            } catch (NumberFormatException ex) {
+                                invalidInput();
+                                continue;
+                            }
                         }
                     }
+                } catch (ParseException ex) {
+                    System.out.println("Please enter the date according to the format");
+                    continue;
                 }
-            } catch (ParseException ex) {
-                System.out.println("Please enter the date according to the format");
-                continue;
+            } else {
+                farmWithTypeAndDateRangeDVP = false;
+                break;
             }
         }
     }
@@ -180,141 +253,173 @@ public class DataVisualization {
             System.out.println(
                     "And make sure the both of the date entered aren't out of range below: ");
             listOfDate = activityStore.findEarliestAndLatestDateByFarmIdAndType(farmChosen, typeName);
-            System.out.print("Enter the first date: ");
-            try {
-                if (firstTime) {
-                    firstTime = false;
-                    scanner.nextLine();
-                }
-                inputDate = scanner.nextLine();
-                startDate = dateFormatter.parse(inputDate);
-                if (listOfDate.get(0).compareTo(startDate) > 0 || startDate.compareTo(listOfDate.get(1)) > 0) {
-                    System.out.println("Start date is out of date range");
-                    continue;
-                }
-                System.out.print("Enter the second date: ");
-                inputDate = scanner.nextLine();
-                endDate = dateFormatter.parse(inputDate);
-                if (endDate.compareTo(listOfDate.get(1)) > 0 || listOfDate.get(0).compareTo(endDate) > 0) {
-                    System.out.println("End date is out of date range");
-                    continue;
-                } else if (startDate.compareTo(endDate) > 0) {
-                    System.out.println("End date must later than the start date entered");
-                    continue;
-                } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
-                    listOfField = activityStore.findFieldsByFarmIdAndTypeAndDateRange(farmChosen, typeName,
-                            dateFormatter.format(startDate), dateFormatter.format(endDate));
-                    if (listOfField.size() > 0) {
-                        while (fieldDVP) {
-                            rowDVP = true;
-                            System.out.println();
-                            System.out.println("The field of Farm "
-                                    + farmName + " with " + typeName + " : ");
-                            for (int field : listOfField) {
-                                System.out.println("Field " + field + " - Please enter: " + field);
-                            }
-                            System.out.print("Enter the field's number: ");
-                            try {
-                                fieldChosen = Integer.parseInt(scanner.next());
-                                if (listOfField.contains(fieldChosen)) {
-                                    listOfRow = activityStore.findRowsByFarmIdAndTypeAndDateRangeAndField(farmChosen,
-                                            typeName,
-                                            dateFormatter.format(startDate), dateFormatter.format(endDate),
-                                            fieldChosen);
-                                    if (listOfRow.size() > 0) {
-                                        while (rowDVP) {
-                                            System.out.println();
-                                            System.out.println("The row of in field " + fieldChosen + " of the Farm "
-                                                    + farmName + " with " + typeName + " : ");
-                                            for (int row : listOfRow) {
-                                                System.out.println("Row " + row + " - Please enter: " + row);
-                                            }
-                                            System.out.print("Enter the row's number: ");
-                                            try {
-                                                rowChosen = Integer.parseInt(scanner.next());
-                                                if (listOfRow.contains(rowChosen)) {
-                                                    activityStore.printSummarizedLogs(farmChosen, typeName, fieldChosen,
-                                                            rowChosen, dateFormatter.format(startDate),
-                                                            dateFormatter.format(endDate));
-                                                } else {
-                                                    invalidInput();
-                                                    continue;
+            if (listOfDate.size() > 0) {
+                System.out.print("Enter the first date: ");
+                try {
+                    if (firstTime) {
+                        firstTime = false;
+                        scanner.nextLine();
+                    }
+                    inputDate = scanner.nextLine();
+                    startDate = dateFormatter.parse(inputDate);
+                    if (listOfDate.get(0).compareTo(startDate) > 0 || startDate.compareTo(listOfDate.get(1)) > 0) {
+                        System.out.println("Start date is out of date range");
+                        continue;
+                    }
+                    System.out.print("Enter the second date: ");
+                    inputDate = scanner.nextLine();
+                    endDate = dateFormatter.parse(inputDate);
+                    if (endDate.compareTo(listOfDate.get(1)) > 0 || listOfDate.get(0).compareTo(endDate) > 0) {
+                        System.out.println("End date is out of date range");
+                        continue;
+                    } else if (startDate.compareTo(endDate) > 0) {
+                        System.out.println("End date must later than the start date entered");
+                        continue;
+                    } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
+                        listOfField = activityStore.findFieldsByFarmIdAndTypeAndDateRange(farmChosen, typeName,
+                                dateFormatter.format(startDate), dateFormatter.format(endDate));
+                        if (listOfField.size() > 0) {
+                            while (fieldDVP) {
+                                rowDVP = true;
+                                System.out.println();
+                                System.out.println("The field of Farm "
+                                        + farmName + " with " + typeName + " : ");
+                                for (int field : listOfField) {
+                                    System.out.println("Field " + field + " - Please enter: " + field);
+                                }
+                                System.out.print("Enter the field's number: ");
+                                try {
+                                    fieldChosen = Integer.parseInt(scanner.next());
+                                    if (listOfField.contains(fieldChosen)) {
+                                        listOfRow = activityStore.findRowsByFarmIdAndTypeAndDateRangeAndField(
+                                                farmChosen,
+                                                typeName,
+                                                dateFormatter.format(startDate), dateFormatter.format(endDate),
+                                                fieldChosen);
+                                        if (listOfRow.size() > 0) {
+                                            while (rowDVP) {
+                                                System.out.println();
+                                                System.out
+                                                        .println("The row of in field " + fieldChosen + " of the Farm "
+                                                                + farmName + " with " + typeName + " : ");
+                                                for (int row : listOfRow) {
+                                                    System.out.println("Row " + row + " - Please enter: " + row);
                                                 }
-                                                while (true) {
-                                                    continueViewing("row of in field " + fieldChosen + " of the Farm "
-                                                            + farmName + " with " + typeName);
-                                                    try {
-                                                        commandChosen = Integer.parseInt(scanner.next());
-                                                        if (commandChosen == 1) {
-                                                            commandChosen = 6;
-                                                            break;
-                                                        } else if (commandChosen == -1) {
-                                                            rowDVP = false;
-                                                            break;
+                                                System.out.print("Enter the row's number: ");
+                                                try {
+                                                    rowChosen = Integer.parseInt(scanner.next());
+                                                    if (listOfRow.contains(rowChosen)) {
+                                                        contents.add(
+                                                                activityStore.printSummarizedLogs(farmChosen, typeName,
+                                                                        fieldChosen,
+                                                                        rowChosen, dateFormatter.format(startDate),
+                                                                        dateFormatter.format(endDate)));
+                                                        while (true) {
+                                                            writeTextFile();
+                                                            try {
+                                                                write = Integer.parseInt(scanner.next());
+                                                                if (write == 1) {
+                                                                    writting(contents);
+                                                                    contents.clear();
+                                                                    write = 0;
+                                                                    break;
+                                                                } else if (write == -1) {
+                                                                    write = 0;
+                                                                    break;
+                                                                } else {
+                                                                    invalidInput();
+                                                                    continue;
+                                                                }
+                                                            } catch (NumberFormatException ex) {
+                                                                invalidInput();
+                                                                continue;
+                                                            }
                                                         }
-                                                    } catch (NumberFormatException ex) {
+                                                        System.out.println();
+                                                    } else {
                                                         invalidInput();
                                                         continue;
                                                     }
+                                                    while (true) {
+                                                        continueViewing(
+                                                                "row of in field " + fieldChosen + " of the Farm "
+                                                                        + farmName + " with " + typeName);
+                                                        try {
+                                                            commandChosen = Integer.parseInt(scanner.next());
+                                                            if (commandChosen == 1) {
+                                                                commandChosen = 6;
+                                                                break;
+                                                            } else if (commandChosen == -1) {
+                                                                rowDVP = false;
+                                                                break;
+                                                            }
+                                                        } catch (NumberFormatException ex) {
+                                                            invalidInput();
+                                                            continue;
+                                                        }
+                                                    }
+                                                } catch (NumberFormatException ex) {
+                                                    invalidInput();
+                                                    continue;
                                                 }
-                                            } catch (NumberFormatException ex) {
-                                                invalidInput();
-                                                continue;
                                             }
+                                        } else {
+                                            noData("row in that field " + fieldChosen + "of Farm " + farmName + " with "
+                                                    + typeName);
                                         }
                                     } else {
-                                        noData("row in that field " + fieldChosen + "of Farm " + farmName + " with "
-                                                + typeName);
-                                    }
-                                } else {
-                                    invalidInput();
-                                    continue;
-                                }
-                                while (true) {
-                                    continueViewing("field " + fieldChosen + " of the Farm "
-                                            + farmName + " with " + typeName);
-                                    try {
-                                        commandChosen = Integer.parseInt(scanner.next());
-                                        if (commandChosen == 1) {
-                                            commandChosen = 6;
-                                            break;
-                                        } else if (commandChosen == -1) {
-                                            fieldDVP = false;
-                                            break;
-                                        }
-                                    } catch (NumberFormatException ex) {
                                         invalidInput();
                                         continue;
                                     }
+                                    while (true) {
+                                        continueViewing("field " + fieldChosen + " of the Farm "
+                                                + farmName + " with " + typeName);
+                                        try {
+                                            commandChosen = Integer.parseInt(scanner.next());
+                                            if (commandChosen == 1) {
+                                                commandChosen = 6;
+                                                break;
+                                            } else if (commandChosen == -1) {
+                                                fieldDVP = false;
+                                                break;
+                                            }
+                                        } catch (NumberFormatException ex) {
+                                            invalidInput();
+                                            continue;
+                                        }
+                                    }
+                                } catch (NumberFormatException ex) {
+                                    invalidInput();
+                                    continue;
+                                }
+                            }
+                        } else {
+                            noData("field in Farm " + farmName + " with " + typeName);
+                        }
+                        while (true) {
+                            continueViewing("Farm " + farmName + " with " + typeName);
+                            try {
+                                commandChosen = Integer.parseInt(scanner.next());
+                                if (commandChosen == 1) {
+                                    firstTime = true;
+                                    break;
+                                } else if (commandChosen == -1) {
+                                    summarizedLogsDVP = false;
+                                    break;
                                 }
                             } catch (NumberFormatException ex) {
                                 invalidInput();
                                 continue;
                             }
                         }
-                    } else {
-                        noData("field in Farm " + farmName + " with " + typeName);
                     }
-                    while (true) {
-                        continueViewing("Farm " + farmName + " with " + typeName);
-                        try {
-                            commandChosen = Integer.parseInt(scanner.next());
-                            if (commandChosen == 1) {
-                                firstTime = true;
-                                break;
-                            } else if (commandChosen == -1) {
-                                summarizedLogsDVP = false;
-                                break;
-                            }
-                        } catch (NumberFormatException ex) {
-                            invalidInput();
-                            continue;
-                        }
-                    }
+                } catch (ParseException ex) {
+                    System.out.println("Please enter the date according to the format");
+                    continue;
                 }
-            } catch (ParseException ex) {
-                System.out.println("Please enter the date according to the format");
-                continue;
+            } else {
+                summarizedLogsDVP = false;
+                break;
             }
         }
     }
@@ -388,9 +493,39 @@ public class DataVisualization {
                                                                             + activity.getUnit() + " "
                                                                             + activity.getDate() + " by Farmer ID: "
                                                                             + activity.getUserId());
+                                                            contents.add(activity.getAction() + " "
+                                                                    + activity.getType()
+                                                                    + " Field "
+                                                                    + activity.getField() + " Row "
+                                                                    + activity.getRow() + " "
+                                                                    + activity.getQuantity() + " "
+                                                                    + activity.getUnit() + " "
+                                                                    + activity.getDate() + " by Farmer ID: "
+                                                                    + activity.getUserId()
+                                                                    + "\n");
+                                                        }
+                                                        while (true) {
+                                                            writeTextFile();
+                                                            try {
+                                                                write = Integer.parseInt(scanner.next());
+                                                                if (write == 1) {
+                                                                    writting(contents);
+                                                                    contents.clear();
+                                                                    write = 0;
+                                                                    break;
+                                                                } else if (write == -1) {
+                                                                    write = 0;
+                                                                    break;
+                                                                } else {
+                                                                    invalidInput();
+                                                                    continue;
+                                                                }
+                                                            } catch (NumberFormatException ex) {
+                                                                invalidInput();
+                                                                continue;
+                                                            }
                                                         }
                                                         System.out.println();
-                                                        // call method to create a output text file here
                                                     } else {
                                                         noData("Activity Logs of Farm "
                                                                 + farms.get(String.valueOf(farmChosen)));
@@ -470,11 +605,45 @@ public class DataVisualization {
                                                                                                 + activity.getUnit()
                                                                                                 + " "
                                                                                                 + activity.getDate());
+                                                                                        contents.add(activity
+                                                                                                .getAction()
+                                                                                                + " "
+                                                                                                + activity.getType()
+                                                                                                + " Field "
+                                                                                                + activity.getField()
+                                                                                                + " Row "
+                                                                                                + activity.getRow()
+                                                                                                + " "
+                                                                                                + activity.getQuantity()
+                                                                                                + " "
+                                                                                                + activity.getUnit()
+                                                                                                + " "
+                                                                                                + activity.getDate()
+                                                                                                + "\n");
+                                                                                    }
+                                                                                    while (true) {
+                                                                                        writeTextFile();
+                                                                                        try {
+                                                                                            write = Integer.parseInt(
+                                                                                                    scanner.next());
+                                                                                            if (write == 1) {
+                                                                                                writting(contents);
+                                                                                                contents.clear();
+                                                                                                write = 0;
+                                                                                                break;
+                                                                                            } else if (write == -1) {
+                                                                                                write = 0;
+                                                                                                break;
+                                                                                            } else {
+                                                                                                invalidInput();
+                                                                                                continue;
+                                                                                            }
+                                                                                        } catch (NumberFormatException ex) {
+                                                                                            invalidInput();
+                                                                                            continue;
+                                                                                        }
                                                                                     }
                                                                                     System.out.println();
-                                                                                    // call method to create a output
-                                                                                    // text
-                                                                                    // file here
                                                                                 } else {
                                                                                     noData("Activity Logs of Farm "
                                                                                             + farms.get(String
@@ -608,11 +777,45 @@ public class DataVisualization {
                                                                                                 + activity.getUnit()
                                                                                                 + " "
                                                                                                 + activity.getDate());
+                                                                                        contents.add(activity
+                                                                                                .getAction()
+                                                                                                + " "
+                                                                                                + activity.getType()
+                                                                                                + " Field "
+                                                                                                + activity.getField()
+                                                                                                + " Row "
+                                                                                                + activity.getRow()
+                                                                                                + " "
+                                                                                                + activity.getQuantity()
+                                                                                                + " "
+                                                                                                + activity.getUnit()
+                                                                                                + " "
+                                                                                                + activity.getDate()
+                                                                                                + "\n");
+                                                                                    }
+                                                                                    while (true) {
+                                                                                        writeTextFile();
+                                                                                        try {
+                                                                                            write = Integer.parseInt(
+                                                                                                    scanner.next());
+                                                                                            if (write == 1) {
+                                                                                                writting(contents);
+                                                                                                contents.clear();
+                                                                                                write = 0;
+                                                                                                break;
+                                                                                            } else if (write == -1) {
+                                                                                                write = 0;
+                                                                                                break;
+                                                                                            } else {
+                                                                                                invalidInput();
+                                                                                                continue;
+                                                                                            }
+                                                                                        } catch (NumberFormatException ex) {
+                                                                                            invalidInput();
+                                                                                            continue;
+                                                                                        }
                                                                                     }
                                                                                     System.out.println();
-                                                                                    // call method to create a output
-                                                                                    // text
-                                                                                    // file here
                                                                                 } else {
                                                                                     noData("Activity Logs of Farm "
                                                                                             + farms.get(String
@@ -749,11 +952,45 @@ public class DataVisualization {
                                                                                                 + activity.getUnit()
                                                                                                 + " "
                                                                                                 + activity.getDate());
+                                                                                        contents.add(activity
+                                                                                                .getAction()
+                                                                                                + " "
+                                                                                                + activity.getType()
+                                                                                                + " Field "
+                                                                                                + activity.getField()
+                                                                                                + " Row "
+                                                                                                + activity.getRow()
+                                                                                                + " "
+                                                                                                + activity.getQuantity()
+                                                                                                + " "
+                                                                                                + activity.getUnit()
+                                                                                                + " "
+                                                                                                + activity.getDate()
+                                                                                                + "\n");
+                                                                                    }
+                                                                                    while (true) {
+                                                                                        writeTextFile();
+                                                                                        try {
+                                                                                            write = Integer.parseInt(
+                                                                                                    scanner.next());
+                                                                                            if (write == 1) {
+                                                                                                writting(contents);
+                                                                                                contents.clear();
+                                                                                                write = 0;
+                                                                                                break;
+                                                                                            } else if (write == -1) {
+                                                                                                write = 0;
+                                                                                                break;
+                                                                                            } else {
+                                                                                                invalidInput();
+                                                                                                continue;
+                                                                                            }
+                                                                                        } catch (NumberFormatException ex) {
+                                                                                            invalidInput();
+                                                                                            continue;
+                                                                                        }
                                                                                     }
                                                                                     System.out.println();
-                                                                                    // call method to create a output
-                                                                                    // text
-                                                                                    // file here
                                                                                 } else {
                                                                                     noData("Activity Logs of Farm "
                                                                                             + farms.get(String
@@ -881,10 +1118,35 @@ public class DataVisualization {
                                                     + activity.getField() + " Row " + activity.getRow() + " "
                                                     + activity.getQuantity() + " " + activity.getUnit() + " "
                                                     + activity.getDate() + " in Farm ID: " + activity.getFarmId());
-                                            // Sowing Broccoli Field 1 Row 1 1 kg 2022-03-03
+                                            contents.add(activity.getAction() + " " + activity.getType()
+                                                    + " Field "
+                                                    + activity.getField() + " Row " + activity.getRow() + " "
+                                                    + activity.getQuantity() + " " + activity.getUnit() + " "
+                                                    + activity.getDate() + " in Farm ID: " + activity.getFarmId()
+                                                    + "\n");
+                                        }
+                                        while (true) {
+                                            writeTextFile();
+                                            try {
+                                                write = Integer.parseInt(scanner.next());
+                                                if (write == 1) {
+                                                    writting(contents);
+                                                    contents.clear();
+                                                    write = 0;
+                                                    break;
+                                                } else if (write == -1) {
+                                                    write = 0;
+                                                    break;
+                                                } else {
+                                                    invalidInput();
+                                                    continue;
+                                                }
+                                            } catch (NumberFormatException ex) {
+                                                invalidInput();
+                                                continue;
+                                            }
                                         }
                                         System.out.println();
-                                        // call method to create a output text file here
                                     } else {
                                         noData("Activity Logs of Farmer "
                                                 + farmers.get(String.valueOf(farmerChosen)));
