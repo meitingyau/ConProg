@@ -25,7 +25,7 @@ public class FarmerSimulator {
                 //String userId = farmers[i].userId.toString();
 
                 String userId = farmer;
-                String sqlStrRandFarm = "select U.*,F._id from users U where not U._id='-' join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId where U._id="
+                String sqlStrRandFarm = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId where U._id="
                         + userId + " order by rand() limit 1";
                 ResultSet rsRandFarm = st.executeQuery(sqlStrRandFarm);
 
@@ -175,7 +175,7 @@ public class FarmerSimulator {
                     "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
-            String sqlStrUser = "select U.*,F._id from users U where not U._id = '-' join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by rand() limit "
+            String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by rand() limit "
                     + numberOfFarmers + "";
             ResultSet rsUser = st.executeQuery(sqlStrUser);
 
