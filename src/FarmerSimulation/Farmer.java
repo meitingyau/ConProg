@@ -42,18 +42,12 @@ public class Farmer implements Runnable {
     }
 
     public void run() {
-        //  while (!exit) {
             try {
                 FarmerSimulator.simulateActivity(this.userId.toString());
                 Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        // }
-        // System.out.println("Stop");
     }
 
-    public void stop() {
-        exit = true;
-    }
 }
