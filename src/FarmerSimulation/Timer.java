@@ -25,9 +25,8 @@ public class Timer {
         return (endTime - startTime) / 1000000;
     }
 
-    public long stopThreadIn500Ms() {
-        stopTime = startTime + 500000000;
-        // stopTime = startTime + 5000;
+    public long stopThreadInSpecificTime() {
+        stopTime = startTime + 5000;
 
         return stopTime;
     }
