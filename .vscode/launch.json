@@ -2,6 +2,33 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch DisasterSimulation",
+      "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.DisasterSimulation",
+      "projectName": "ConProg_f6861867"
+    },
+    {
+      "type": "java",
+      "name": "Launch Concurrent",
+      "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.Concurrent",
+      "projectName": "ConProg_f6861867"
+    },
+    {
+      "type": "java",
+      "name": "Launch Sequential",
+      "request": "launch",
+      "args": "",
+      "console": "internalConsole",
+      "mainClass": "FarmerSimulation.Sequential",
+      "projectName": "ConProg_f6861867"
+    },
+    {
+      "type": "java",
       "name": "Launch DataVisualization",
       "request": "launch",
       "mainClass": "FarmerSimulation.DataVisualization",
@@ -11,8 +38,6 @@
       "type": "java",
       "name": "Launch DataVisualization",
       "request": "launch",
-      "args": "",
-      "console": "internalConsole",
       "mainClass": "FarmerSimulation.DataVisualization",
       "projectName": "ConProg_f6861867"
     },

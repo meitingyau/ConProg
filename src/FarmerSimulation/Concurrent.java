@@ -9,19 +9,19 @@ public class Concurrent{
         int threadNum = 20;
         int farmerNum = 20;
         try {
-            FileLogger.setup();
+            FileLogger.setupConcurrent();
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Problems with creating the log files");
         }
         ExecutorService ex = Executors.newFixedThreadPool(threadNum);
-        Farmer[] farmers = FarmerSimulator.generateFarmers(farmerNum);
+        FarmerSimulator fs = new FarmerSimulator();
+        Farmer[] farmers = fs.generateFarmers(farmerNum);
        
         Timer cTimer = new Timer();
         cTimer.startTimer();
         
         for(Farmer farmer:farmers){
-            //Runnable farmer = new FarmerThread(farmers[i].userId.toString());
             ex.execute(farmer);
         }
         ex.shutdown();

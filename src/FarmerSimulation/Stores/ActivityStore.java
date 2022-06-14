@@ -22,7 +22,7 @@ public class ActivityStore {
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT * FROM `activities` WHERE `activities`.`userId` = " + id + "  ORDER BY date";
             Statement st = conn.createStatement();
             ResultSet result = st.executeQuery(query);
@@ -45,7 +45,7 @@ public class ActivityStore {
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.* FROM `activities` WHERE `activities`.`farmId` = " + id
                     + "  ORDER BY date";
             Statement st = conn.createStatement();
@@ -70,7 +70,7 @@ public class ActivityStore {
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.* FROM `activities` LEFT JOIN `plants` ON `plants`._id =  " + plantId
                     + " WHERE `activities`.`farmId` = " + farmId
                     + " AND `activities`.`type` = `plants`.`name` ORDER BY date";
@@ -96,7 +96,7 @@ public class ActivityStore {
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.* FROM `activities` LEFT JOIN `fertilizers` ON `fertilizers`._id =  "
                     + fertilizerId
                     + " WHERE `activities`.`farmId` = " + farmId
@@ -123,7 +123,7 @@ public class ActivityStore {
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.* FROM `activities` LEFT JOIN `pesticide` ON `pesticide`._id =  "
                     + pesticideId
                     + " WHERE `activities`.`farmId` = " + farmId
@@ -150,7 +150,7 @@ public class ActivityStore {
         List<Date> listOfDate = new ArrayList<Date>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = " SELECT  (SELECT `activities`.`date` FROM `activities` WHERE `activities`.`farmId` = "
                     + farmId
                     + " AND `activities`.`type` = '" + type
@@ -180,7 +180,7 @@ public class ActivityStore {
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.* FROM `activities` "
                     + " WHERE ( `activities`.`date` BETWEEN '" + startDate + "' AND '" + endDate
                     + "' ) AND `activities`.`farmId` = " + farmId
@@ -208,7 +208,7 @@ public class ActivityStore {
         List<Integer> fields = new ArrayList<Integer>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.`field` FROM `activities` WHERE ( `activities`.`date` BETWEEN '"
                     + startDate + "' AND '" + endDate + "' ) AND `activities`.`farmId` = " + farmId
                     + " AND `activities`.`TYPE` = '" + type
@@ -232,7 +232,7 @@ public class ActivityStore {
         List<Integer> rows = new ArrayList<Integer>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.`row` FROM `activities` WHERE ( `activities`.`date` BETWEEN '"
                     + startDate + "' AND '" + endDate + "' ) AND `activities`.`farmId` = " + farmId
                     + " AND `activities`.`TYPE` = '" + type + "' AND `activities`.`field` = " + field
@@ -254,7 +254,7 @@ public class ActivityStore {
         String contents = "";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/ifarm", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             String query = "SELECT `activities`.`farmId`, `activities`.`action`, `activities`.`type`, `activities`.`unit`, `activities`.`field`, `activities`.`row`, SUM(`activities`.`quantity`) AS summary FROM `activities` WHERE ( DATE BETWEEN '"
                     + startDate + "' AND '" + endDate + "' ) AND `activities`.`farmId` = " + farmId
                     + " AND `activities`.`TYPE` = '" + type + "' AND `activities`.`FIELD` = " + field

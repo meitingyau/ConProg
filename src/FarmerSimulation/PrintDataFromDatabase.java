@@ -5,30 +5,21 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.*;
-import java.io.IOException;
 
-public class FarmerSimulation {
+public class PrintDataFromDatabase {
 
     public static void main(String args[]) {
-        // try {
-        // WriteToLogFile.setup();
-        // } catch (IOException e) {
-        // e.printStackTrace();
-        // throw new RuntimeException("Problems with creating the log files");
-        // }
-
         try {
 
             // connect with our local database
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:8111/ifarm", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ifarm", "root", "");
             System.out.println("Database is connected !");
             Statement st = conn.createStatement();
 
-            // connect farm class with database
+            // print data for farms in the database
             System.out.println("=============================================\nFarms");
-            // sql query for selecting all related columns and order according to farm id
             String sqlStrFarm = "select F.*,PL._id as plants,FE._id as fertilizers,PE._id as pesticides from farms F " +
                     "left join farmplants FPL on F._id=FPL.farmId " +
                     "inner join plants PL on FPL.plantId=PL._id " +
@@ -38,13 +29,10 @@ public class FarmerSimulation {
                     "inner join pesticide PE on FPE.pesticideId=PE._id order by F._id";
             ResultSet rsFarm = st.executeQuery(sqlStrFarm);
 
-            // create lists to store the plant, fertilizer and pesticide for respective farm
-            // id
             List<String> plants = new ArrayList<String>();
             List<String> fertilizers = new ArrayList<String>();
             List<String> pesticides = new ArrayList<String>();
 
-            // create temporary variables to store previous row data
             String tempFId = "";
             String tempFarmName = "";
             String tempFarmAdd = "";
@@ -52,28 +40,21 @@ public class FarmerSimulation {
             String tempFerId = "";
             String tempPesId = "";
 
-            // run through each row in the table
             while (rsFarm.next()) {
-                // get the farm id for each row
                 String farmId = rsFarm.getString("F._id");
-                // get all column data for current row
                 String farmName = rsFarm.getString("F.name");
                 String farmAdd = rsFarm.getString("F.address");
                 String pId = rsFarm.getString("plants");
                 String ferId = rsFarm.getString("fertilizers");
                 String pesId = rsFarm.getString("pesticides");
 
-                if (tempFId == "") { // if it is the first row
-                    // add current row data to respective lists
+                if (tempFId == "") { 
                     plants.add(rsFarm.getString("plants"));
                     fertilizers.add(rsFarm.getString("fertilizers"));
                     pesticides.add(rsFarm.getString("pesticides"));
                 }
 
-                if (farmId.equals(tempFId) && rsFarm.isLast() == false) { // if current row has the same id with
-                                                                          // previous row,
-                    // means current row data are under the same id as previous
-                    // if the list does not contain current row data, add the current data to list
+                if (farmId.equals(tempFId) && rsFarm.isLast() == false) { 
                     if (plants.contains(rsFarm.getString("plants")) == false) {
                         plants.add(rsFarm.getString("plants"));
                     }
@@ -83,11 +64,9 @@ public class FarmerSimulation {
                     if (pesticides.contains(rsFarm.getString("pesticides")) == false) {
                         pesticides.add(rsFarm.getString("pesticides"));
                     }
-                    continue; // jump to next row
+                    continue;
                 }
 
-                // if the previous row data does not exist in the list, add previous row data to
-                // the list
                 if (tempFId != "" && plants.contains(tempPlantId) == false) {
                     plants.add(tempPlantId);
                 }
@@ -98,10 +77,8 @@ public class FarmerSimulation {
                     pesticides.add(tempPesId);
                 }
 
-                // if it is not the first row and current row id is different from previous row
-                // id
+
                 if (!tempFId.equals(farmId) && tempFId != "") {
-                    // convert the lists to array
                     String[] plantIds = new String[plants.size()];
                     plants.toArray(plantIds);
                     String[] ferIds = new String[fertilizers.size()];
@@ -109,13 +86,12 @@ public class FarmerSimulation {
                     String[] pesIds = new String[pesticides.size()];
                     pesticides.toArray(pesIds);
 
-                    // create new farm object for previous row id
                     Farm farm = new Farm(tempFId, tempFarmName, tempFarmAdd, plantIds, ferIds, pesIds);
-                    // empty the lists
+                    
                     plants.clear();
                     fertilizers.clear();
                     pesticides.clear();
-                    // print the object
+                    
                     System.out.println(farm.toString());
                 }
                 if (rsFarm.isLast() == true && farmId.equals(tempFId) && fertilizers.contains(tempFerId) == true && pesticides.contains(tempPesId) == true) {
@@ -135,11 +111,7 @@ public class FarmerSimulation {
                     Farm farm = new Farm(farmId, farmName, farmAdd, plantIds, ferIds, pesIds);
                     System.out.println(farm.toString());
                 }
-                // before going to next row, set current row id as temp id
                 tempFId = farmId;
-
-                // set current row data as temp data which will be used when checking the farm
-                // id at next row
                 tempFarmName = farmName;
                 tempFarmAdd = farmAdd;
                 tempPlantId = pId;
@@ -148,15 +120,13 @@ public class FarmerSimulation {
 
             }
 
-            // connect user class with database
-            System.out.println("=============================================\nUsers");
-            // sql query for selecting all related columns and order according to user id
+            // print data for Farmers in the database
+            System.out.println("=============================================\nFarmers");
             String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 10";
             ResultSet rsUser = st.executeQuery(sqlStrUser);
 
-            // create lists to store the farms for respective user id
             List<String> farms = new ArrayList<String>();
-            // create temporary variables to store previous row data
+
             String tempUserId = "";
             String tempUserName = "";
             String tempUserEmail = "";
@@ -164,46 +134,32 @@ public class FarmerSimulation {
             String tempUserPhone = "";
             String tempFarmId = "";
 
-            // run through each row in the table
             while (rsUser.next()) {
-                // get the user id for each row
                 String userId = rsUser.getString("U._id");
-                // get all column data for current row
-
                 String name = rsUser.getString("U.name");
                 String email = rsUser.getString("U.email");
                 String password = rsUser.getString("U.password");
                 String phoneNum = rsUser.getString("U.phoneNumber");
                 String farmId = rsUser.getString("F._id");
-                if (tempUserId == "") { // if it is the first row
-                    // add current row data to farm list
+                
+                if (tempUserId == "") { 
                     farms.add(rsUser.getString("F._id"));
                 }
 
-                if (userId.equals(tempUserId) && rsUser.isLast() == false) { // if current row has the same id with
-                                                                             // previous row,
-                    // means current row data are under the same id as previous
-                    // add current row data to farm list
+                if (userId.equals(tempUserId) && rsUser.isLast() == false) { 
                     farms.add(rsUser.getString("F._id"));
-                    continue; // jump to next row
+                    continue; 
                 }
 
-                // if the previous row data does not exist in the farm list, add to the list
                 if (tempUserId != "" && farms.contains(tempFarmId) == false) {
                     farms.add(tempFarmId);
                 }
 
-                // if it is not the first row and current row id is different from previous row
-                // id
                 if ((!tempUserId.equals(userId)) && tempUserId != "") {
-                    // convert the lists to array
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
-                    // create new user object for previous row id
                     Farmer user = new Farmer(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
-                    // clear the farm list
                     farms.clear();
-                    // print the user object
                     System.out.println(user.toString());
                 }
                 if (rsUser.isLast() == true && userId.equals(tempUserId)) {
@@ -213,49 +169,30 @@ public class FarmerSimulation {
                     farms.add(tempFarmId);
                 }
 
-                if (rsUser.isLast() == true /* && (!tempUserId.equals(userId) || tempUserId.equals(userId)) */) {
+                if (rsUser.isLast() == true) {
 
-                    // convert the lists to array
                     String[] farmIds = new String[farms.size()];
                     farms.toArray(farmIds);
-                    // create new user object for previous row id
                     Farmer user = new Farmer(userId, farmIds, name, email, password, phoneNum);
-                    // clear the farm list
                     farms.clear();
-                    // print the user object
                     System.out.println(user.toString());
                 }
 
-                // farms.add(rsUser.getString("F._id"));
-
-                // before going to next row, set current row id as temp id
                 tempUserId = userId;
-
-                // User obj = new User(userId, farmIds, name, email, password, phoneNum);
-
-                // set current row data as temp data
                 tempUserName = name;
                 tempUserEmail = email;
                 tempUserPW = password;
                 tempUserPhone = phoneNum;
                 tempFarmId = farmId;
-                // rsUser.next();
-                // if (tempUserId != rsUser.getString("U._id")) {
-                // String[] farmIds = new String[farms.size()];
-                // farms.toArray(farmIds);
-                // User user = new User(userId, farmIds, name, email, password, phoneNum);
-                // farms.clear();
-                // System.out.println(user.toString());
-                // }
-                // rsUser.previous();
+
             }
 
-            // connect pesticide class with database
+            // print data for pesticides in the database
             System.out.println("=============================================\nPesticides");
             // select only 20 rows to show the output first
             String sqlStrPesticide = "select * from pesticide limit 20";
             ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
-            // run through each row in pesticide table and create pesticide object
+
             while (rsPesticide.next()) {
                 String pesticideId = rsPesticide.getString("_id");
                 String Pname = rsPesticide.getString("name");
@@ -264,12 +201,12 @@ public class FarmerSimulation {
                 System.out.println(pest.toString());
             }
 
-            // connect fertilizer class with database
+            // print data for fertilizers in the database
             System.out.println("=============================================\nFertilizers");
             // select only 20 rows to show the output first
             String sqlStrFertilizer = "select * from fertilizers limit 20";
             ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
-            // run through each row in fertilizer table and create fertilizer object
+
             while (rsFertilizer.next()) {
                 String fertilizerId = rsFertilizer.getString("_id");
                 String Fname = rsFertilizer.getString("name");
@@ -278,12 +215,12 @@ public class FarmerSimulation {
                 System.out.println(fertilizer.toString());
             }
 
-            // connect plant class with database
+            // print data for plants in the database
             System.out.println("=============================================\nPlants");
             // select only 20 rows to show the output first
             String sqlStrPlant = "select * from plants limit 20";
             ResultSet rsPlant = st.executeQuery(sqlStrPlant);
-            // run through each row in plant table and create plant object
+
             while (rsPlant.next()) {
                 String plantId = rsPlant.getString("_id");
                 String plantName = rsPlant.getString("name");
