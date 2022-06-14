@@ -76,7 +76,5 @@ public class DisasterSimulation {
         // for (int i = 0; i < farmers.length; i++) {
         // FarmerSimulator.simulateActivity(farmers[i].userId.toString());
         // }
-        timer.stopTimer();
-        System.out.println("Time taken to generate activities is " + timer.getTimeTakeninMiliSec() + " ms.");
     }
 }
