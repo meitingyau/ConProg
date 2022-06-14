@@ -2,7 +2,8 @@ package FarmerSimulation;
 
 import java.util.Arrays;
 
-public class Farmer {
+public class Farmer implements Runnable {
+    volatile boolean exit;
     String userId;
     private String[] farmIds;
     private String name;
@@ -18,6 +19,7 @@ public class Farmer {
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
+        // this.exit = false;
     }
 
     public String getUserId() {
@@ -38,4 +40,14 @@ public class Farmer {
         // UseFileLogger.logInfoMessage(str);
         return str;
     }
+
+    public void run() {
+            try {
+                FarmerSimulator.simulateActivity(this.userId.toString());
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+    }
+
 }
