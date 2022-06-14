@@ -34,7 +34,7 @@ public class DataVisualization {
     private static File fileObj = new File("ActivityLogs.txt");
     private static List<String> contents = new ArrayList<String>();
 
-    public static void writting(List<String> arrayOfLine) {
+    public static void writting(List<String> arrayOfLine) { // function writting activity logs into text file
         java.util.Date dateTimeNow = new java.util.Date();
         try {
             if (fileObj.createNewFile()) {
@@ -57,7 +57,8 @@ public class DataVisualization {
         }
     }
 
-    public static void option(String farmWithType, int commandChosen) {
+    public static void option(String farmWithType, int commandChosen) { // function to prompt dynamic option for user to
+                                                                        // visualize the logs
         System.out.println();
         System.out.println(
                 "Enter the command's number to visualize the activities data:");
@@ -72,19 +73,20 @@ public class DataVisualization {
         System.out.print("Enter the command number: ");
     }
 
-    public static void invalidInput() {
+    public static void invalidInput() { // function to prompt invalid input error messenge to user
         System.out.println();
         System.out.println("Invalid input, Please enter the command number that be displayed only.");
         System.out.println();
     }
 
-    public static void noData(String data) {
+    public static void noData(String data) { // function to prompt no data messenge to user
         System.out.println();
         System.out.println("Sorry, that is no " + data + " data");
         System.out.println();
     }
 
-    public static void continueViewing(String category) {
+    public static void continueViewing(String category) { // function to ask user whether want to continue the data
+                                                          // visualization
         System.out.println();
         System.out.println(
                 "Do you want to continue viewing " + category + " acitivity logs?");
@@ -93,7 +95,7 @@ public class DataVisualization {
         System.out.print("Enter the option's number: ");
     }
 
-    public static void writeTextFile() {
+    public static void writeTextFile() { // function to ask user whether want to print logs into text file
         System.out.println();
         System.out.println("Do you want to write the Activity Logs into text file?");
         System.out.println("Yes - Please enter: 1");
@@ -101,6 +103,8 @@ public class DataVisualization {
         System.out.print("Enter the option's number: ");
     }
 
+    // function print user logs by relative farm id, type, and a date range set by
+    // user
     public static void printByFarmIdAndTypeAndDateRange(int commandChosen, int farmChosen, String farmName,
             String typeName) {
         List<Date> listOfDate = new ArrayList<Date>();
@@ -123,8 +127,8 @@ public class DataVisualization {
             listOfDate = activityStore.findEarliestAndLatestDateByFarmIdAndType(farmChosen, typeName);
             if (listOfDate.size() > 0) {
                 System.out.print("Enter the first date: ");
-                try {
-                    if (firstTime) {
+                try { // start checking validation of date entered by user
+                    if (firstTime) { // avoid over read line
                         firstTime = false;
                         scanner.nextLine();
                     }
@@ -147,6 +151,7 @@ public class DataVisualization {
                         System.out.println("End date must later than the start date entered");
                         continue;
                     } else if (startDate.compareTo(endDate) < 0 || startDate.compareTo(endDate) == 0) {
+                        // the dates are validated
                         List<Activity> activityLogs = activityStore.findByFarmIdAndTypeAndDateRange(farmChosen,
                                 typeName,
                                 dateFormatter.format(startDate), dateFormatter.format(endDate));
@@ -176,7 +181,7 @@ public class DataVisualization {
                                         + activity.getUserId()
                                         + "\n");
                             }
-                            while (true) {
+                            while (true) { // text file generation
                                 writeTextFile();
                                 try {
                                     write = Integer.parseInt(scanner.next());
@@ -201,7 +206,7 @@ public class DataVisualization {
                         } else {
                             noData("Activity Logs of Farm " + farmName + " with " + typeName);
                         }
-                        while (true) {
+                        while (true) { // asking user want to continue or not
                             continueViewing("Farm " + farmName + " with " + typeName);
                             try {
                                 commandChosen = Integer.parseInt(scanner.next());
@@ -229,6 +234,9 @@ public class DataVisualization {
         }
     }
 
+    // function print user summarized logs by relative farm id, type, and a date
+    // range set by
+    // user
     public static void printSummarizedLogs(int commandChosen, int farmChosen, String farmName,
             String typeName) {
         List<Date> listOfDate = new ArrayList<Date>();
@@ -475,7 +483,8 @@ public class DataVisualization {
                                         try {
                                             farmChosen = Integer.parseInt(scanner.next());
                                             if (farms.containsKey(String.valueOf(farmChosen))) {
-                                                if (commandChosen == 0) {
+                                                if (commandChosen == 0) { // display all activity logs for a target farm
+                                                                          // only
                                                     List<Activity> activityLogs = activityStore
                                                             .findByFarmId(farmChosen);
                                                     if (activityLogs.size() > 0) {
@@ -674,7 +683,15 @@ public class DataVisualization {
                                                                                         continue;
                                                                                     }
                                                                                 }
-                                                                            } else if (commandChosen == 5) {
+                                                                            } else if (commandChosen == 5) { // display
+                                                                                                             // all " +
+                                                                                                             // farmWithType
+                                                                                                             // + "
+                                                                                                             // activity
+                                                                                                             // logs
+                                                                                                             // between
+                                                                                                             // two
+                                                                                                             // dates
                                                                                 printByFarmIdAndTypeAndDateRange(
                                                                                         commandChosen, farmChosen,
                                                                                         farms.get(
@@ -684,7 +701,10 @@ public class DataVisualization {
                                                                                                 .valueOf(plantChosen)));
                                                                                 commandChosen = 2;
                                                                                 farmPlantDVP = false;
-                                                                            } else if (commandChosen == 6) {
+                                                                            } else if (commandChosen == 6) { // "To
+                                                                                                             // display
+                                                                                                             // summarized
+                                                                                                             // logs
                                                                                 printSummarizedLogs(commandChosen,
                                                                                         farmChosen, farms.get(
                                                                                                 String.valueOf(
@@ -717,7 +737,8 @@ public class DataVisualization {
                                                         invalidInput();
                                                         continue;
                                                     }
-                                                } else if (commandChosen == 3) {
+                                                } else if (commandChosen == 3) { // display all activity logs for a
+                                                                                 // target farm with fertilizer
                                                     option("farm with fertilizer", commandChosen);
                                                     try {
                                                         commandChosen = Integer.parseInt(scanner.next());
@@ -741,7 +762,11 @@ public class DataVisualization {
                                                                                 .parseInt(scanner.next());
                                                                         if (fertilizers.containsKey(
                                                                                 String.valueOf(fertilizerChosen))) {
-                                                                            if (commandChosen == 3) {
+                                                                            if (commandChosen == 3) { // display all
+                                                                                                      // activity logs
+                                                                                                      // for a target
+                                                                                                      // farm with
+                                                                                                      // fertilizer
                                                                                 List<Activity> activityLogs = activityStore
                                                                                         .findByFarmIdAndPlantId(
                                                                                                 farmChosen,
@@ -847,7 +872,15 @@ public class DataVisualization {
                                                                                         continue;
                                                                                     }
                                                                                 }
-                                                                            } else if (commandChosen == 5) {
+                                                                            } else if (commandChosen == 5) { // display
+                                                                                                             // all " +
+                                                                                                             // farmWithType
+                                                                                                             // + "
+                                                                                                             // activity
+                                                                                                             // logs
+                                                                                                             // between
+                                                                                                             // two
+                                                                                                             // dates
                                                                                 printByFarmIdAndTypeAndDateRange(
                                                                                         commandChosen, farmChosen,
                                                                                         farms.get(
@@ -858,7 +891,10 @@ public class DataVisualization {
                                                                                                         fertilizerChosen)));
                                                                                 commandChosen = 3;
                                                                                 farmPlantDVP = false;
-                                                                            } else if (commandChosen == 6) {
+                                                                            } else if (commandChosen == 6) { // "To
+                                                                                                             // display
+                                                                                                             // summarized
+                                                                                                             // logs
                                                                                 printSummarizedLogs(commandChosen,
                                                                                         farmChosen, farms.get(
                                                                                                 String.valueOf(
@@ -892,7 +928,8 @@ public class DataVisualization {
                                                         invalidInput();
                                                         continue;
                                                     }
-                                                } else if (commandChosen == 4) {
+                                                } else if (commandChosen == 4) { // display all activity logs for a
+                                                                                 // target farm with pesticide
                                                     option("farm with pesticide", commandChosen);
                                                     try {
                                                         commandChosen = Integer.parseInt(scanner.next());
@@ -916,7 +953,11 @@ public class DataVisualization {
                                                                                 .parseInt(scanner.next());
                                                                         if (pesticides.containsKey(
                                                                                 String.valueOf(pesticideChosen))) {
-                                                                            if (commandChosen == 4) {
+                                                                            if (commandChosen == 4) { // display all
+                                                                                                      // activity logs
+                                                                                                      // for a target
+                                                                                                      // farm with
+                                                                                                      // pesticide
                                                                                 List<Activity> activityLogs = activityStore
                                                                                         .findByFarmIdAndPlantId(
                                                                                                 farmChosen,
@@ -1022,7 +1063,15 @@ public class DataVisualization {
                                                                                         continue;
                                                                                     }
                                                                                 }
-                                                                            } else if (commandChosen == 5) {
+                                                                            } else if (commandChosen == 5) { // display
+                                                                                                             // all " +
+                                                                                                             // farmWithType
+                                                                                                             // + "
+                                                                                                             // activity
+                                                                                                             // logs
+                                                                                                             // between
+                                                                                                             // two
+                                                                                                             // dates
                                                                                 printByFarmIdAndTypeAndDateRange(
                                                                                         commandChosen, farmChosen,
                                                                                         farms.get(
@@ -1033,7 +1082,10 @@ public class DataVisualization {
                                                                                                         pesticideChosen)));
                                                                                 commandChosen = 4;
                                                                                 farmPlantDVP = false;
-                                                                            } else if (commandChosen == 6) {
+                                                                            } else if (commandChosen == 6) { // "To
+                                                                                                             // display
+                                                                                                             // summarized
+                                                                                                             // logs
                                                                                 printSummarizedLogs(commandChosen,
                                                                                         farmChosen, farms.get(
                                                                                                 String.valueOf(
@@ -1092,7 +1144,7 @@ public class DataVisualization {
                             continue;
                         }
                     }
-                } else if (commandChosen == 1) {
+                } else if (commandChosen == 1) { // display all activity logs for a target farmer
                     farmerChosen = -1;
                     HashMap<String, String> farmers = farmerStore.getFarmers();
                     if (farmers.size() > 0) {
