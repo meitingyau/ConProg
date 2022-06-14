@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PesticideStore {
+    // find pesticide name & id by farm id, put the result into a sorted hashmap
     public HashMap<String, String> findByFarmId(int farmId) throws SQLException {
         // String sql = "SELECT _id, name FROM `farms`";
         String sql = "select PE.* from farms F " +

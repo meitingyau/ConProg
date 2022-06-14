@@ -17,6 +17,7 @@ import java.sql.SQLException;
 public class FarmStore {
 
     public HashMap<String, String> getFarms() throws SQLException {
+        // get all the farms name & id, put the result into a sorted hashmap
         String sql = "SELECT _id, name FROM `farms`";
         ResultSet result = null;
         HashMap<String, String> farmsWithNameAndId = new HashMap<String, String>();

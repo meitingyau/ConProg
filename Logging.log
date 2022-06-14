@@ -1,0 +1,2 @@
+Jun 14, 2022 10:34:59 PM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 1, User ID: 2, Farm ID: 3, Date: 2022-05-13, Action: sowing, Type: fennel, Unit: kg, Quantity: 3.0, Field: 1, Row: 1

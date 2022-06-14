@@ -18,6 +18,7 @@ public class ActivityStore {
     private DateFormat formattter = DateFormat.getDateInstance();
 
     public List<Activity> findByUserId(int id) {
+        // find activity logs by farmer/user id, put the sorted result into a array list
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -40,6 +41,7 @@ public class ActivityStore {
     }
 
     public List<Activity> findByFarmId(int id) {
+        // find activity logs by farm id, put the sorted result into a array list
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -63,6 +65,8 @@ public class ActivityStore {
     }
 
     public List<Activity> findByFarmIdAndPlantId(int farmId, int plantId) {
+        // find activity logs by farm id & plant id, put the sorted result into a array
+        // list
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -87,6 +91,8 @@ public class ActivityStore {
     }
 
     public List<Activity> findByFarmIdAndFertilizerId(int farmId, int fertilizerId) {
+        // find activity logs by farm id & fertilizer id, put the sorted result into a
+        // array list
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -112,6 +118,8 @@ public class ActivityStore {
     }
 
     public List<Activity> findByFarmIdAndPesticideId(int farmId, int pesticideId) {
+        // find activity logs by farm id & pesticide id, put the sorted result into a
+        // array list
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -137,6 +145,8 @@ public class ActivityStore {
     }
 
     public List<Date> findEarliestAndLatestDateByFarmIdAndType(int farmId, String type) {
+        // find earliest & latest activity logs by farm id & type , put the result array
+        // list
         List<Date> listOfDate = new ArrayList<Date>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -165,6 +175,8 @@ public class ActivityStore {
 
     public List<Activity> findByFarmIdAndTypeAndDateRange(int farmId, String type, String startDate,
             String endDate) {
+        // find activity logs by farm id & type & date range, put the sorted result into
+        // a arraylist
         List<Activity> listOfActivity = new ArrayList<Activity>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -191,6 +203,8 @@ public class ActivityStore {
 
     public List<Integer> findFieldsByFarmIdAndTypeAndDateRange(int farmId, String type, String startDate,
             String endDate) {
+        // find fields by farm id & type & date range, put the sorted result into
+        // a arraylist
         List<Integer> fields = new ArrayList<Integer>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -213,6 +227,8 @@ public class ActivityStore {
 
     public List<Integer> findRowsByFarmIdAndTypeAndDateRangeAndField(int farmId, String type, String startDate,
             String endDate, int field) {
+        // find rows by farm id & type & date range, put the sorted result into
+        // a arraylist
         List<Integer> rows = new ArrayList<Integer>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -234,6 +250,7 @@ public class ActivityStore {
     }
 
     public String printSummarizedLogs(int farmId, String type, int field, int row, String startDate, String endDate) {
+        // print summarized logs by farm id & type & date range & field & row
         String contents = "";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
