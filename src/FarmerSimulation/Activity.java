@@ -31,6 +31,7 @@ public class Activity {
     }
 
     public void store() {
+        //Store activity to database
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
