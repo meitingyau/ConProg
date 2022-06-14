@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class FertilizerStore {
+    // find fertilizers name & id by farm id, put the result into a sorted hashmap
     public HashMap<String, String> findByFarmId(int farmId) throws SQLException {
         // String sql = "SELECT _id, name FROM `farms`";
         String sql = "select Fer.* from farms F " +
