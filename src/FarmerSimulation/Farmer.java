@@ -19,7 +19,7 @@ public class Farmer implements Runnable {
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
-        // this.exit = false;
+        
     }
 
     public String getUserId() {
@@ -37,10 +37,10 @@ public class Farmer implements Runnable {
     public String toString() {
         str = "User ID: " + userId + ", Farm IDs: " + Arrays.toString(farmIds) + ", Name: " + name + ", Email: "
                 + email + " Phone Num: " + phoneNum;
-        // UseFileLogger.logInfoMessage(str);
         return str;
     }
 
+    // run method for farmer class to simulate activities
     public void run() {
             try {
                 FarmerSimulator.simulateActivity(this.userId.toString());

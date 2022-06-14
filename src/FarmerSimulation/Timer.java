@@ -25,9 +25,9 @@ public class Timer {
         return (endTime - startTime) / 1000000;
     }
 
+    //get the time to stop a thread after starting
     public long stopThreadInSpecificTime() {
         stopTime = startTime + 5000;
-
         return stopTime;
     }
 

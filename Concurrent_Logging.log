@@ -1,0 +1,411 @@
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5081, User ID: 49, Farm ID: 5, Date: 2022-06-16, Action: pesticide, Type: Laddock, Unit: L, Quantity: 2.0, Field: 1, Row: 1
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5082, User ID: 49, Farm ID: 5, Date: 2022-07-20, Action: harvest, Type: Felonwort, Unit: kg, Quantity: 4.0, Field: 8, Row: 1
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5083, User ID: 49, Farm ID: 5, Date: 2022-06-28, Action: sowing, Type: Felonwood, Unit: kg, Quantity: 1.0, Field: 6, Row: 2
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5084, User ID: 49, Farm ID: 5, Date: 2022-07-05, Action: pesticide, Type: Laddock, Unit: L, Quantity: 4.0, Field: 10, Row: 3
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5085, User ID: 49, Farm ID: 5, Date: 2022-07-09, Action: fertilizer, Type: Dr. Earth, Unit: kg, Quantity: 9.0, Field: 3, Row: 10
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5086, User ID: 49, Farm ID: 5, Date: 2022-06-29, Action: fertilizer, Type: Dr. Earth, Unit: kg, Quantity: 1.0, Field: 3, Row: 9
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5087, User ID: 49, Farm ID: 5, Date: 2022-07-07, Action: harvest, Type: Gordaldo, Unit: kg, Quantity: 5.0, Field: 6, Row: 5
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5088, User ID: 49, Farm ID: 5, Date: 2022-06-30, Action: pesticide, Type: Bay 70143, Unit: L, Quantity: 3.0, Field: 7, Row: 6
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5089, User ID: 49, Farm ID: 5, Date: 2022-06-30, Action: pesticide, Type: Laddock, Unit: L, Quantity: 7.0, Field: 6, Row: 2
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5090, User ID: 49, Farm ID: 5, Date: 2022-06-29, Action: pesticide, Type: Bay 70143, Unit: L, Quantity: 6.0, Field: 2, Row: 3
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5091, User ID: 71, Farm ID: 7, Date: 2022-07-04, Action: fertilizer, Type: Voluntary Purchasing Group, Unit: kg, Quantity: 5.0, Field: 4, Row: 10
+Jun 15, 2022 2:13:10 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5092, User ID: 71, Farm ID: 7, Date: 2022-07-17, Action: sowing, Type: Carrot, Unit: kg, Quantity: 10.0, Field: 2, Row: 4
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5093, User ID: 71, Farm ID: 7, Date: 2022-07-02, Action: fertilizer, Type: Martin's, Unit: kg, Quantity: 8.0, Field: 4, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5094, User ID: 71, Farm ID: 7, Date: 2022-07-30, Action: harvest, Type: Neem, Unit: kg, Quantity: 9.0, Field: 3, Row: 4
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5095, User ID: 71, Farm ID: 7, Date: 2022-06-30, Action: sales, Type: California walnut, Unit: kg, Quantity: 6.0, Field: 5, Row: 2
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5096, User ID: 71, Farm ID: 7, Date: 2022-06-29, Action: sowing, Type: Laceflower, Unit: kg, Quantity: 6.0, Field: 2, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5097, User ID: 71, Farm ID: 7, Date: 2022-07-14, Action: pesticide, Type: Corodane, Unit: L, Quantity: 7.0, Field: 6, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5098, User ID: 71, Farm ID: 7, Date: 2022-07-01, Action: fertilizer, Type: GS Plant Foods, Unit: kg, Quantity: 8.0, Field: 2, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5099, User ID: 71, Farm ID: 7, Date: 2022-07-12, Action: harvest, Type: Laceflower, Unit: kg, Quantity: 9.0, Field: 9, Row: 1
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5100, User ID: 71, Farm ID: 7, Date: 2022-07-11, Action: harvest, Type: Kudzu, Unit: kg, Quantity: 4.0, Field: 6, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5101, User ID: 28, Farm ID: 3, Date: 2022-07-16, Action: harvest, Type: Devil's plague, Unit: kg, Quantity: 7.0, Field: 10, Row: 9
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5102, User ID: 28, Farm ID: 3, Date: 2022-07-01, Action: pesticide, Type: Aktikon, Unit: L, Quantity: 4.0, Field: 5, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5103, User ID: 28, Farm ID: 3, Date: 2022-07-08, Action: pesticide, Type: Estone, Unit: L, Quantity: 8.0, Field: 1, Row: 4
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5104, User ID: 28, Farm ID: 3, Date: 2022-07-27, Action: harvest, Type: Canada root, Unit: kg, Quantity: 9.0, Field: 6, Row: 1
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5105, User ID: 28, Farm ID: 3, Date: 2022-07-15, Action: pesticide, Type: Aktikon, Unit: L, Quantity: 3.0, Field: 3, Row: 3
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5106, User ID: 28, Farm ID: 3, Date: 2022-07-12, Action: sowing, Type: California buckeye, Unit: kg, Quantity: 8.0, Field: 10, Row: 3
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5107, User ID: 28, Farm ID: 3, Date: 2022-07-16, Action: fertilizer, Type: TIP TOP [Original] BABA Mr Ganick 100% Authentic Organic Fertilizer 258-Fruit
+
+, Unit: kg, Quantity: 10.0, Field: 9, Row: 8
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5108, User ID: 28, Farm ID: 3, Date: 2022-07-13, Action: pesticide, Type: Aktikon, Unit: L, Quantity: 6.0, Field: 1, Row: 2
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5109, User ID: 28, Farm ID: 3, Date: 2022-07-15, Action: fertilizer, Type: TIP TOP [Original] BABA Mr Ganick 100% Authentic Organic Fertilizer 258-Fruit
+
+, Unit: kg, Quantity: 9.0, Field: 1, Row: 2
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5110, User ID: 28, Farm ID: 3, Date: 2022-07-21, Action: sales, Type: Goose tongue, Unit: kg, Quantity: 3.0, Field: 2, Row: 1
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5111, User ID: 84, Farm ID: 9, Date: 2022-06-16, Action: fertilizer, Type: Hyponex All-Purpose Garden Fertilizer, Unit: kg, Quantity: 3.0, Field: 2, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5112, User ID: 84, Farm ID: 9, Date: 2022-07-05, Action: sowing, Type: Fellenwort, Unit: kg, Quantity: 5.0, Field: 3, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5113, User ID: 84, Farm ID: 9, Date: 2022-06-27, Action: sales, Type: Peanut, Unit: kg, Quantity: 3.0, Field: 10, Row: 2
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5114, User ID: 84, Farm ID: 9, Date: 2022-06-28, Action: sowing, Type: Queen Anne's lace, Unit: kg, Quantity: 10.0, Field: 10, Row: 2
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5115, User ID: 84, Farm ID: 9, Date: 2022-06-23, Action: harvest, Type: Fellenwort, Unit: kg, Quantity: 9.0, Field: 2, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5116, User ID: 84, Farm ID: 9, Date: 2022-06-17, Action: pesticide, Type: Croprider, Unit: L, Quantity: 6.0, Field: 10, Row: 3
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5117, User ID: 84, Farm ID: 9, Date: 2022-06-29, Action: harvest, Type: Goldenglow, Unit: kg, Quantity: 10.0, Field: 10, Row: 5
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5118, User ID: 84, Farm ID: 9, Date: 2022-06-27, Action: sales, Type: Parsnip, Unit: kg, Quantity: 4.0, Field: 5, Row: 5
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5119, User ID: 84, Farm ID: 9, Date: 2022-06-26, Action: sales, Type: Eytelia, Unit: kg, Quantity: 8.0, Field: 1, Row: 9
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5120, User ID: 84, Farm ID: 9, Date: 2022-06-18, Action: fertilizer, Type: Hyponex All-Purpose Garden Fertilizer, Unit: kg, Quantity: 5.0, Field: 8, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5121, User ID: 76, Farm ID: 7, Date: 2022-06-27, Action: sowing, Type: Necklace fern, Unit: kg, Quantity: 9.0, Field: 1, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5122, User ID: 76, Farm ID: 7, Date: 2022-07-02, Action: fertilizer, Type: GS Plant Foods, Unit: kg, Quantity: 10.0, Field: 7, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5123, User ID: 76, Farm ID: 7, Date: 2022-07-15, Action: harvest, Type: Kumarahou, Unit: kg, Quantity: 9.0, Field: 4, Row: 7
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5124, User ID: 76, Farm ID: 7, Date: 2022-07-14, Action: harvest, Type: Bird of paradise, Unit: kg, Quantity: 4.0, Field: 4, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5125, User ID: 76, Farm ID: 7, Date: 2022-06-28, Action: pesticide, Type: Ortho‐Klor, Unit: L, Quantity: 10.0, Field: 1, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5126, User ID: 76, Farm ID: 7, Date: 2022-07-04, Action: fertilizer, Type: Voluntary Purchasing Group, Unit: kg, Quantity: 5.0, Field: 2, Row: 3
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5127, User ID: 76, Farm ID: 7, Date: 2022-07-16, Action: sales, Type: Kumarahou, Unit: kg, Quantity: 5.0, Field: 4, Row: 7
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5128, User ID: 76, Farm ID: 7, Date: 2022-07-02, Action: sales, Type: Carrot, Unit: kg, Quantity: 9.0, Field: 10, Row: 5
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5129, User ID: 76, Farm ID: 7, Date: 2022-07-15, Action: sales, Type: Bird of paradise, Unit: kg, Quantity: 7.0, Field: 4, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5130, User ID: 76, Farm ID: 7, Date: 2022-07-28, Action: harvest, Type: California bay, Unit: kg, Quantity: 7.0, Field: 10, Row: 8
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5131, User ID: 1, Farm ID: 1, Date: 2022-06-28, Action: pesticide, Type: Pillarzo, Unit: L, Quantity: 10.0, Field: 7, Row: 1
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5132, User ID: 1, Farm ID: 1, Date: 2022-07-05, Action: fertilizer, Type: Nutri Smart Active Eco-Fertilizer, Unit: kg, Quantity: 8.0, Field: 8, Row: 6
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5133, User ID: 1, Farm ID: 1, Date: 2022-06-17, Action: fertilizer, Type: Nutri Smart Active Eco-Fertilizer, Unit: kg, Quantity: 2.0, Field: 10, Row: 10
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5134, User ID: 1, Farm ID: 1, Date: 2022-07-05, Action: fertilizer, Type: Baja organik Champion, Unit: kg, Quantity: 10.0, Field: 1, Row: 3
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5135, User ID: 1, Farm ID: 1, Date: 2022-07-03, Action: fertilizer, Type: Baja organik Champion, Unit: kg, Quantity: 3.0, Field: 8, Row: 3
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5136, User ID: 1, Farm ID: 1, Date: 2022-06-28, Action: sowing, Type: Arizona sycamore, Unit: kg, Quantity: 7.0, Field: 1, Row: 7
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5137, User ID: 1, Farm ID: 1, Date: 2022-06-25, Action: sowing, Type: Desert Rose, Unit: kg, Quantity: 6.0, Field: 9, Row: 1
+Jun 15, 2022 2:13:11 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5138, User ID: 1, Farm ID: 1, Date: 2022-06-24, Action: sowing, Type: Desert Rose, Unit: kg, Quantity: 8.0, Field: 3, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5139, User ID: 1, Farm ID: 1, Date: 2022-06-26, Action: harvest, Type: Desert Rose, Unit: kg, Quantity: 10.0, Field: 2, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5140, User ID: 1, Farm ID: 1, Date: 2022-07-04, Action: pesticide, Type: Pillarzo, Unit: L, Quantity: 1.0, Field: 2, Row: 1
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5141, User ID: 14, Farm ID: 2, Date: 2022-06-27, Action: sales, Type: Earth gall, Unit: kg, Quantity: 5.0, Field: 3, Row: 5
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5142, User ID: 14, Farm ID: 2, Date: 2022-07-01, Action: fertilizer, Type: Baja Pokok NPK 15 15 15, Unit: kg, Quantity: 2.0, Field: 3, Row: 7
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5143, User ID: 14, Farm ID: 2, Date: 2022-06-28, Action: sowing, Type: Earth gall, Unit: kg, Quantity: 2.0, Field: 5, Row: 10
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5144, User ID: 14, Farm ID: 2, Date: 2022-06-24, Action: harvest, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 1, Row: 1
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5145, User ID: 14, Farm ID: 2, Date: 2022-06-28, Action: sowing, Type: Earth gall, Unit: kg, Quantity: 2.0, Field: 6, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5146, User ID: 14, Farm ID: 2, Date: 2022-06-30, Action: sowing, Type: Devil's plague, Unit: kg, Quantity: 5.0, Field: 10, Row: 10
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5147, User ID: 14, Farm ID: 2, Date: 2022-07-05, Action: fertilizer, Type: NovaTec Suprem 21-5-10(+3+TE)-Granular & Stabilized Granular Fertilizers, Unit: kg, Quantity: 6.0, Field: 10, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5148, User ID: 14, Farm ID: 2, Date: 2022-06-29, Action: pesticide, Type: Bullet, Unit: L, Quantity: 4.0, Field: 5, Row: 10
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5149, User ID: 14, Farm ID: 2, Date: 2022-06-29, Action: sales, Type: Bear corn, Unit: kg, Quantity: 6.0, Field: 5, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5150, User ID: 14, Farm ID: 2, Date: 2022-06-28, Action: pesticide, Type: Bullet, Unit: L, Quantity: 3.0, Field: 10, Row: 5
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5151, User ID: 64, Farm ID: 7, Date: 2022-07-01, Action: fertilizer, Type: Voluntary Purchasing Group, Unit: kg, Quantity: 9.0, Field: 1, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5152, User ID: 64, Farm ID: 7, Date: 2022-08-01, Action: harvest, Type: Native fuchsia, Unit: kg, Quantity: 9.0, Field: 8, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5153, User ID: 64, Farm ID: 7, Date: 2022-07-11, Action: sales, Type: California bay, Unit: kg, Quantity: 7.0, Field: 8, Row: 10
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5154, User ID: 64, Farm ID: 7, Date: 2022-07-17, Action: fertilizer, Type: Martin's, Unit: kg, Quantity: 2.0, Field: 6, Row: 1
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5155, User ID: 64, Farm ID: 7, Date: 2022-07-13, Action: sales, Type: California walnut, Unit: kg, Quantity: 3.0, Field: 3, Row: 9
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5156, User ID: 64, Farm ID: 7, Date: 2022-06-28, Action: sales, Type: Lace fern, Unit: kg, Quantity: 10.0, Field: 6, Row: 3
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5157, User ID: 64, Farm ID: 7, Date: 2022-06-28, Action: pesticide, Type: Chlorotox, Unit: L, Quantity: 7.0, Field: 6, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5158, User ID: 64, Farm ID: 7, Date: 2022-08-02, Action: sowing, Type: California bay, Unit: kg, Quantity: 7.0, Field: 7, Row: 5
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5159, User ID: 64, Farm ID: 7, Date: 2022-06-26, Action: fertilizer, Type: GS Plant Foods, Unit: kg, Quantity: 4.0, Field: 8, Row: 6
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5160, User ID: 64, Farm ID: 7, Date: 2022-07-10, Action: harvest, Type: Carrot, Unit: kg, Quantity: 2.0, Field: 10, Row: 7
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5161, User ID: 80, Farm ID: 8, Date: 2022-06-18, Action: fertilizer, Type: Jobe’s Organics All Purpose Fertilizer, Unit: kg, Quantity: 2.0, Field: 9, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5162, User ID: 80, Farm ID: 8, Date: 2022-06-17, Action: fertilizer, Type: Jobe’s Organics All Purpose Fertilizer, Unit: kg, Quantity: 7.0, Field: 4, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5163, User ID: 80, Farm ID: 8, Date: 2022-06-17, Action: pesticide, Type: D50, Unit: L, Quantity: 2.0, Field: 4, Row: 2
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5164, User ID: 80, Farm ID: 8, Date: 2022-06-15, Action: pesticide, Type: D50, Unit: L, Quantity: 7.0, Field: 5, Row: 2
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5165, User ID: 80, Farm ID: 8, Date: 2022-06-17, Action: fertilizer, Type: Jobe’s Organics All Purpose Fertilizer, Unit: kg, Quantity: 2.0, Field: 4, Row: 1
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5166, User ID: 80, Farm ID: 8, Date: 2022-06-15, Action: pesticide, Type: D50, Unit: L, Quantity: 2.0, Field: 3, Row: 7
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5167, User ID: 80, Farm ID: 8, Date: 2022-06-16, Action: pesticide, Type: D50, Unit: L, Quantity: 7.0, Field: 7, Row: 5
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5168, User ID: 80, Farm ID: 8, Date: 2022-06-29, Action: harvest, Type: Elephant apple, Unit: kg, Quantity: 6.0, Field: 2, Row: 10
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5169, User ID: 80, Farm ID: 8, Date: 2022-06-19, Action: pesticide, Type: D50, Unit: L, Quantity: 8.0, Field: 10, Row: 9
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5170, User ID: 80, Farm ID: 8, Date: 2022-06-18, Action: fertilizer, Type: Jobe’s Organics All Purpose Fertilizer, Unit: kg, Quantity: 8.0, Field: 10, Row: 2
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5171, User ID: 12, Farm ID: 2, Date: 2022-06-29, Action: fertilizer, Type: Serbajadi Plant Food Growing Inducer 45, Unit: kg, Quantity: 6.0, Field: 1, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5172, User ID: 12, Farm ID: 2, Date: 2022-06-29, Action: sowing, Type: Earth gall, Unit: kg, Quantity: 10.0, Field: 3, Row: 6
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5173, User ID: 12, Farm ID: 2, Date: 2022-06-28, Action: harvest, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 5, Row: 2
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5174, User ID: 12, Farm ID: 2, Date: 2022-06-25, Action: sales, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 1, Row: 1
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5175, User ID: 12, Farm ID: 2, Date: 2022-06-25, Action: harvest, Type: Bear corn, Unit: kg, Quantity: 7.0, Field: 4, Row: 8
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5176, User ID: 12, Farm ID: 2, Date: 2022-06-29, Action: sowing, Type: Devil's plague, Unit: kg, Quantity: 3.0, Field: 7, Row: 3
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5177, User ID: 12, Farm ID: 2, Date: 2022-07-16, Action: sales, Type: Bear corn, Unit: kg, Quantity: 1.0, Field: 1, Row: 2
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5178, User ID: 12, Farm ID: 2, Date: 2022-07-03, Action: pesticide, Type: Shroud, Unit: L, Quantity: 3.0, Field: 4, Row: 6
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5179, User ID: 12, Farm ID: 2, Date: 2022-06-26, Action: sowing, Type: Devil's plague, Unit: kg, Quantity: 6.0, Field: 4, Row: 3
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5180, User ID: 12, Farm ID: 2, Date: 2022-06-24, Action: harvest, Type: Devil's plague, Unit: kg, Quantity: 6.0, Field: 10, Row: 7
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5181, User ID: 50, Farm ID: 3, Date: 2022-07-22, Action: sowing, Type: Cancer jalap, Unit: kg, Quantity: 2.0, Field: 2, Row: 1
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5182, User ID: 50, Farm ID: 3, Date: 2022-07-21, Action: sowing, Type: Canada root, Unit: kg, Quantity: 3.0, Field: 10, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5183, User ID: 50, Farm ID: 3, Date: 2022-07-19, Action: harvest, Type: Bear corn, Unit: kg, Quantity: 10.0, Field: 1, Row: 6
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5184, User ID: 50, Farm ID: 3, Date: 2022-07-17, Action: sales, Type: Devil's plague, Unit: kg, Quantity: 8.0, Field: 10, Row: 9
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5185, User ID: 50, Farm ID: 3, Date: 2022-07-05, Action: fertilizer, Type: Biogold Original Japanese Top Bonsai and All Purpose Organic Fertilizer Baja Bonsai
+, Unit: kg, Quantity: 1.0, Field: 9, Row: 3
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5186, User ID: 50, Farm ID: 3, Date: 2022-07-08, Action: harvest, Type: California buckeye, Unit: kg, Quantity: 9.0, Field: 3, Row: 4
+Jun 15, 2022 2:13:12 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5187, User ID: 50, Farm ID: 3, Date: 2022-07-03, Action: harvest, Type: Bear corn, Unit: kg, Quantity: 3.0, Field: 7, Row: 7
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5188, User ID: 50, Farm ID: 3, Date: 2022-07-17, Action: pesticide, Type: Aktikon, Unit: L, Quantity: 6.0, Field: 9, Row: 1
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5189, User ID: 50, Farm ID: 3, Date: 2022-07-08, Action: harvest, Type: California sycamore, Unit: kg, Quantity: 1.0, Field: 10, Row: 5
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5190, User ID: 50, Farm ID: 3, Date: 2022-07-12, Action: sowing, Type: Canada root, Unit: kg, Quantity: 7.0, Field: 5, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5191, User ID: 58, Farm ID: 6, Date: 2022-06-28, Action: sales, Type: Inkberry , Unit: kg, Quantity: 1.0, Field: 7, Row: 3
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5192, User ID: 58, Farm ID: 6, Date: 2022-06-19, Action: fertilizer, Type: Bonide
+, Unit: kg, Quantity: 7.0, Field: 10, Row: 1
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5193, User ID: 58, Farm ID: 6, Date: 2022-06-20, Action: fertilizer, Type: Bonide
+, Unit: kg, Quantity: 10.0, Field: 5, Row: 10
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5194, User ID: 58, Farm ID: 6, Date: 2022-06-17, Action: pesticide, Type: Carbodan, Unit: L, Quantity: 4.0, Field: 3, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5195, User ID: 58, Farm ID: 6, Date: 2022-06-17, Action: pesticide, Type: Dormone, Unit: L, Quantity: 3.0, Field: 9, Row: 3
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5196, User ID: 58, Farm ID: 6, Date: 2022-06-18, Action: fertilizer, Type: Aero Garden
+, Unit: kg, Quantity: 5.0, Field: 5, Row: 5
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5197, User ID: 58, Farm ID: 6, Date: 2022-06-28, Action: harvest, Type: Hen plant , Unit: kg, Quantity: 2.0, Field: 6, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5198, User ID: 58, Farm ID: 6, Date: 2022-06-17, Action: pesticide, Type: Dormone, Unit: L, Quantity: 1.0, Field: 2, Row: 1
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5199, User ID: 58, Farm ID: 6, Date: 2022-06-27, Action: harvest, Type: Hen plant , Unit: kg, Quantity: 1.0, Field: 2, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5200, User ID: 58, Farm ID: 6, Date: 2022-06-12, Action: pesticide, Type: Dormone, Unit: L, Quantity: 3.0, Field: 8, Row: 7
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5201, User ID: 57, Farm ID: 6, Date: 2022-06-20, Action: harvest, Type: Bearberry , Unit: kg, Quantity: 5.0, Field: 7, Row: 2
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5202, User ID: 57, Farm ID: 6, Date: 2022-07-04, Action: pesticide, Type: Carbosip, Unit: L, Quantity: 3.0, Field: 6, Row: 8
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5203, User ID: 57, Farm ID: 6, Date: 2022-06-17, Action: sowing, Type: Herb barbara, Unit: kg, Quantity: 5.0, Field: 10, Row: 10
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5204, User ID: 57, Farm ID: 6, Date: 2022-06-26, Action: sales, Type: Hen plant , Unit: kg, Quantity: 2.0, Field: 2, Row: 4
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5205, User ID: 57, Farm ID: 6, Date: 2022-06-17, Action: pesticide, Type: Carbosip, Unit: L, Quantity: 9.0, Field: 10, Row: 2
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5206, User ID: 57, Farm ID: 6, Date: 2022-06-17, Action: fertilizer, Type: Bonide
+, Unit: kg, Quantity: 5.0, Field: 6, Row: 2
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5207, User ID: 57, Farm ID: 6, Date: 2022-06-25, Action: sales, Type: Hen plant , Unit: kg, Quantity: 1.0, Field: 9, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5208, User ID: 57, Farm ID: 6, Date: 2022-06-17, Action: pesticide, Type: Dormone, Unit: L, Quantity: 1.0, Field: 1, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5209, User ID: 57, Farm ID: 6, Date: 2022-07-01, Action: harvest, Type: Beech, Unit: kg, Quantity: 2.0, Field: 10, Row: 1
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5210, User ID: 57, Farm ID: 6, Date: 2022-06-17, Action: pesticide, Type: Carbodan, Unit: L, Quantity: 3.0, Field: 8, Row: 9
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5211, User ID: 13, Farm ID: 2, Date: 2022-07-13, Action: sales, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 2, Row: 8
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5212, User ID: 13, Farm ID: 2, Date: 2022-07-12, Action: harvest, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 1, Row: 8
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5213, User ID: 13, Farm ID: 2, Date: 2022-07-14, Action: harvest, Type: Devil's plague, Unit: kg, Quantity: 8.0, Field: 7, Row: 8
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5214, User ID: 13, Farm ID: 2, Date: 2022-07-01, Action: pesticide, Type: Bullet, Unit: L, Quantity: 5.0, Field: 3, Row: 2
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5215, User ID: 13, Farm ID: 2, Date: 2022-06-27, Action: pesticide, Type: Bullet, Unit: L, Quantity: 9.0, Field: 1, Row: 7
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5216, User ID: 13, Farm ID: 2, Date: 2022-07-14, Action: harvest, Type: Earth gall, Unit: kg, Quantity: 2.0, Field: 8, Row: 6
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5217, User ID: 13, Farm ID: 2, Date: 2022-06-27, Action: pesticide, Type: Bullet, Unit: L, Quantity: 7.0, Field: 4, Row: 3
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5218, User ID: 13, Farm ID: 2, Date: 2022-07-01, Action: pesticide, Type: Bullet, Unit: L, Quantity: 8.0, Field: 8, Row: 4
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5219, User ID: 13, Farm ID: 2, Date: 2022-06-22, Action: harvest, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 3, Row: 3
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5220, User ID: 13, Farm ID: 2, Date: 2022-06-26, Action: sowing, Type: Earth gall, Unit: kg, Quantity: 10.0, Field: 6, Row: 4
+Jun 15, 2022 2:13:13 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5221, User ID: 63, Farm ID: 7, Date: 2022-07-30, Action: fertilizer, Type: GS Plant Foods, Unit: kg, Quantity: 9.0, Field: 6, Row: 5
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5222, User ID: 63, Farm ID: 7, Date: 2022-07-12, Action: sowing, Type: Devil's nose, Unit: kg, Quantity: 3.0, Field: 5, Row: 1
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5223, User ID: 63, Farm ID: 7, Date: 2022-07-07, Action: harvest, Type: Kumarahou, Unit: kg, Quantity: 10.0, Field: 8, Row: 6
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5224, User ID: 63, Farm ID: 7, Date: 2022-07-01, Action: sowing, Type: Carrot, Unit: kg, Quantity: 9.0, Field: 5, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5225, User ID: 63, Farm ID: 7, Date: 2022-07-04, Action: pesticide, Type: Octachlor, Unit: L, Quantity: 1.0, Field: 5, Row: 4
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5226, User ID: 63, Farm ID: 7, Date: 2022-07-02, Action: pesticide, Type: Corodane, Unit: L, Quantity: 1.0, Field: 5, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5227, User ID: 63, Farm ID: 7, Date: 2022-07-16, Action: harvest, Type: Kumarahou, Unit: kg, Quantity: 5.0, Field: 2, Row: 3
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5228, User ID: 63, Farm ID: 7, Date: 2022-07-15, Action: sowing, Type: California bay, Unit: kg, Quantity: 4.0, Field: 3, Row: 9
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5229, User ID: 63, Farm ID: 7, Date: 2022-07-16, Action: fertilizer, Type: Voluntary Purchasing Group, Unit: kg, Quantity: 3.0, Field: 2, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5230, User ID: 63, Farm ID: 7, Date: 2022-08-04, Action: sales, Type: California bay, Unit: kg, Quantity: 9.0, Field: 9, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5231, User ID: 62, Farm ID: 7, Date: 2022-06-30, Action: sales, Type: Neem, Unit: kg, Quantity: 10.0, Field: 4, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5232, User ID: 62, Farm ID: 7, Date: 2022-07-15, Action: sales, Type: Laceflower, Unit: kg, Quantity: 3.0, Field: 4, Row: 3
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5233, User ID: 62, Farm ID: 7, Date: 2022-07-01, Action: pesticide, Type: Corodane, Unit: L, Quantity: 7.0, Field: 10, Row: 6
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5234, User ID: 62, Farm ID: 7, Date: 2022-06-29, Action: fertilizer, Type: Voluntary Purchasing Group, Unit: kg, Quantity: 10.0, Field: 6, Row: 4
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5235, User ID: 62, Farm ID: 7, Date: 2022-07-31, Action: sales, Type: Neem, Unit: kg, Quantity: 3.0, Field: 3, Row: 4
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5236, User ID: 62, Farm ID: 7, Date: 2022-07-13, Action: pesticide, Type: Gold Crest C‐100, Unit: L, Quantity: 2.0, Field: 3, Row: 7
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5237, User ID: 62, Farm ID: 7, Date: 2022-07-20, Action: sales, Type: Isle of Man cabbage, Unit: kg, Quantity: 6.0, Field: 1, Row: 9
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5238, User ID: 62, Farm ID: 7, Date: 2022-06-30, Action: pesticide, Type: Chlorotox, Unit: L, Quantity: 9.0, Field: 3, Row: 5
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5239, User ID: 62, Farm ID: 7, Date: 2022-07-16, Action: sowing, Type: Lady's smock, Unit: kg, Quantity: 8.0, Field: 1, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5240, User ID: 62, Farm ID: 7, Date: 2022-07-11, Action: harvest, Type: Jewel orchid, Unit: kg, Quantity: 2.0, Field: 5, Row: 10
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5241, User ID: 60, Farm ID: 7, Date: 2022-07-28, Action: pesticide, Type: Gold Crest C‐100, Unit: L, Quantity: 9.0, Field: 5, Row: 6
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5242, User ID: 60, Farm ID: 7, Date: 2022-07-30, Action: harvest, Type: Itchweed, Unit: kg, Quantity: 6.0, Field: 6, Row: 1
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5243, User ID: 60, Farm ID: 7, Date: 2022-07-09, Action: sowing, Type: Necklace fern, Unit: kg, Quantity: 4.0, Field: 9, Row: 5
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5244, User ID: 60, Farm ID: 7, Date: 2022-07-12, Action: harvest, Type: Isle of Man cabbage, Unit: kg, Quantity: 7.0, Field: 4, Row: 6
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5245, User ID: 60, Farm ID: 7, Date: 2022-07-01, Action: fertilizer, Type: Martin's, Unit: kg, Quantity: 8.0, Field: 3, Row: 5
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5246, User ID: 60, Farm ID: 7, Date: 2022-07-17, Action: pesticide, Type: Corodane, Unit: L, Quantity: 5.0, Field: 2, Row: 8
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5247, User ID: 60, Farm ID: 7, Date: 2022-07-02, Action: fertilizer, Type: Martin's, Unit: kg, Quantity: 8.0, Field: 10, Row: 6
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5248, User ID: 60, Farm ID: 7, Date: 2022-07-13, Action: sales, Type: Laceflower, Unit: kg, Quantity: 7.0, Field: 6, Row: 2
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5249, User ID: 60, Farm ID: 7, Date: 2022-07-13, Action: harvest, Type: Necklace fern, Unit: kg, Quantity: 4.0, Field: 9, Row: 7
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5250, User ID: 60, Farm ID: 7, Date: 2022-06-30, Action: pesticide, Type: Gold Crest C‐100, Unit: L, Quantity: 6.0, Field: 2, Row: 6
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5251, User ID: 69, Farm ID: 7, Date: 2022-07-25, Action: harvest, Type: Isle of Man cabbage, Unit: kg, Quantity: 7.0, Field: 1, Row: 1
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5252, User ID: 69, Farm ID: 7, Date: 2022-07-18, Action: fertilizer, Type: GS Plant Foods, Unit: kg, Quantity: 9.0, Field: 10, Row: 10
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5253, User ID: 69, Farm ID: 7, Date: 2022-07-22, Action: pesticide, Type: Octachlor, Unit: L, Quantity: 9.0, Field: 1, Row: 5
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5254, User ID: 69, Farm ID: 7, Date: 2022-07-13, Action: sowing, Type: Itchweed, Unit: kg, Quantity: 3.0, Field: 3, Row: 8
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5255, User ID: 69, Farm ID: 7, Date: 2022-08-01, Action: sowing, Type: Lamb's foot, Unit: kg, Quantity: 3.0, Field: 3, Row: 4
+Jun 15, 2022 2:13:14 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5256, User ID: 69, Farm ID: 7, Date: 2022-07-12, Action: harvest, Type: California bay, Unit: kg, Quantity: 7.0, Field: 1, Row: 7
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5257, User ID: 69, Farm ID: 7, Date: 2022-07-14, Action: sales, Type: Necklace fern, Unit: kg, Quantity: 7.0, Field: 9, Row: 9
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5258, User ID: 69, Farm ID: 7, Date: 2022-07-15, Action: fertilizer, Type: Ionic, Unit: kg, Quantity: 1.0, Field: 9, Row: 10
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5259, User ID: 69, Farm ID: 7, Date: 2022-07-07, Action: fertilizer, Type: Voluntary Purchasing Group, Unit: kg, Quantity: 4.0, Field: 6, Row: 7
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5260, User ID: 69, Farm ID: 7, Date: 2022-07-27, Action: harvest, Type: California bay, Unit: kg, Quantity: 3.0, Field: 9, Row: 10
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5261, User ID: 15, Farm ID: 2, Date: 2022-06-27, Action: pesticide, Type: Bullet, Unit: L, Quantity: 4.0, Field: 10, Row: 1
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5262, User ID: 15, Farm ID: 2, Date: 2022-06-28, Action: sales, Type: Bear corn, Unit: kg, Quantity: 4.0, Field: 2, Row: 3
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5263, User ID: 15, Farm ID: 2, Date: 2022-07-18, Action: sowing, Type: Earth gall, Unit: kg, Quantity: 1.0, Field: 7, Row: 4
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5264, User ID: 15, Farm ID: 2, Date: 2022-06-24, Action: harvest, Type: Bear corn, Unit: kg, Quantity: 7.0, Field: 9, Row: 10
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5265, User ID: 15, Farm ID: 2, Date: 2022-06-30, Action: fertilizer, Type: Serbajadi Plant Food Growing Inducer 45, Unit: kg, Quantity: 7.0, Field: 10, Row: 3
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5266, User ID: 15, Farm ID: 2, Date: 2022-06-29, Action: sowing, Type: Devil's plague, Unit: kg, Quantity: 10.0, Field: 3, Row: 5
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5267, User ID: 15, Farm ID: 2, Date: 2022-07-01, Action: pesticide, Type: Shroud, Unit: L, Quantity: 3.0, Field: 7, Row: 5
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5268, User ID: 15, Farm ID: 2, Date: 2022-07-03, Action: harvest, Type: Earth gall, Unit: kg, Quantity: 5.0, Field: 10, Row: 2
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5269, User ID: 15, Farm ID: 2, Date: 2022-07-01, Action: sales, Type: Bear corn, Unit: kg, Quantity: 3.0, Field: 7, Row: 7
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5270, User ID: 15, Farm ID: 2, Date: 2022-07-13, Action: sowing, Type: Earth gall, Unit: kg, Quantity: 3.0, Field: 2, Row: 2
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5271, User ID: 21, Farm ID: 3, Date: 2022-07-03, Action: harvest, Type: Canada root, Unit: kg, Quantity: 10.0, Field: 6, Row: 9
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5272, User ID: 21, Farm ID: 3, Date: 2022-07-08, Action: sales, Type: Devil's bite , Unit: kg, Quantity: 5.0, Field: 6, Row: 6
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5273, User ID: 21, Farm ID: 3, Date: 2022-07-09, Action: fertilizer, Type: Besgrow Grass Fertilizer, Unit: kg, Quantity: 7.0, Field: 8, Row: 5
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5274, User ID: 21, Farm ID: 3, Date: 2022-07-14, Action: fertilizer, Type: TIP TOP [Original] BABA Mr Ganick 100% Authentic Organic Fertilizer 549-Flower
+, Unit: kg, Quantity: 7.0, Field: 5, Row: 1
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5275, User ID: 21, Farm ID: 3, Date: 2022-07-07, Action: sales, Type: Devil's bite , Unit: kg, Quantity: 6.0, Field: 4, Row: 3
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5276, User ID: 21, Farm ID: 3, Date: 2022-07-08, Action: sowing, Type: California sycamore, Unit: kg, Quantity: 2.0, Field: 5, Row: 8
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5277, User ID: 21, Farm ID: 3, Date: 2022-07-13, Action: sales, Type: Bear corn, Unit: kg, Quantity: 2.0, Field: 7, Row: 6
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5278, User ID: 21, Farm ID: 3, Date: 2022-07-10, Action: sowing, Type: Bear corn, Unit: kg, Quantity: 7.0, Field: 6, Row: 6
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5279, User ID: 21, Farm ID: 3, Date: 2022-06-29, Action: pesticide, Type: Aktikon, Unit: L, Quantity: 2.0, Field: 4, Row: 7
+Jun 15, 2022 2:13:15 AM FarmerSimulation.FileLoggerMessage logInfoMessage
+INFO: Activity ID: 5280, User ID: 21, Farm ID: 3, Date: 2022-07-18, Action: fertilizer, Type: Biogold Original Japanese Top Bonsai and All Purpose Organic Fertilizer Baja Bonsai
+, Unit: kg, Quantity: 5.0, Field: 9, Row: 1

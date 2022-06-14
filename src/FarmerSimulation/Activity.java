@@ -1,6 +1,5 @@
 package FarmerSimulation;
 
-import java.io.IOException;
 import java.sql.*;
 
 public class Activity {
@@ -52,7 +51,7 @@ public class Activity {
             ps.setInt(10, this.row);
 
             int i = ps.executeUpdate();
-            System.out.println(i + " records affected");
+            System.out.println(i + " record(s) affected");
 
             con.close();
 
@@ -69,18 +68,6 @@ public class Activity {
 
         FileLoggerMessage.logInfoMessage(str);
         return str;
-    }
-
-    public static void main(String[] args) {
-        Activity testingActivity = new Activity("1", "2", "3", "2022-05-13", "sowing", "fennel", "kg", 3, 1, 1);
-        testingActivity.store();
-        try {
-            FileLogger.setup();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Problems with creating the log files");
-        }
-        testingActivity.toString();
     }
 
     public String getUserId() {
