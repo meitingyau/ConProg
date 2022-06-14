@@ -37,15 +37,6 @@ public class App {
     public static void main(String[] args) {
         // Timer timer = new Timer();
         // timer.startTimer();
-        // System.out.println("Hello, 2 World!");
-        // System.out.println("Hello, 3 World!");
-        // System.out.println("Hello, 4 World!");
-        // System.out.println("Hello, 5 World!");
-        // System.out.println("Hello, 6 World!");
-        // System.out.println("Hello, 7 World!");
-        // System.out.println("Hello, 8 World!");
-        // System.out.println("peepoPogClimbingTreeHard4House");
-        // System.out.println("Woohoo weihao bring fly");
         // timer.stopTimer();
         // System.out.println(timer.getTimeTakeninMiliSec());
 
@@ -59,11 +50,12 @@ public class App {
         // }
 
         // tester.doSomeThingAndLog();
-        Farmer[] farmers = FarmerSimulator.generateFarmers(4);
+        Farmer[] farmers = FarmerSimulator.generateFarmers(20);
         Timer timer = new Timer();
         timer.startTimer();
         for (int i = 0; i < farmers.length; i++) {
-            FarmerSimulator.simulateActivity(farmers[i].userId.toString());
+            farmers[i].run();
+            //FarmerSimulator.simulateActivity(farmers[i].userId.toString());
         }
         timer.stopTimer();
         System.out.println("Time taken to generate activities is "+timer.getTimeTakeninMiliSec()+" ms.");

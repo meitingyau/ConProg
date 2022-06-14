@@ -2,17 +2,12 @@ package FarmerSimulation;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+
 
 public class Concurrent{
     public static void main(String[] args){
-        int threadNum = 4;
-        int farmerNum = 4;
+        int threadNum = 20;
+        int farmerNum = 20;
         try {
             FileLogger.setup();
         } catch (IOException e) {
@@ -25,8 +20,8 @@ public class Concurrent{
         Timer cTimer = new Timer();
         cTimer.startTimer();
         
-        for(int i=0;i<farmerNum;i++){
-            Runnable farmer = new FarmerThread(farmers[i].userId.toString());
+        for(Farmer farmer:farmers){
+            //Runnable farmer = new FarmerThread(farmers[i].userId.toString());
             ex.execute(farmer);
         }
         ex.shutdown();

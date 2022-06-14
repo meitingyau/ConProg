@@ -2,26 +2,34 @@ package FarmerSimulation;
 
 public class Timer {
     private static long startTime;
+    private static long stopTime;
     private static long endTime;
 
-    //record start time
+    // record start time
     public void startTimer() {
         startTime = System.nanoTime();
     }
 
-    //record end time
+    // record end time
     public void stopTimer() {
         endTime = System.nanoTime();
     }
 
-    //calculate duration
+    // calculate duration
     public long getTimeTaken() {
         return (endTime - startTime);
     }
 
-    //get duration in millisecond instead nanosecond
+    // get duration in millisecond instead nanosecond
     public long getTimeTakeninMiliSec() {
         return (endTime - startTime) / 1000000;
+    }
+
+    public long stopThreadIn500Ms() {
+        stopTime = startTime + 500000000;
+        // stopTime = startTime + 5000;
+
+        return stopTime;
     }
 
 }
