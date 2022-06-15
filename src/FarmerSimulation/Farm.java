@@ -34,8 +34,9 @@ public class Farm {
 
     public String toString() {
         String str = "Farm ID: " + farmId + ", Farm Name: " + name + ", Address: " + address + ", \nPlant IDs: "
-                + Arrays.toString(plantIds) + ", Fertilizer IDs: " + Arrays.toString(fertilizerIds) + 
+                + Arrays.toString(plantIds) + ", Fertilizer IDs: " + Arrays.toString(fertilizerIds) +
                 ", Pesticide IDs: " + Arrays.toString(pesticideIds) + "\n";
+        FileLoggerMessage.logInfoMessage(str);
         return str;
     }
 }

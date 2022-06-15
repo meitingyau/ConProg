@@ -12,7 +12,8 @@ public class Pesticide {
     }
 
     public String toString() {
-        String str = "Pesticide: " + pesticideId + ", Name: " + name + ", Unit Type: " + unitType;
+        String str = "Pesticide: " + pesticideId + ", Name: " + name + ", Unit Type: " + unitType + "\n";
+        FileLoggerMessage.logInfoMessage(str);
         return str;
     }
 }

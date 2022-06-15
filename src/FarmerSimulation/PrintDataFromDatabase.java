@@ -1,6 +1,7 @@
 package FarmerSimulation;
 
 import java.sql.DriverManager;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -10,7 +11,12 @@ public class PrintDataFromDatabase {
 
     public static void main(String args[]) {
         try {
-
+            try {
+                FileLogger.setupFileInDB();
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Problems with creating the log files");
+            }
             // connect with our local database
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = null;
@@ -19,7 +25,9 @@ public class PrintDataFromDatabase {
             Statement st = conn.createStatement();
 
             // print data for farms in the database
-            System.out.println("=============================================\nFarms");
+            String farmm = "\n=============================================\nFarms\n\n";
+            System.out.println(farmm);
+            FileLoggerMessage.logInfoMessage(farmm);
             String sqlStrFarm = "select F.*,PL._id as plants,FE._id as fertilizers,PE._id as pesticides from farms F " +
                     "left join farmplants FPL on F._id=FPL.farmId " +
                     "inner join plants PL on FPL.plantId=PL._id " +
@@ -92,7 +100,7 @@ public class PrintDataFromDatabase {
                     fertilizers.clear();
                     pesticides.clear();
                     
-                    System.out.println(farm.toString());
+                    farm.toString();
                 }
                 if (rsFarm.isLast() == true && farmId.equals(tempFId) && fertilizers.contains(tempFerId) == true && pesticides.contains(tempPesId) == true) {
                     plants.add(rsFarm.getString("plants"));
@@ -109,7 +117,7 @@ public class PrintDataFromDatabase {
                     pesticides.toArray(pesIds);
                     pesticides.clear();
                     Farm farm = new Farm(farmId, farmName, farmAdd, plantIds, ferIds, pesIds);
-                    System.out.println(farm.toString());
+                    farm.toString();
                 }
                 tempFId = farmId;
                 tempFarmName = farmName;
@@ -121,7 +129,9 @@ public class PrintDataFromDatabase {
             }
 
             // print data for Farmers in the database
-            System.out.println("=============================================\nFarmers");
+            String far = "\n=============================================\nFarmers\n\n";
+            System.out.println(far);
+            FileLoggerMessage.logInfoMessage(far);
             String sqlStrUser = "select U.*,F._id from users U join farmusers FU on U._id=FU.userId join farms F on F._id=FU.farmId order by U._id limit 10";
             ResultSet rsUser = st.executeQuery(sqlStrUser);
 
@@ -160,7 +170,7 @@ public class PrintDataFromDatabase {
                     farms.toArray(farmIds);
                     Farmer user = new Farmer(tempUserId, farmIds, tempUserName, tempUserEmail, tempUserPW, tempUserPhone);
                     farms.clear();
-                    System.out.println(user.toString());
+                    user.toString();
                 }
                 if (rsUser.isLast() == true && userId.equals(tempUserId)) {
                     farms.add(rsUser.getString("F._id"));
@@ -175,7 +185,7 @@ public class PrintDataFromDatabase {
                     farms.toArray(farmIds);
                     Farmer user = new Farmer(userId, farmIds, name, email, password, phoneNum);
                     farms.clear();
-                    System.out.println(user.toString());
+                    user.toString();
                 }
 
                 tempUserId = userId;
@@ -188,7 +198,9 @@ public class PrintDataFromDatabase {
             }
 
             // print data for pesticides in the database
-            System.out.println("=============================================\nPesticides");
+            String pes = "\n=============================================\nPesticides\n\n";
+            System.out.println(pes);
+            FileLoggerMessage.logInfoMessage(pes);
             // select only 20 rows to show the output first
             String sqlStrPesticide = "select * from pesticide limit 20";
             ResultSet rsPesticide = st.executeQuery(sqlStrPesticide);
@@ -198,11 +210,13 @@ public class PrintDataFromDatabase {
                 String Pname = rsPesticide.getString("name");
                 String PunitType = rsPesticide.getString("unitType");
                 Pesticide pest = new Pesticide(pesticideId, Pname, PunitType);
-                System.out.println(pest.toString());
+                pest.toString();
             }
 
             // print data for fertilizers in the database
-            System.out.println("=============================================\nFertilizers");
+            String fer = "\n=============================================\nFertilizers\n\n";
+            System.out.println(fer);
+            FileLoggerMessage.logInfoMessage(fer);
             // select only 20 rows to show the output first
             String sqlStrFertilizer = "select * from fertilizers limit 20";
             ResultSet rsFertilizer = st.executeQuery(sqlStrFertilizer);
@@ -212,11 +226,13 @@ public class PrintDataFromDatabase {
                 String Fname = rsFertilizer.getString("name");
                 String unitType = rsFertilizer.getString("unitType");
                 Fertilizer fertilizer = new Fertilizer(fertilizerId, Fname, unitType);
-                System.out.println(fertilizer.toString());
+                fertilizer.toString();
             }
 
             // print data for plants in the database
-            System.out.println("=============================================\nPlants");
+            String pl = "\n=============================================\nPlants\n\n";
+            System.out.println(pl);
+            FileLoggerMessage.logInfoMessage(pl);
             // select only 20 rows to show the output first
             String sqlStrPlant = "select * from plants limit 20";
             ResultSet rsPlant = st.executeQuery(sqlStrPlant);
@@ -226,7 +242,7 @@ public class PrintDataFromDatabase {
                 String plantName = rsPlant.getString("name");
                 String plunitType = rsPlant.getString("unitType");
                 Plant plant = new Plant(plantId, plantName, plunitType);
-                System.out.println(plant.toString());
+                plant.toString();
             }
 
             conn.close();

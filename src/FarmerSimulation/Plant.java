@@ -11,7 +11,8 @@ public class Plant {
         this.unitType=unitType;
     }
     public String toString() {
-        String str = "Plant: " + plantId + ", Name: " + name + ", Unit Type: " + unitType;
+        String str = "Plant: " + plantId + ", Name: " + name + ", Unit Type: " + unitType + "\n";
+        FileLoggerMessage.logInfoMessage(str);
         return str;
     }
 }

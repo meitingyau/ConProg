@@ -13,7 +13,8 @@ public class Fertilizer {
 
     public String toString() {
         String str = "Fertilizer ID: " + fertilizerId + ", Fertilizer Name: " + name + ", Unit Type: "
-                + unitType ;
+                + unitType + "\n";
+        FileLoggerMessage.logInfoMessage(str);
         return str;
     }
 }
