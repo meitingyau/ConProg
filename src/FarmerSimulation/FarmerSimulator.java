@@ -133,7 +133,7 @@ public class FarmerSimulator implements FarmerSimulatorInterface {
                         }
                     }
 
-                    //COMMENTED LINES TO PRINT THE DATA TO BE ADDED TO THE ACTIVITY TABLE
+                    //COMMENTED LINES TO PRINT THE DATA IN THE TERMINAL TO BE ADDED TO THE ACTIVITY TABLE
 
                     // System.out.println("User id: " + userId);
                     // System.out.println("Activity id: " + nextAcId);

@@ -50,6 +50,7 @@ public class FileLogger {
         logger.addHandler(fileTxt);
     }
 
+    //logger setup for generating data text file from database
     static public void setupFileInDB() throws IOException {
 
         // get the global logger to configure it
