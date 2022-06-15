@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch Concurrent",
+      "request": "launch",
+      "mainClass": "FarmerSimulation.Concurrent",
+      "projectName": "ConProg_2ef50904"
+    },
+    {
+      "type": "java",
       "name": "Launch DisasterSimulation",
       "request": "launch",
       "args": "",
