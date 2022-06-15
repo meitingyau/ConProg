@@ -14,10 +14,12 @@ public class Concurrent{
             e.printStackTrace();
             throw new RuntimeException("Problems with creating the log files");
         }
+        //Generate activities for farmers using threads 
         ExecutorService ex = Executors.newFixedThreadPool(threadNum);
         FarmerSimulator fs = new FarmerSimulator();
         Farmer[] farmers = fs.generateFarmers(farmerNum);
        
+        //Start timer
         Timer cTimer = new Timer();
         cTimer.startTimer();
         
