@@ -1,0 +1,115 @@
+
+=============================================
+Farms
+
+Farm ID: 1, Farm Name: Urban Hijau, Address: Jalan 3/71b Kampung Sungai Penchala, Taman Pinggir Tun Dr Ismail, 60000 Kuala Lumpur, 
+Plant IDs: [24, 9], Fertilizer IDs: [4, 9], Pesticide IDs: [10, 2, 3]
+Farm ID: 10, Farm Name: Gapam Eco Farm, Address: PT 4078, Jalan Gapam, Hang Tuah Jaya, 77200 Jasin, Melaka, 
+Plant IDs: [10, 7, 90, 91, 92, 93, 94, 1], Fertilizer IDs: [100], Pesticide IDs: [94]
+Farm ID: 2, Farm Name: Happy Green Farms, Address: 96, 2, Jalan 8/62a, Bandar Menjalara, 52200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, 
+Plant IDs: [28, 31, 14], Fertilizer IDs: [13, 14, 15], Pesticide IDs: [14, 16]
+Farm ID: 3, Farm Name: Babylon Vertical Farms, Address: 12, Jalan PJU 5/1 Encorp Strand Garden Offices, Kota Damansara, 47810 Petaling Jaya, Selangor, 
+Plant IDs: [18, 19, 21, 22, 25, 28, 50, 14], Fertilizer IDs: [25, 26, 27, 28, 29], Pesticide IDs: [20, 23, 96]
+Farm ID: 4, Farm Name: Raju's Hill Strawberry Farm, Address: 129 59, Jalan Tapah, Brinchang, 39000 Brinchang, Pahang, 
+Plant IDs: [30, 31, 32, 35, 29], Fertilizer IDs: [30, 31, 38], Pesticide IDs: [36]
+Farm ID: 5, Farm Name: Highlands Apiary Farm, Address: Jalan BOH, Tanah Rata, 39000 Ringlet, Pahang, 
+Plant IDs: [43, 45, 46, 48, 49, 51, 52, 42], Fertilizer IDs: [43, 44, 52], Pesticide IDs: [48, 49]
+Farm ID: 6, Farm Name: Evergreen Farm, Address: D2-0, Parklane, 16, Jalan 1/152, Taman OUG, 58200 Kuala Lumpur, Federal Territory of Kuala Lumpur, 
+Plant IDs: [14, 15, 53, 54, 55, 56, 57, 58, 13], Fertilizer IDs: [53, 54], Pesticide IDs: [54, 55, 93]
+Farm ID: 7, Farm Name: E-FARM, Address: 2, Jalan Damai Rasa 1, The Corner @ Alam Damai, 56000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, 
+Plant IDs: [17, 20, 23, 26, 27, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 16], Fertilizer IDs: [59, 73, 74, 78], Pesticide IDs: [64, 65, 66, 69, 70, 75]
+Farm ID: 8, Farm Name: Agro Bright Organic Farm, Address: hang tuah jaya, Lt4547, lorong zamrud, 5/2, Jalan Zamrud 1, Taman Kerjasama, 75450 Ayer Keroh, Malacca, 
+Plant IDs: [34, 36, 37, 38, 80, 81, 82, 83, 33], Fertilizer IDs: [82], Pesticide IDs: [90]
+Farm ID: 9, Farm Name: Happy Orchard Farm, Address: 69-A, Lorong AS 5, Kampung Ayer Salak, 75250 Malacca, 
+Plant IDs: [40, 41, 44, 47, 84, 85, 86, 87, 88, 39, 89], Fertilizer IDs: [87], Pesticide IDs: [88]
+
+=============================================
+Farmers
+
+User ID: 1, Farm IDs: [1, 2], Name: hao, Email: haohao@email.comt Phone Num: 012-3456789
+User ID: 10, Farm IDs: [1], Name: Caleb Tan, Email: calebT398@gmail.com Phone Num: 014-7520136
+User ID: 11, Farm IDs: [2], Name: Daniel Yap, Email: danielll38@gmail.com Phone Num: 017-6320148
+User ID: 12, Farm IDs: [2], Name: Dylan Lai, Email: dylanLAiiiiii@gmail.com Phone Num: 013-6320785
+User ID: 13, Farm IDs: [2], Name: Daxton Chua, Email: daxtonC@gmail.com Phone Num: 013-6354167
+User ID: 14, Farm IDs: [2, 3], Name: Ethan Goh, Email: ethanGoh586@gmail.com Phone Num: 019-3210754
+User ID: 15, Farm IDs: [2], Name: Evan Chin, Email: evanChinchin@gmail.com Phone Num: 013-8621476
+User ID: 16, Farm IDs: [2], Name: Fiona Toh, Email: fionaaattt@gmail.com Phone Num: 013-9643017
+
+=============================================
+Pesticides
+
+Pesticide: 1, Name: Lasso, Unit Type: L
+Pesticide: 10, Name: Micro?Tech, Unit Type: L
+Pesticide: 100, Name: Ferxone, Unit Type: L
+Pesticide: 101, Name: Lawn?Keep, Unit Type: L
+Pesticide: 102, Name: Macondray, Unit Type: L
+Pesticide: 103, Name: Pennamine D, Unit Type: L
+Pesticide: 104, Name: Planotox, Unit Type: L
+Pesticide: 105, Name: Plantgard, Unit Type: L
+Pesticide: 106, Name: Tributon, Unit Type: L
+Pesticide: 107, Name: Weed?B?Gon, Unit Type: L
+Pesticide: 108, Name: Weedar, Unit Type: L
+Pesticide: 109, Name: Weedone, Unit Type: L
+Pesticide: 11, Name: Nudor Extra, Unit Type: L
+Pesticide: 110, Name: Weedmaster, Unit Type: L
+Pesticide: 111, Name: Weed & Feed, Unit Type: L
+Pesticide: 112, Name: Weedatul, Unit Type: L
+Pesticide: 113, Name: Chipco Turf Herbicide D, Unit Type: L
+Pesticide: 114, Name: DMA?4, Unit Type: L
+Pesticide: 115, Name: Esterone 99, Unit Type: L
+Pesticide: 116, Name: Formula 40, Unit Type: L
+
+=============================================
+Fertilizers
+
+Fertilizer ID: 1, Fertilizer Name: GROBEL NPK 4-3-3+1MgO, Unit Type: kg
+Fertilizer ID: 10, Fertilizer Name: Serbajadi Fertilizer, Unit Type: kg
+Fertilizer ID: 100, Fertilizer Name: XinLianXin urea, Unit Type: kg
+Fertilizer ID: 11, Fertilizer Name: Superbmix, Unit Type: kg
+Fertilizer ID: 12, Fertilizer Name: Baja Organik Ino Nature Fertilizer Premium Super Bio-C (Sbioc), Unit Type: kg
+Fertilizer ID: 13, Fertilizer Name: NovaTec Suprem 21-5-10(+3+TE)-Granular & Stabilized Granular Fertilizers, Unit Type: kg
+Fertilizer ID: 14, Fertilizer Name: Serbajadi Plant Food Growing Inducer 45, Unit Type: kg
+Fertilizer ID: 15, Fertilizer Name: Baja Pokok NPK 15 15 15, Unit Type: kg
+Fertilizer ID: 16, Fertilizer Name: VestiGrow Slow Release Fertilizer 25kg 23-9-13 Green Controlled Release Fertilizer, Unit Type: kg
+Fertilizer ID: 17, Fertilizer Name: Organic Fertilizer 11 IN 1 Organic Soil Vegetable Flower Tree Plan
+, Unit Type: kg
+Fertilizer ID: 18, Fertilizer Name: Gardening Soil Fertilized Mixed
+, Unit Type: kg
+Fertilizer ID: 19, Fertilizer Name: Baja Nrich Bio-Organik (Baja Bof)
+, Unit Type: kg
+Fertilizer ID: 2, Fertilizer Name: Activit 4-3-2, Unit Type: kg
+Fertilizer ID: 20, Fertilizer Name: Fertilizer Soya Fish 8-8-8-8+Te
+, Unit Type: kg
+Fertilizer ID: 21, Fertilizer Name: Serbajadi Plant Food Fruiting Inducer 43 Fertilizers
+, Unit Type: kg
+Fertilizer ID: 22, Fertilizer Name: Besgrow Supreme Fertilizer, Unit Type: kg
+Fertilizer ID: 23, Fertilizer Name: Novatec Premium 15-3-20(+2+TE), Unit Type: kg
+Fertilizer ID: 24, Fertilizer Name: TIP TOP [Original] BABA Mr Ganick 100% Authentic Organic Fertilizer 426-Vegetable, Unit Type: kg
+Fertilizer ID: 25, Fertilizer Name: TIP TOP [Original] BABA Mr Ganick 100% Authentic Organic Fertilizer 532-Leafy
+, Unit Type: kg
+Fertilizer ID: 26, Fertilizer Name: TIP TOP [Original] BABA Mr Ganick 100% Authentic Organic Fertilizer 549-Flower
+, Unit Type: kg
+
+=============================================
+Plants
+
+Plant: 1, Name: African sheepbush, Unit Type: kg
+Plant: 10, Name: Bamboo, Unit Type: kg
+Plant: 100, Name: Tomato, Unit Type: kg
+Plant: 11, Name: Banana, Unit Type: kg
+Plant: 12, Name: Baobab, Unit Type: kg
+Plant: 13, Name: Bearberry , Unit Type: kg
+Plant: 14, Name: Bear corn, Unit Type: kg
+Plant: 15, Name: Beech, Unit Type: kg
+Plant: 16, Name: Bird of paradise, Unit Type: kg
+Plant: 17, Name: California bay, Unit Type: kg
+Plant: 18, Name: California buckeye, Unit Type: kg
+Plant: 19, Name: California sycamore, Unit Type: kg
+Plant: 2, Name: Almond, Unit Type: kg
+Plant: 20, Name: California walnut, Unit Type: kg
+Plant: 21, Name: Canada root, Unit Type: kg
+Plant: 22, Name: Cancer jalap, Unit Type: kg
+Plant: 23, Name: Carrot, Unit Type: kg
+Plant: 24, Name: Desert Rose, Unit Type: kg
+Plant: 25, Name: Devil's bite , Unit Type: kg
+Plant: 26, Name: Devil's darning needle, Unit Type: kg

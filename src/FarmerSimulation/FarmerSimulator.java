@@ -36,7 +36,7 @@ public class FarmerSimulator implements FarmerSimulatorInterface {
             if (rsRandFarm.next()) {
                 String randFarmId = rsRandFarm.getString("F._id");
 
-                while (n <= 10) { // if wan to generate 1000 activities change to 1000
+                while (n <= 1000) { // if wan to generate 1000 activities change to 1000
                     String sqlLastAcId = "select max(cast(`_id` as unsigned)) as `actId` from activities";
                     ResultSet rsLastAcId = st.executeQuery(sqlLastAcId);
                     String nextAcId = "1";
