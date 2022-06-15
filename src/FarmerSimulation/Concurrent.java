@@ -6,8 +6,8 @@ import java.util.concurrent.Executors;
 
 public class Concurrent{
     public static void main(String[] args){
-        int threadNum = 100;
-        int farmerNum = 100;
+        int threadNum = 95;
+        int farmerNum = 95;
         try {
             FileLogger.setupConcurrent();
         } catch (IOException e) {

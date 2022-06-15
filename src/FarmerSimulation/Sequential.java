@@ -6,7 +6,7 @@ public class Sequential {
 
     public static void main(String[] args) {
         FarmerSimulator fs = new FarmerSimulator();
-        Farmer[] farmers = fs.generateFarmers(20);
+        Farmer[] farmers = fs.generateFarmers(100);
         try {
             FileLogger.setupSequential();
         } catch (IOException e) {

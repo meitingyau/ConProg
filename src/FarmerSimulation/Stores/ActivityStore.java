@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.transform.Source;
+
 import FarmerSimulation.Activity;
 
 public class ActivityStore {
@@ -262,7 +264,7 @@ public class ActivityStore {
                     + " GROUP BY `activities`.`farmId`, `activities`.`action`, `activities`.`type`, `activities`.`unit`, `activities`.`field`, `activities`.`row`";
             Statement st = conn.createStatement();
             ResultSet result = st.executeQuery(query);
-            if (result.next()) {
+            while (result.next()) {
                 System.out.println(result.getString("action") + " " + result.getString("type")
                         + " Field "
                         + result.getInt("field") + " Row " + result.getInt("row") + " "
@@ -271,9 +273,9 @@ public class ActivityStore {
                         + " Field "
                         + result.getInt("field") + " Row " + result.getInt("row") + " "
                         + result.getDouble("summary") + " " + result.getString("unit");
-            } else {
-                System.out.println("There is not data in this row");
-                contents = "There is not data in this row";
+            }
+            if (contents.isEmpty()){
+                System.out.println("There is no data");
             }
             conn.close();
         } catch (Exception e) {
