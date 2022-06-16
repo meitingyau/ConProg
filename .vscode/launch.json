@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch PrintDataFromDatabase",
+      "request": "launch",
+      "mainClass": "FarmerSimulation.PrintDataFromDatabase",
+      "projectName": "ConProg_f6861867"
+    },
+    {
+      "type": "java",
       "name": "Launch DataVisualization",
       "request": "launch",
       "mainClass": "FarmerSimulation.DataVisualization",

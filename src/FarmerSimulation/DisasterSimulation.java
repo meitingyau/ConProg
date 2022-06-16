@@ -4,7 +4,7 @@ public class DisasterSimulation {
 
     public static void main(String[] args) {
         FarmerSimulator fs = new FarmerSimulator();
-        Farmer[] farmers = fs.generateFarmers(5);
+        Farmer[] farmers = fs.generateFarmers(4);
         int stoppedOnce = 0;
         Thread t1 = null;
         int stoppedFarmer = 0;
